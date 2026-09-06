@@ -82,8 +82,8 @@ export type NativeData = NativeDataByClass[NativeClassName];
 /**
  * `readData()` returns `{ properties, ...data }`, and a spread lets a later key
  * overwrite an earlier one silently. No native class has a `properties` field,
- * and this keeps it that way: adding one to any reader turns `true` into
- * `never` here and fails the typecheck, instead of clobbering the block.
+ * which `readData()` includes as a convenience, and this ensures it doesn't
+ * silently override anything.
  */
 const NO_NATIVE_FIELD_SHADOWS_PROPERTIES: [
   Extract<NativeData, { properties: unknown }>,
