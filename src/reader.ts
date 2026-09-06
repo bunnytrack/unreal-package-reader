@@ -79,14 +79,11 @@ const SUBCHUNK_SIZE_PCM = 0x10;
 /**
  * The public entry class.
  *
- * Consumers do `reader = new UnrealPackageReader(buffer).readPackage()` and
- * then use that one object for everything - header, tables, queries, lookup
- * tables - so this class is all of those at once.
+ * Construction parses the package. Consumers then use that one object for
+ * everything: header, tables, queries, and lookup tables.
  */
 export class UnrealPackageReader {
-  readonly #buffer: ArrayBuffer;
-  #package?: UnrealPackage;
-
+  readonly #package: UnrealPackage;
   readonly propertyTypes = PROPERTY_TYPES;
   readonly objectFlags = OBJECT_FLAGS;
   readonly soundFlags = SOUND_FLAGS;
@@ -104,42 +101,27 @@ export class UnrealPackageReader {
   readonly defaultPackages = DEFAULT_PACKAGES;
 
   constructor(buffer: ArrayBuffer) {
-    this.#buffer = buffer;
-  }
-
-  /** Parse the package. Returns this same reader, so the call chains off the constructor. */
-  readPackage(): this {
-    this.#package = new UnrealPackage(this.#buffer);
-    return this;
-  }
-
-  /** The parsed package. Everything below reaches the parse through this. */
-  get package(): UnrealPackage {
-    if (!this.#package) {
-      throw new Error("Package not parsed yet: call readPackage() first");
-    }
-
-    return this.#package;
+    this.#package = new UnrealPackage(buffer);
   }
 
   get header(): PackageHeader {
-    return this.package.header;
+    return this.#package.header;
   }
 
   get version(): number {
-    return this.package.version;
+    return this.#package.version;
   }
 
   get nameTable(): NameTableEntry[] {
-    return this.package.nameTable;
+    return this.#package.nameTable;
   }
 
   get exportTable(): ExportTableObject[] {
-    return this.package.exportTable;
+    return this.#package.exportTable;
   }
 
   get importTable(): ImportTableObject[] {
-    return this.package.importTable;
+    return this.#package.importTable;
   }
 
   /**
@@ -160,7 +142,7 @@ export class UnrealPackageReader {
   }
 
   getExportObjectByName(objectName: string): ExportTableObject | null {
-    return this.package.getExportObjectByName(objectName);
+    return this.#package.getExportObjectByName(objectName);
   }
 
   getImportObjectByName(objectName: string): ImportTableObject | null {
@@ -298,7 +280,7 @@ export class UnrealPackageReader {
    * the object itself carried.
    */
   getSounds(): SoundInfo[] {
-    const view = this.package.cursor.view;
+    const view = this.#package.cursor.view;
     const sounds: SoundInfo[] = [];
 
     for (const soundObject of this.getSoundObjects()) {

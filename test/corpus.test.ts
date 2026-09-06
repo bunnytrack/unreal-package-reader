@@ -15,7 +15,7 @@
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { UnrealPackageReader } from "../src/index.ts";
+import { UnrealPackage, UnrealPackageReader } from "../src/index.ts";
 import { buildSnapshot, discoverCorpus, readArrayBuffer } from "./snapshot.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -27,7 +27,7 @@ describe.skipIf(packages.length === 0)("corpus", () => {
   for (const name of packages) {
     it(name, async () => {
       const source = readArrayBuffer(join(CORPUS_DIR, name));
-      const pkg = new UnrealPackageReader(source).readPackage();
+      const pkg = new UnrealPackageReader(source);
       const { text } = buildSnapshot(pkg, name, source);
 
       await expect(text).toMatchFileSnapshot(
@@ -46,7 +46,7 @@ describe.skipIf(packages.length === 0)("corpus", () => {
      */
     it(`${name} - repeated property access keeps the cursor intact`, () => {
       const source = readArrayBuffer(join(CORPUS_DIR, name));
-      const pkg = new UnrealPackageReader(source).readPackage();
+      const pkg = new UnrealPackage(source);
 
       for (const obj of pkg.exportTable) {
         try {
@@ -57,11 +57,11 @@ describe.skipIf(packages.length === 0)("corpus", () => {
           continue;
         }
 
-        const afterFirst = pkg.package.cursor.offset;
+        const afterFirst = pkg.cursor.offset;
         void obj.properties;
 
         expect(
-          pkg.package.cursor.offset,
+          pkg.cursor.offset,
           `${obj.objectName} (export ${obj.class_index})`,
         ).toBe(afterFirst);
       }

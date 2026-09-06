@@ -1996,7 +1996,6 @@
   var WAVE_FORMAT_PCM = 1;
   var SUBCHUNK_SIZE_PCM = 16;
   var UnrealPackageReader = class {
-    #buffer;
     #package;
     propertyTypes = PROPERTY_TYPES;
     objectFlags = OBJECT_FLAGS;
@@ -2014,34 +2013,22 @@
     extByFileType = EXTENSION_BY_PACKAGE_PATH;
     defaultPackages = DEFAULT_PACKAGES;
     constructor(buffer) {
-      this.#buffer = buffer;
-    }
-    /** Parse the package. Returns this same reader, so the call chains off the constructor. */
-    readPackage() {
-      this.#package = new UnrealPackage(this.#buffer);
-      return this;
-    }
-    /** The parsed package. Everything below reaches the parse through this. */
-    get package() {
-      if (!this.#package) {
-        throw new Error("Package not parsed yet: call readPackage() first");
-      }
-      return this.#package;
+      this.#package = new UnrealPackage(buffer);
     }
     get header() {
-      return this.package.header;
+      return this.#package.header;
     }
     get version() {
-      return this.package.version;
+      return this.#package.version;
     }
     get nameTable() {
-      return this.package.nameTable;
+      return this.#package.nameTable;
     }
     get exportTable() {
-      return this.package.exportTable;
+      return this.#package.exportTable;
     }
     get importTable() {
-      return this.package.importTable;
+      return this.#package.importTable;
     }
     /**
      * Resolve an object reference: zero is null, and an index beyond either
@@ -2058,7 +2045,7 @@
       return this.getObject(index)?.objectName || "None";
     }
     getExportObjectByName(objectName) {
-      return this.package.getExportObjectByName(objectName);
+      return this.#package.getExportObjectByName(objectName);
     }
     getImportObjectByName(objectName) {
       return this.importTable.find((item) => item.objectName === objectName) ?? null;
@@ -2158,7 +2145,7 @@
      * the object itself carried.
      */
     getSounds() {
-      const view = this.package.cursor.view;
+      const view = this.#package.cursor.view;
       const sounds = [];
       for (const soundObject of this.getSoundObjects()) {
         const sound = soundObject.readData();

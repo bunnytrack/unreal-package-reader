@@ -46,7 +46,7 @@ if (packages.length === 0) {
 
 for (const name of packages) {
   const source = readArrayBuffer(join(corpusDir, name));
-  const pkg = new UnrealPackageReader(source).readPackage();
+  const pkg = new UnrealPackageReader(source);
   const { deep } = buildSnapshot(pkg, name, source);
 
   const target = join(outDir, `${name}.json`);

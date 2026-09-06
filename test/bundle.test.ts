@@ -80,7 +80,7 @@ describe.skipIf(!existsSync(DIST))("built bundle", () => {
     const UnrealPackageReader = (globalThis as any).UnrealPackageReader;
     expect(typeof UnrealPackageReader, "global constructor").toBe("function");
 
-    const pkg = new UnrealPackageReader(minimalPackage()).readPackage();
+    const pkg = new UnrealPackageReader(minimalPackage());
 
     expect(pkg.version).toBe(68);
     expect(pkg.exportTable).toHaveLength(1);

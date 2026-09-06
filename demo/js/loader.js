@@ -38,11 +38,10 @@ $(function () {
         const filename = file.name.substring(0, file.name.lastIndexOf("."));
         const fileExt = file.name.substring(file.name.lastIndexOf(".") + 1);
         packageArrayBuffer = await file.arrayBuffer();
-        const utReader = new UnrealPackageReader(packageArrayBuffer);
 
         // Assign globals for functions below.
         try {
-          utPackage = utReader.readPackage();
+          utPackage = new UnrealPackageReader(packageArrayBuffer);
         } catch (e) {
           alert("Unable to load package due to invalid signature");
           return;
@@ -104,7 +103,7 @@ $(function () {
         createDependenciesTable();
 
         // Update tab counts on file load
-        const counts = utReader.getClassesCount();
+        const counts = utPackage.getClassesCount();
 
         $("[href='#tab-textures'] .count").text(`(${counts.texture || 0})`);
         $("[href='#tab-sounds'] .count").text(`(${counts.sound || 0})`);
