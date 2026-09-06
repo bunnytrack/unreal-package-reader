@@ -254,38 +254,36 @@ $(function () {
             texture: textureInfo,
             html: textureHtml,
           });
-
-          if (textureElements.length === textureObjects.length) {
-            const grouped = {};
-
-            for (const texEl of textureElements) {
-              const group = texEl.texture.group || "Ungrouped";
-
-              if (grouped[group] !== undefined) {
-                grouped[group].push(texEl);
-              } else {
-                grouped[group] = [texEl];
-              }
-            }
-
-            // Show ungrouped textures first
-            if (Object.keys(grouped).includes("Ungrouped")) {
-              createTextureGroupHtml("Ungrouped", grouped);
-
-              // Remove from object so it's not shown again below
-              delete grouped["Ungrouped"];
-            }
-
-            const groupNames = getSortedKeys(grouped);
-
-            // Yes these variable names are awful
-            for (const group of groupNames) {
-              createTextureGroupHtml(group, grouped);
-            }
-
-            $("#tab-textures .texture canvas").eq(0).click();
-          }
         }
+
+        const grouped = {};
+
+        for (const texEl of textureElements) {
+          const group = texEl.texture.group || "Ungrouped";
+
+          if (grouped[group] === undefined) {
+            grouped[group] = [];
+          }
+
+          grouped[group].push(texEl);
+        }
+
+        // Show ungrouped textures first
+        if (Object.keys(grouped).includes("Ungrouped")) {
+          createTextureGroupHtml("Ungrouped", grouped);
+
+          // Remove from object so it's not shown again below
+          delete grouped["Ungrouped"];
+        }
+
+        const groupNames = getSortedKeys(grouped);
+
+        // Yes these variable names are awful
+        for (const group of groupNames) {
+          createTextureGroupHtml(group, grouped);
+        }
+
+        $("#tab-textures .texture canvas").eq(0).click();
       }
     }
   }
@@ -529,13 +527,16 @@ $(function () {
 
     context.drawImage(canvas, 0, 0);
 
-    // Set palette canvas
-    const paletteProp = textureObject.getProp("palette");
-    const paletteObject = utPackage.getObject(paletteProp.value);
-    const paletteCanvas = utPackage.getPaletteCanvas(paletteObject);
     const paletteWrapper = sidebar.find(".palette-wrapper");
+    paletteWrapper.html(`<h4>Palette</h4>`);
 
-    paletteWrapper.html(`<h4>Palette</h4>`).append(paletteCanvas);
+    // Set palette canvas, if not a compressed format
+    const paletteProp = textureObject.getProp("palette");
+    if (paletteProp) {
+      const paletteObject = utPackage.getObject(paletteProp.value);
+      const paletteCanvas = utPackage.getPaletteCanvas(paletteObject);
+      paletteWrapper.append(paletteCanvas);
+    }
 
     // Populate table with texture properties
     table.html("");

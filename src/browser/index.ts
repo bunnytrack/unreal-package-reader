@@ -11,6 +11,7 @@
 
 export {
   createCanvas,
+  decodeDxt1,
   getLevelScreenshots,
   getPaletteCanvas,
   textureToCanvas,

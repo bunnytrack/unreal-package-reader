@@ -1898,6 +1898,17 @@
     }
   };
 
+  // src/constants/textures.ts
+  var TEXTURE_FORMAT = {
+    P8: 0,
+    RGBA7: 1,
+    RGB16: 2,
+    DXT1: 3,
+    RGB8: 4,
+    RGBA8: 5,
+    MAX: 255
+  };
+
   // src/browser/canvas.ts
   function createCanvas({
     width,
@@ -1905,45 +1916,109 @@
     palette,
     mipMap
   }) {
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
-    canvas.width = width;
-    canvas.height = height;
-    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    const rgba = new Uint8ClampedArray(width * height * 4);
     let i = 0;
     if (mipMap) {
       for (const pixel of mipMap.data) {
         const colour = palette.colours[pixel];
-        imageData.data[i++] = colour.r;
-        imageData.data[i++] = colour.g;
-        imageData.data[i++] = colour.b;
-        imageData.data[i++] = 255;
+        rgba[i++] = colour.r;
+        rgba[i++] = colour.g;
+        rgba[i++] = colour.b;
+        rgba[i++] = 255;
       }
     } else {
       for (const pixel of palette.colours) {
-        imageData.data[i++] = pixel.r;
-        imageData.data[i++] = pixel.g;
-        imageData.data[i++] = pixel.b;
-        imageData.data[i++] = 255;
+        rgba[i++] = pixel.r;
+        rgba[i++] = pixel.g;
+        rgba[i++] = pixel.b;
+        rgba[i++] = 255;
       }
     }
+    return rgbaToCanvas(width, height, rgba);
+  }
+  function rgbaToCanvas(width, height, rgba) {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    canvas.width = width;
+    canvas.height = height;
+    const imageData = context.createImageData(width, height);
+    imageData.data.set(rgba);
     context.putImageData(imageData, 0, 0);
     return canvas;
   }
+  function rgb565(word) {
+    const r = word >> 11 & 31;
+    const g = word >> 5 & 63;
+    const b = word & 31;
+    return [r << 3 | r >> 2, g << 2 | g >> 4, b << 3 | b >> 2];
+  }
+  function decodeDxt1(data, width, height) {
+    const rgba = new Uint8ClampedArray(width * height * 4);
+    const blocksAcross = Math.max(1, width >> 2);
+    const blocksDown = Math.max(1, height >> 2);
+    const colours = [];
+    let offset = 0;
+    for (let by = 0; by < blocksDown; by++) {
+      for (let bx = 0; bx < blocksAcross; bx++) {
+        const c0 = data[offset] | data[offset + 1] << 8;
+        const c1 = data[offset + 2] | data[offset + 3] << 8;
+        const [r0, g0, b0] = colours[0] = rgb565(c0);
+        const [r1, g1, b1] = colours[1] = rgb565(c1);
+        if (c0 > c1) {
+          colours[2] = [(2 * r0 + r1) / 3, (2 * g0 + g1) / 3, (2 * b0 + b1) / 3];
+          colours[3] = [(r0 + 2 * r1) / 3, (g0 + 2 * g1) / 3, (b0 + 2 * b1) / 3];
+        } else {
+          colours[2] = [(r0 + r1) / 2, (g0 + g1) / 2, (b0 + b1) / 2];
+          colours[3] = [0, 0, 0];
+        }
+        for (let row = 0; row < 4; row++) {
+          const y = by * 4 + row;
+          if (y >= height) break;
+          let indices = data[offset + 4 + row];
+          for (let col = 0; col < 4; col++, indices >>= 2) {
+            const x = bx * 4 + col;
+            if (x >= width) break;
+            const [r, g, b] = colours[indices & 3];
+            const i = (y * width + x) * 4;
+            rgba[i] = r;
+            rgba[i + 1] = g;
+            rgba[i + 2] = b;
+            rgba[i + 3] = 255;
+          }
+        }
+        offset += 8;
+      }
+    }
+    return rgba;
+  }
   function textureToCanvas(reader, textureObject) {
     const textureData = textureObject.readData();
+    const formatProp = textureObject.getProp("format");
+    const format = formatProp?.value ?? TEXTURE_FORMAT.P8;
     const [mipMap] = textureData.mip_maps;
-    const paletteProp = textureObject.getProp("palette");
-    const paletteObject = reader.getObject(
-      paletteProp.value
-    );
-    const palette = paletteObject.readData();
-    return createCanvas({
-      width: mipMap.width,
-      height: mipMap.height,
-      palette,
-      mipMap
-    });
+    switch (format) {
+      case TEXTURE_FORMAT.P8: {
+        const paletteProp = textureObject.getProp("palette");
+        const paletteObject = reader.getObject(
+          paletteProp.value
+        );
+        const palette = paletteObject.readData();
+        return createCanvas({
+          width: mipMap.width,
+          height: mipMap.height,
+          palette,
+          mipMap
+        });
+      }
+      case TEXTURE_FORMAT.DXT1:
+        return rgbaToCanvas(
+          mipMap.width,
+          mipMap.height,
+          decodeDxt1(mipMap.data, mipMap.width, mipMap.height)
+        );
+      default:
+        throw new Error(`Unsupported texture format ${format}`);
+    }
   }
   function getPaletteCanvas(paletteObject) {
     return createCanvas({
