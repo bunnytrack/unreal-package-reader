@@ -1998,8 +1998,6 @@
   var UnrealPackageReader = class {
     #buffer;
     #package;
-    /** Assigned by the consumer after readPackage(); never set by the reader. */
-    filename;
     propertyTypes = PROPERTY_TYPES;
     objectFlags = OBJECT_FLAGS;
     soundFlags = SOUND_FLAGS;

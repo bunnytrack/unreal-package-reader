@@ -87,9 +87,6 @@ export class UnrealPackageReader {
   readonly #buffer: ArrayBuffer;
   #package?: UnrealPackage;
 
-  /** Assigned by the consumer after readPackage(); never set by the reader. */
-  filename?: string;
-
   readonly propertyTypes = PROPERTY_TYPES;
   readonly objectFlags = OBJECT_FLAGS;
   readonly soundFlags = SOUND_FLAGS;

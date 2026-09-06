@@ -29,103 +29,93 @@ $(function () {
 
   /** @type {UnrealPackageReader | null} */
   let utPackage = null;
-  let screenshotSlideshowId, packageArrayBuffer, currentMesh;
+  let screenshotSlideshowId, packageArrayBuffer, packageHash, currentMesh;
 
   fileInput
-    .on("input", function () {
+    .on("input", async function () {
       if (this.files.length > 0) {
         const file = this.files[0];
         const filename = file.name.substring(0, file.name.lastIndexOf("."));
-        const fileExt = file.name
-          .substring(file.name.lastIndexOf(".") + 1)
-          .toLowerCase();
-        const fileReader = new FileReader();
+        const fileExt = file.name.substring(file.name.lastIndexOf(".") + 1);
+        packageArrayBuffer = await file.arrayBuffer();
+        const utReader = new UnrealPackageReader(packageArrayBuffer);
 
-        fileReader.onload = function () {
-          const utReader = new UnrealPackageReader(this.result);
+        // Assign globals for functions below.
+        try {
+          utPackage = utReader.readPackage();
+        } catch (e) {
+          alert("Unable to load package due to invalid signature");
+          return;
+        }
 
-          // Assign globals for functions below.
-          try {
-            utPackage = utReader.readPackage();
-          } catch (e) {
-            alert("Unable to load package due to invalid signature");
-            return;
-          }
+        packageHash = await hashToHex(packageArrayBuffer);
 
-          packageArrayBuffer = this.result;
+        $("body").addClass("file-loaded");
 
-          $("body").addClass("file-loaded");
+        // Populate file info
+        $(".file-summary .file-name").text(filename);
+        $(".file-summary .file-type").text(
+          `${utPackage.fileTypesByExt[fileExt]} (.${fileExt})`,
+        );
+        $(".file-summary .file-size").text(readableFileSize(file.size));
+        $(".file-summary .file-guid").text(
+          utPackage.header.guid
+            ? utPackage.header.guid.match(/.{8}/g).join("-")
+            : "-",
+        );
+        $(".file-summary .file-version").text(utPackage.version);
 
-          // Used when switching to Textures tab (see populateTexturesTab function).
-          utPackage.filename = filename;
+        $("main").show(0);
+        $(".screenshot, .level-summary").hide(0);
 
-          // Populate file info
-          $(".file-summary .file-name").text(filename);
-          $(".file-summary .file-type").text(
-            `${utPackage.fileTypesByExt[fileExt]} (.${fileExt})`,
-          );
-          $(".file-summary .file-size").text(readableFileSize(file.size));
-          $(".file-summary .file-guid").text(
-            utPackage.header.guid
-              ? utPackage.header.guid.match(/.{8}/g).join("-")
-              : "-",
-          );
-          $(".file-summary .file-version").text(utPackage.version);
+        if (!$("body").hasClass("tabs-loaded")) {
+          loadTabs();
+        }
 
-          $("main").show(0);
-          $(".screenshot, .level-summary").hide(0);
+        // Switch to the relevant tab for each format
+        switch (fileExt) {
+          case "unr":
+            showLevelSummary();
+            break;
 
-          if (!$("body").hasClass("tabs-loaded")) {
-            loadTabs();
-          }
+          case "uax":
+            $("[href='#tab-sounds']").click();
+            break;
 
-          // Switch to the relevant tab for each format
-          switch (fileExt) {
-            case "unr":
-              showLevelSummary();
-              break;
+          case "umx":
+            $("[href='#tab-music']").click();
+            break;
 
-            case "uax":
-              $("[href='#tab-sounds']").click();
-              break;
+          case "utx":
+            $("[href='#tab-textures']").click();
+            populateTexturesTab();
+            break;
 
-            case "umx":
-              $("[href='#tab-music']").click();
-              break;
+          case "uxx":
+            if (isLevel()) showLevelSummary();
+            break;
 
-            case "utx":
-              $("[href='#tab-textures']").click();
-              populateTexturesTab();
-              break;
+          default:
+            $("[href='#tab-dependencies']").click();
+            break;
+        }
 
-            case "uxx":
-              if (isLevel()) showLevelSummary();
-              break;
+        // Show dependencies table first
+        createDependenciesTable();
 
-            default:
-              $("[href='#tab-dependencies']").click();
-              break;
-          }
+        // Update tab counts on file load
+        const counts = utReader.getClassesCount();
 
-          // Show dependencies table first
-          createDependenciesTable();
-
-          // Update tab counts on file load
-          const counts = utReader.getClassesCount();
-
-          $("[href='#tab-textures'] .count").text(`(${counts.texture || 0})`);
-          $("[href='#tab-sounds'] .count").text(`(${counts.sound || 0})`);
-          $("[href='#tab-music'] .count").text(`(${counts.music || 0})`);
-          $("[href='#tab-scripts'] .count").text(`(${counts.textbuffer || 0})`);
-          $("[href='#tab-brushes'] .count").text(
-            `(${utPackage.getAllBrushObjects().length})`,
-          );
-          $("[href='#tab-meshes'] .count").text(
-            `(${(counts.mesh || 0) + (counts.lodmesh || 0) + (counts.skeletalmesh || 0)})`,
-          );
-        };
-
-        fileReader.readAsArrayBuffer(file);
+        $("[href='#tab-textures'] .count").text(`(${counts.texture || 0})`);
+        $("[href='#tab-sounds'] .count").text(`(${counts.sound || 0})`);
+        $("[href='#tab-music'] .count").text(`(${counts.music || 0})`);
+        $("[href='#tab-scripts'] .count").text(`(${counts.textbuffer || 0})`);
+        $("[href='#tab-brushes'] .count").text(
+          `(${utPackage.getAllBrushObjects().length})`,
+        );
+        $("[href='#tab-meshes'] .count").text(
+          `(${(counts.mesh || 0) + (counts.lodmesh || 0) + (counts.skeletalmesh || 0)})`,
+        );
       }
     })
     .trigger("input");
@@ -178,10 +168,10 @@ $(function () {
   // Prevents reloading resource-intensive contents (e.g. textures, import/export tables).
   function tabUnpopulated(tabId) {
     const tab = $(`#tab-${tabId}`);
-    const tabUnpopulated = tab.data("current-package") !== utPackage.filename;
+    const tabUnpopulated = tab.data("current-package") !== packageHash;
 
     if (tabUnpopulated) {
-      tab.data("current-package", utPackage.filename);
+      tab.data("current-package", packageHash);
     }
 
     return tabUnpopulated;
@@ -831,7 +821,7 @@ $(function () {
           const formatUpper = musicData.format.toUpperCase();
 
           // Global reference to this player instance/music object - used for playback/download
-          const id = `audio_${utPackage.header.guid}`;
+          const id = `audio_${packageHash}`;
 
           const onCompletion = function (player) {
             // Prevent auto-play
@@ -3036,5 +3026,11 @@ $(function () {
     const player = new MP2Player(arrayBuffer);
     await player._init();
     callback(player);
+  }
+
+  async function hashToHex(buffer, algo = "SHA-256") {
+    const hashBuffer = await window.crypto.subtle.digest(algo, buffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
   }
 });
