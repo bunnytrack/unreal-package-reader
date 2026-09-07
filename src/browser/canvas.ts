@@ -171,8 +171,7 @@ export function textureToCanvas(
 ): HTMLCanvasElement {
   const textureData = textureObject.readData() as UTexture;
   const formatProp = textureObject.getProp("format") as
-    | ByteProperty
-    | undefined;
+    ByteProperty | undefined;
   const format = formatProp?.value ?? TEXTURE_FORMAT.P8;
   const [mipMap] = textureData.mip_maps;
 

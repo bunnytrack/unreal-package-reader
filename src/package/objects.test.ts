@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import { BinaryCursor } from "../io/cursor.ts";
 import {
   ExportTableObject,
+  ImportTableObject,
   type ObjectContext,
   type UObject,
 } from "./objects.ts";
@@ -23,8 +24,12 @@ function resolverOver(entries: UObject[]): ObjectContext {
 }
 
 /** An export whose fields are all zero, so nothing is read from real bytes. */
-function emptyExport(ctx: ObjectContext): ExportTableObject {
-  return new ExportTableObject(ctx, new BinaryCursor(new ArrayBuffer(64)));
+function emptyExport(ctx: ObjectContext, position = 0): ExportTableObject {
+  return new ExportTableObject(
+    ctx,
+    new BinaryCursor(new ArrayBuffer(64)),
+    position,
+  );
 }
 
 describe("uppermostPackageObject", () => {
@@ -66,5 +71,25 @@ describe("uppermostPackageObject", () => {
     expect(() => first.uppermostPackageObject).toThrow(
       /exceeds 128 levels: the package indices form a cycle/,
     );
+  });
+});
+
+describe("index", () => {
+  it("is the 1-based export reference", () => {
+    const ctx = resolverOver([]);
+
+    expect(emptyExport(ctx, 0).index).toBe(1);
+    expect(emptyExport(ctx, 41).index).toBe(42);
+  });
+
+  it("is the bitwise complement of an import's position", () => {
+    const object = new ImportTableObject(
+      resolverOver([]),
+      new BinaryCursor(new ArrayBuffer(64)),
+      3,
+    );
+
+    expect(object.index).toBe(-4);
+    expect(~object.index).toBe(3);
   });
 });

@@ -1689,8 +1689,16 @@
     package_index = 0;
     object_name_index = 0;
     resolver;
-    constructor(resolver) {
+    #position;
+    constructor(resolver, position) {
       this.resolver = resolver;
+      this.#position = position;
+    }
+    /**
+     * This entry's reference as another object would store it.
+     */
+    get index() {
+      return this.table === "export" ? this.#position + 1 : ~this.#position;
     }
     get objectName() {
       return this.resolver.name(this.object_name_index);
@@ -1744,8 +1752,8 @@
     #properties;
     #propertiesEndOffset = 0;
     #objectData;
-    constructor(ctx, cursor = ctx.cursor) {
-      super(ctx);
+    constructor(ctx, cursor, position) {
+      super(ctx, position);
       this.#ctx = ctx;
       this.class_index = cursor.compactIndex();
       this.super_index = cursor.compactIndex();
@@ -1828,8 +1836,8 @@
   var ImportTableObject = class extends UObject {
     class_package_index;
     class_name_index;
-    constructor(resolver, cursor) {
-      super(resolver);
+    constructor(resolver, cursor, position) {
+      super(resolver, position);
       this.class_package_index = cursor.compactIndex();
       this.class_name_index = cursor.compactIndex();
       this.package_index = cursor.int32();
@@ -1860,12 +1868,12 @@
       this.cursor.seek(this.header.export_offset);
       this.exportTable = Array.from(
         { length: this.header.export_count },
-        () => new ExportTableObject(this, this.cursor)
+        (_, position) => new ExportTableObject(this, this.cursor, position)
       );
       this.cursor.seek(this.header.import_offset);
       this.importTable = Array.from(
         { length: this.header.import_count },
-        () => new ImportTableObject(this, this.cursor)
+        (_, position) => new ImportTableObject(this, this.cursor, position)
       );
     }
     get version() {

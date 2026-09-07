@@ -35,13 +35,13 @@ export class UnrealPackage implements ReadContext, TableResolver {
     this.cursor.seek(this.header.export_offset);
     this.exportTable = Array.from(
       { length: this.header.export_count },
-      () => new ExportTableObject(this, this.cursor),
+      (_, position) => new ExportTableObject(this, this.cursor, position),
     );
 
     this.cursor.seek(this.header.import_offset);
     this.importTable = Array.from(
       { length: this.header.import_count },
-      () => new ImportTableObject(this, this.cursor),
+      (_, position) => new ImportTableObject(this, this.cursor, position),
     );
   }
 

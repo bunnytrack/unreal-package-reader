@@ -47,13 +47,22 @@ export abstract class UObject {
   object_name_index = 0;
 
   protected readonly resolver: TableResolver;
+  readonly #position: number;
 
-  constructor(resolver: TableResolver) {
+  constructor(resolver: TableResolver, position: number) {
     this.resolver = resolver;
+    this.#position = position;
   }
 
   /** Which table this entry came from. */
   abstract get table(): "export" | "import";
+
+  /**
+   * This entry's reference as another object would store it.
+   */
+  get index(): number {
+    return this.table === "export" ? this.#position + 1 : ~this.#position;
+  }
 
   get objectName(): string {
     return this.resolver.name(this.object_name_index);
@@ -127,8 +136,8 @@ export class ExportTableObject extends UObject {
   #propertiesEndOffset = 0;
   #objectData?: ObjectData | null;
 
-  constructor(ctx: ObjectContext, cursor: BinaryCursor = ctx.cursor) {
-    super(ctx);
+  constructor(ctx: ObjectContext, cursor: BinaryCursor, position: number) {
+    super(ctx, position);
     this.#ctx = ctx;
 
     this.class_index = cursor.compactIndex();
@@ -239,8 +248,8 @@ export class ImportTableObject extends UObject {
   class_package_index: number;
   class_name_index: number;
 
-  constructor(resolver: TableResolver, cursor: BinaryCursor) {
-    super(resolver);
+  constructor(resolver: TableResolver, cursor: BinaryCursor, position: number) {
+    super(resolver, position);
 
     this.class_package_index = cursor.compactIndex();
     this.class_name_index = cursor.compactIndex();
