@@ -382,29 +382,38 @@ export class UnrealPackageReader {
     return packageFileExtension(packageName);
   }
 
-  /** Top-level package imports: the files this one needs alongside it. */
+  /**
+   * Top-level package imports: the files this one needs alongside it.
+   *
+   * The file type of a custom package is not recorded anywhere, so `ext` and
+   * `type` are only set where they can be inferred. A custom package that
+   * supplies a `Music` object is labelled `.umx` here as a convenience. The label
+   * comes from the imported object's package, not the level's `Song` name, so
+   * music named differently from its package (e.g. `St3nge.st3_nge`) is covered.
+   */
   getDependencies(): Dependency[] {
     const dependencies: Dependency[] = [];
 
-    // A map's music package is a dependency the import table cannot label.
-    const { Song: levelMusic } = this.getLevelSummary();
+    const musicPackages = new Set(
+      this.importTable
+        .filter((entry) => entry.className === "Music")
+        .map((entry) => entry.uppermostPackageObject),
+    );
 
     for (const tableEntry of this.importTable) {
       if (tableEntry.className === "Package" && !tableEntry.isInPackage) {
         const name = tableEntry.objectName;
-
         const isDefault = this.isDefaultPackage(name);
-        const isLevelMusic = name === levelMusic;
-
+        const isMusic = musicPackages.has(tableEntry);
         const dependency: Dependency = { name, default: isDefault };
 
         if (isDefault) {
           dependency.ext = this.getPackageFileExtension(name);
-        } else if (isLevelMusic) {
+        } else if (isMusic) {
           dependency.ext = "umx";
         }
 
-        if (isDefault || isLevelMusic) {
+        if (isDefault || isMusic) {
           dependency.type = this.fileTypesByExt[dependency.ext!];
         }
 
