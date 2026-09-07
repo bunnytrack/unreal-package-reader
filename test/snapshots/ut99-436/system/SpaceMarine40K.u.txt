@@ -269,9 +269,9 @@ sha256   9ad11daaa6790041820931507145ec2b1d124884065f0d6c1046cd62e38448c6
      25  Sound             Marine              SMGasp                      0x000f0004  195945+49629      0      378eb25f82364bfc
      26  -                 -                   Marine40K                   0x000f0004  245574+386        0      3bca49ce518b0f13
      27  Sound             Marine              SMDeath2                    0x000f0004  245960+24945      0      89b98b2f4af053e6
-     28  Texture           Icons               Marine40KDoll               0x000f0004  270905+65608      10     d1f72e8c556e79ac
+     28  Texture           Icons               Marine40KDoll               0x000f0004  270905+65608      10     b6d02d2d775829ed
      29  Palette           Icons               Palette1                    0x00070004  336513+1027       0      eda69b1af9eb87a3
-     30  Texture           Icons               Marine40KBelt               0x000f0004  337540+32840      10     d9da1ac70e299e14
+     30  Texture           Icons               Marine40KBelt               0x000f0004  337540+32840      10     f512345706799939
      31  Sound             Marine              SMStep3                     0x000f0004  370380+8433       0      0aef74a6a3f17758
      32  SkeletalMesh      -                   SpaceMarine                 0x000f0004  378813+44194      0      0a004ceba48f6f1f
      33  Sound             Marine              SMStep2                     0x000f0004  423007+8433       0      e29193533c0d9c97

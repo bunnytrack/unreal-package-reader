@@ -36,7 +36,11 @@ import {
   PROPERTY_TYPES,
   type PropertyTypeName,
 } from "../constants/propertyTypes.ts";
-import type { ReadContext } from "../structs/context.ts";
+import {
+  readObjectRef,
+  type ObjectRef,
+  type ReadContext,
+} from "../structs/context.ts";
 import {
   readColour,
   readPointRegion,
@@ -84,16 +88,12 @@ export interface FloatProperty extends PropertyTag<"Float"> {
 }
 
 /**
- * An object reference as stored in the file: positive for a 1-based
- * export-table entry, negative for a bitwise-complemented import-table entry,
- * zero for none. `UnrealPackageReader.getObject` resolves one to its table
- * entry.
+ * An object reference, resolved to its export or import table entry. The
+ * file stores a compact index: positive for a 1-based export, negative for a
+ * bitwise-complemented import, zero for none (null here).
  */
-export type ObjectIndex = number;
-
-/** An object reference. */
 export interface ObjectProperty extends PropertyTag<"Object"> {
-  value: ObjectIndex;
+  value: ObjectRef;
 }
 
 /**
@@ -102,7 +102,7 @@ export interface ObjectProperty extends PropertyTag<"Object"> {
  * with its own type ID and an unchanged `SerializeItem`.
  */
 export interface ClassProperty extends PropertyTag<"Class"> {
-  value: ObjectIndex;
+  value: ObjectRef;
 }
 
 /** A name: stored as a compact index into the name table, resolved to its text. */
@@ -276,9 +276,9 @@ export function readProperty(ctx: ReadContext): Property | null {
     case "Float":
       return { ...tag, type, value: cursor.float32() };
     case "Object":
-      return { ...tag, type, value: cursor.compactIndex() };
+      return { ...tag, type, value: readObjectRef(ctx) };
     case "Class":
-      return { ...tag, type, value: cursor.compactIndex() };
+      return { ...tag, type, value: readObjectRef(ctx) };
     case "Name":
       return { ...tag, type, value: ctx.name() };
     case "Str":

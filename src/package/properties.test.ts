@@ -10,6 +10,7 @@
 import { describe, expect, it } from "vitest";
 import { BinaryCursor } from "../io/cursor.ts";
 import type { ReadContext } from "../structs/context.ts";
+import type { UObject } from "./objects.ts";
 import { readArrayIndex, readPropertyList } from "./properties.ts";
 
 /**
@@ -27,7 +28,8 @@ function contextOver(bytes: number[]): ReadContext {
     version: 68,
     licenseeVersion: 0,
     name: (index?: number) => NAMES[index ?? cursor.compactIndex()],
-    object: () => null,
+    object: (index: number) =>
+      index === 0 ? null : ({ index } as unknown as UObject),
   };
 }
 
@@ -90,11 +92,11 @@ describe("value types", () => {
     ]);
   });
 
-  it("Object and Class are both compact-index references", () => {
+  it("Object and Class are compact-index references, resolved", () => {
     // 0x81 is compact -1: the first import.
     expect(read([FOO, info(OBJECT), 3, BAR, info(CLASS), 0x81, NONE])).toEqual([
-      { name: "Foo", type: "Object", value: 3 },
-      { name: "Bar", type: "Class", value: -1 },
+      { name: "Foo", type: "Object", value: { index: 3 } },
+      { name: "Bar", type: "Class", value: { index: -1 } },
     ]);
   });
 

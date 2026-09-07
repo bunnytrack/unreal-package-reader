@@ -327,42 +327,42 @@ sha256   7bc3819f30c45adf9da13f7a4f0f6fc6bb5481e8d32505365b7ce7f015573b96
 
 [exports] 199
     idx  class             package             name                        flags       serial            props  parse
-      1  Light             -                   Light1                      0x02070001  3521+77           11     cb165bedb6efffa5
-      2  Light             -                   Light0                      0x02070001  3598+77           11     4af790e6ab1aecb7
-      3  Light             -                   Light2                      0x02070001  3675+77           11     670dbc82e38468aa
-      4  LevelInfo         -                   LevelInfo0                  0x02070001  3752+44           7      2c1d138d31c6d627
-      5  Light             -                   Light3                      0x02070001  3796+77           11     951dab46825fbc9b
+      1  Light             -                   Light1                      0x02070001  3521+77           11     2fa711c626f3c4a6
+      2  Light             -                   Light0                      0x02070001  3598+77           11     6a9f90c6742674aa
+      3  Light             -                   Light2                      0x02070001  3675+77           11     c164634bf5885f4d
+      4  LevelInfo         -                   LevelInfo0                  0x02070001  3752+44           7      72c27308d1e45ba9
+      5  Light             -                   Light3                      0x02070001  3796+77           11     3cfc093bc19d6e9c
       6  Level             -                   MyLevel                     0x00070001  3873+111          0      3c995539f90b416c
-      7  Light             -                   Light4                      0x02070001  3984+77           11     8b936f28be200048
-      8  Light             -                   Light6                      0x02070001  4061+77           11     2df07c6a857c91be
-      9  Brush             -                   Brush22                     0x02340001  4138+114          11     e3bf1cf6390ba43c
-     10  Light             -                   Light7                      0x02070001  4252+77           11     8775d9279b7aa790
-     11  Light             -                   Light5                      0x02070001  4329+77           11     c0e427ae1215e1ea
-     12  Brush             -                   Brush1                      0x02340001  4406+83           9      90b23b1901003b05
-     13  Brush             -                   Brush14                     0x02340001  4489+114          11     440388d518f86b36
-     14  Brush             -                   Brush13                     0x02340001  4603+114          11     c8c5ee9e9c57cf07
-     15  Brush             -                   Brush15                     0x02340001  4717+114          11     b647d84ab707e971
-     16  Brush             -                   Brush3                      0x02340001  4831+98           10     100ba0eeffd02d72
-     17  Brush             -                   Brush17                     0x02340001  4929+114          11     327abda0f26da446
-     18  Brush             -                   Brush10                     0x02340001  5043+135          13     8a27c1027ab832a0
-     19  Brush             -                   Brush16                     0x02340001  5178+114          11     04120d023bc73d68
-     20  Brush             -                   Brush5                      0x02340001  5292+99           10     bd1f1704c595541e
-     21  Brush             -                   Brush4                      0x02340001  5391+99           10     fd426adcb0e97383
-     22  Brush             -                   Brush2                      0x02340001  5490+98           10     794ebe22fc9b9a99
-     23  Brush             -                   Brush12                     0x02340001  5588+114          11     439161573a2cb0a7
-     24  Brush             -                   Brush11                     0x02340001  5702+114          11     f9603ab1da55adce
-     25  Brush             -                   Brush19                     0x02340001  5816+114          11     f9c2cdf9a93fab15
-     26  Brush             -                   Brush6                      0x02340001  5930+114          11     313abf4de15dd0a3
-     27  Brush             -                   Brush20                     0x02340001  6044+114          11     679639cb6ea466db
-     28  Brush             -                   Brush18                     0x02340001  6158+114          11     ed3c6bda3d4bae9b
-     29  Brush             -                   Brush21                     0x02340001  6272+114          11     dbad62900c9e6296
-     30  Brush             -                   Brush8                      0x02340001  6386+114          11     b65780a9ac07697d
-     31  Brush             -                   Brush9                      0x02340001  6500+114          11     c56227d082d6db48
-     32  Brush             -                   Brush0                      0x02340001  6614+110          10     acdbb70cbd83387f
+      7  Light             -                   Light4                      0x02070001  3984+77           11     26b25546cd00bd7a
+      8  Light             -                   Light6                      0x02070001  4061+77           11     67d7d641734a70a7
+      9  Brush             -                   Brush22                     0x02340001  4138+114          11     3d7370fe87b6769a
+     10  Light             -                   Light7                      0x02070001  4252+77           11     ef219ea35ad9d1a4
+     11  Light             -                   Light5                      0x02070001  4329+77           11     d4f70d6d8158d969
+     12  Brush             -                   Brush1                      0x02340001  4406+83           9      0c88d1774c203fdd
+     13  Brush             -                   Brush14                     0x02340001  4489+114          11     b98d4a6ef10e1d45
+     14  Brush             -                   Brush13                     0x02340001  4603+114          11     5d0cdc4c9cf4a403
+     15  Brush             -                   Brush15                     0x02340001  4717+114          11     074eef841948905e
+     16  Brush             -                   Brush3                      0x02340001  4831+98           10     b92fdb1d60bb311b
+     17  Brush             -                   Brush17                     0x02340001  4929+114          11     534abf3d902e45b4
+     18  Brush             -                   Brush10                     0x02340001  5043+135          13     6ea045d5d3308b75
+     19  Brush             -                   Brush16                     0x02340001  5178+114          11     dbcbe818337fc567
+     20  Brush             -                   Brush5                      0x02340001  5292+99           10     ae03622bb1d1f14e
+     21  Brush             -                   Brush4                      0x02340001  5391+99           10     27f861bccbbc172b
+     22  Brush             -                   Brush2                      0x02340001  5490+98           10     de3bf32fee9daa57
+     23  Brush             -                   Brush12                     0x02340001  5588+114          11     d049878532acb1c6
+     24  Brush             -                   Brush11                     0x02340001  5702+114          11     d2438976ec84782a
+     25  Brush             -                   Brush19                     0x02340001  5816+114          11     28c5c9c7ef8d80f7
+     26  Brush             -                   Brush6                      0x02340001  5930+114          11     340121838f0a4097
+     27  Brush             -                   Brush20                     0x02340001  6044+114          11     e8dab63290f31ee9
+     28  Brush             -                   Brush18                     0x02340001  6158+114          11     e8cd169b0c469326
+     29  Brush             -                   Brush21                     0x02340001  6272+114          11     c7b7b9b9fa0ee5d6
+     30  Brush             -                   Brush8                      0x02340001  6386+114          11     8b66736609c775c6
+     31  Brush             -                   Brush9                      0x02340001  6500+114          11     f029d93fa1abec82
+     32  Brush             -                   Brush0                      0x02340001  6614+110          10     fe2c398c3831fb39
      33  Verts             -                   Verts9                      0x00070001  6724+11959        0      3bca49ce518b0f13
      34  Vectors           -                   Vectors18                   0x00070001  18683+1329        0      3bca49ce518b0f13
      35  Vectors           -                   Vectors19                   0x00070001  20012+4245        0      3bca49ce518b0f13
-     36  PlayerStart       -                   PlayerStart0                0x02070001  24257+80          8      f9f83122d5454719
+     36  PlayerStart       -                   PlayerStart0                0x02070001  24257+80          8      de5eacdf40b433b6
      37  Model             -                   Brush                       0x00340001  24337+60          0      222ba4fbc3295928
      38  BspNodes          -                   BspNodes9                   0x00070001  24397+11900       0      3bca49ce518b0f13
      39  BspSurfs          -                   BspSurfs9                   0x00070001  36297+2071        0      3bca49ce518b0f13
@@ -522,7 +522,7 @@ sha256   7bc3819f30c45adf9da13f7a4f0f6fc6bb5481e8d32505365b7ce7f015573b96
     193  Vectors           -                   Vectors95                   0x00070001  70208+9           0      3bca49ce518b0f13
     194  TextBuffer        -                   TextBuffer0                 0x00340000  70217+72          0      ed42aa34c12b237d
     195  Polys             -                   Polys69                     0x00070000  70289+3571        0      8579a26a4d4ff4d6
-    196  Camera            -                   Camera18                    0x02340000  73860+106         14     3b0135609fbb0acc
-    197  Camera            -                   Camera19                    0x02340000  73966+106         14     1e55b56cbb3bf243
-    198  Camera            -                   Camera20                    0x02340000  74072+148         16     6ba01c5d03fd8b5a
-    199  Camera            -                   Camera21                    0x02340000  74220+106         14     edccf4d2363317b5
+    196  Camera            -                   Camera18                    0x02340000  73860+106         14     2a63089bd06b8771
+    197  Camera            -                   Camera19                    0x02340000  73966+106         14     9cd5c07c2e3e42cb
+    198  Camera            -                   Camera20                    0x02340000  74072+148         16     330570a64cc81121
+    199  Camera            -                   Camera21                    0x02340000  74220+106         14     95076fc9f38621a0

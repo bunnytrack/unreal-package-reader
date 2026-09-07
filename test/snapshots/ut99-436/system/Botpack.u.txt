@@ -4129,7 +4129,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
     120  StructProperty    PickRegDestination  minDest                     0x00070004  70858+14          0      3bca49ce518b0f13
     121  IntProperty       Assault             numForts                    0x00070004  70872+13          0      3bca49ce518b0f13
     122  IntProperty       RatedIndividualize  N                           0x00070004  70885+13          0      3bca49ce518b0f13
-    123  Texture           Skins               StudMap                     0x000f0004  70898+22034       11     0dce2700ae968626
+    123  Texture           Skins               StudMap                     0x000f0004  70898+22034       11     0e9a7ec92d6f7126
     124  ObjectProperty    SetBotOrders        P                           0x00070004  92932+14          0      3bca49ce518b0f13
     125  IntProperty       ShowScores          i                           0x00070004  92946+13          0      3bca49ce518b0f13
     126  ObjectProperty    RatedIndividualize  NewBot                      0x00070004  92959+14          0      3bca49ce518b0f13
@@ -4864,7 +4864,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
     855  IntProperty       ReBalance           bigsize                     0x00070004  3495603+13        0      3bca49ce518b0f13
     856  IntProperty       AdjustAim           aimerror                    0x00070004  3495616+13        0      3bca49ce518b0f13
     857  Function          TeamGamePlus        Logout                      0x00070004  3495629+110       0      3bca49ce518b0f13
-    858  Texture           Icons               MArrowR                     0x000f0004  3495739+1103      11     9d4e39a5fb250450
+    858  Texture           Icons               MArrowR                     0x000f0004  3495739+1103      11     cb8b9ed9085f6b76
     859  IntProperty       DrawArmor           ArmorAmount                 0x00070004  3496842+13        0      3bca49ce518b0f13
     860  Function          TeamGamePlus        Login                       0x00070004  3496855+265       0      3bca49ce518b0f13
     861  IntProperty       DrawArmor           Y                           0x00070004  3497120+13        0      3bca49ce518b0f13
@@ -5067,7 +5067,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    1058  -                 -                   VoiceMaleOne                0x000f0004  3503600+1537      0      3bca49ce518b0f13
    1059  StructProperty    Tick                Z                           0x00070004  3505137+14        0      3bca49ce518b0f13
    1060  -                 -                   WarExplosion                0x000f0004  3505151+172       0      3bca49ce518b0f13
-   1061  Texture           Skins               pbolt0                      0x000f0004  3505323+11114     12     fb3ca3e270bfa875
+   1061  Texture           Skins               pbolt0                      0x000f0004  3505323+11114     12     853aca05f7f7421e
    1062  FloatProperty     WarnTarget          enemyDist                   0x00070004  3516437+13        0      3bca49ce518b0f13
    1063  IntProperty       DrawMenu            StartX                      0x00070004  3516450+13        0      3bca49ce518b0f13
    1064  ObjectProperty    ScoreKill           aFlag                       0x00070004  3516463+14        0      3bca49ce518b0f13
@@ -5256,7 +5256,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    1247  StructProperty    PlayDying           HitVec                      0x00070004  3527940+14        0      3bca49ce518b0f13
    1248  ObjectProperty    AddBot              NewBot                      0x00070004  3527954+14        0      3bca49ce518b0f13
    1249  StructProperty    PlayDying           X                           0x00070004  3527968+14        0      3bca49ce518b0f13
-   1250  Texture           Skins               JpflagB                     0x000f0004  3527982+87590     12     7d97ba8cf353fbae
+   1250  Texture           Skins               JpflagB                     0x000f0004  3527982+87590     12     f7f3621101a6ed6a
    1251  ObjectProperty    PlayerSpeech        SearchPRI                   0x00070004  3615572+14        0      3bca49ce518b0f13
    1252  StructProperty    ProcessTraceHit     HitNormal                   0x00070004  3615586+14        0      3bca49ce518b0f13
    1253  IntProperty       pbolt               Position                    0x00070004  3615600+13        0      3bca49ce518b0f13
@@ -5402,7 +5402,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    1393  FloatProperty     CheckFutureSight    DeltaTime                   0x00070004  3632969+13        0      3bca49ce518b0f13
    1394  NameProperty      StrafeFromDamage    DamageType                  0x00070004  3632982+13        0      3bca49ce518b0f13
    1395  StructProperty    CheckFutureSight    HitLocation                 0x00070004  3632995+14        0      3bca49ce518b0f13
-   1396  Texture           PlasmaExplo         pblst_a00                   0x000f0004  3633009+22041     13     b938165e3c93cdd0
+   1396  Texture           PlasmaExplo         pblst_a00                   0x000f0004  3633009+22041     13     ac7f2246461607ab
    1397  StructProperty    CheckFutureSight    HitNormal                   0x00070004  3655050+14        0      3bca49ce518b0f13
    1398  Function          Bot                 PlayGutHit                  0x00070004  3655064+116       0      3bca49ce518b0f13
    1399  BoolProperty      ProcessLeft         ReturnValue                 0x00070004  3655180+12        0      3bca49ce518b0f13
@@ -5432,7 +5432,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    1423  ObjectProperty    BotVoiceMessage     Sender                      0x00070004  3655510+13        0      3bca49ce518b0f13
    1424  FloatProperty     CheckBeam           DeltaTime                   0x00070004  3655523+13        0      3bca49ce518b0f13
    1425  IntProperty       TeamSelectionMenu   NumBots                     0x00070004  3655536+13        0      3bca49ce518b0f13
-   1426  Texture           Skins               JTapB                       0x000f0004  3655549+22037     12     8756a27f20bb7c3b
+   1426  Texture           Skins               JTapB                       0x000f0004  3655549+22037     12     c14f30559bd0a150
    1427  StructProperty    ProjectileFire      X                           0x00070004  3677586+14        0      3bca49ce518b0f13
    1428  FloatProperty     DrawDOMIcon         XL                          0x00070004  3677600+13        0      3bca49ce518b0f13
    1429  StringProperty    AddBot              BotName                     0x00070004  3677613+16        0      3bca49ce518b0f13
@@ -5449,7 +5449,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    1440  StructProperty    WarnTarget          X                           0x00070004  3677765+14        0      3bca49ce518b0f13
    1441  FloatProperty     RateSelf            enemyDist                   0x00070004  3677779+12        0      3bca49ce518b0f13
    1442  StructProperty    WarnTarget          enemyDir                    0x00070004  3677791+13        0      3bca49ce518b0f13
-   1443  Texture           Skins               JDomN0                      0x000f0004  3677804+87590     12     0a364a7958f1ec43
+   1443  Texture           Skins               JDomN0                      0x000f0004  3677804+87590     12     3bcf4e64e3ad21db
    1444  NameProperty      PlayDying           DamageType                  0x00070004  3765394+13        0      3bca49ce518b0f13
    1445  StructProperty    PlayDying           HitLoc                      0x00070004  3765407+14        0      3bca49ce518b0f13
    1446  StructProperty    ZoneChange          jumpDir                     0x00070004  3765421+13        0      3bca49ce518b0f13
@@ -5633,12 +5633,12 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    1624  IntProperty       ChallengeVoicePack  numFFires                   0x00070004  4279551+13        0      3bca49ce518b0f13
    1625  ObjectProperty    Touch               A                           0x00070004  4279564+13        0      3bca49ce518b0f13
    1626  StringProperty    CHNullHUD           Title                       0x00070004  4279577+18        0      3bca49ce518b0f13
-   1627  Texture           Skins               Soldier1_4                  0x000f0004  4279595+87587     11     6c3901a751ba211e
+   1627  Texture           Skins               Soldier1_4                  0x000f0004  4279595+87587     11     207a937478dc0956
    1628  StringProperty    CHNullHUD           Message1                    0x00070004  4367182+18        0      3bca49ce518b0f13
    1629  ObjectProperty    ChallengeVoicePack  TauntSound                  0x00070004  4367200+14        0      3bca49ce518b0f13
-   1630  Texture           Skins               Soldier1_3                  0x000f0004  4367214+87587     11     1c73f2cdda9acf2c
+   1630  Texture           Skins               Soldier1_3                  0x000f0004  4367214+87587     11     72b34f2a28391e99
    1631  StringProperty    CHNullHUD           Message2                    0x00070004  4454801+18        0      3bca49ce518b0f13
-   1632  Texture           Skins               Soldier1_2                  0x000f0004  4454819+87587     11     408e15791c68db59
+   1632  Texture           Skins               Soldier1_2                  0x000f0004  4454819+87587     11     bd28bac3c9159f90
    1633  StringProperty    CHNullHUD           Message3                    0x00070004  4542406+18        0      3bca49ce518b0f13
    1634  FloatProperty     SuggestAttackStyle  enemyDist                   0x00070004  4542424+12        0      3bca49ce518b0f13
    1635  StringProperty    DeathMatchPlus      WaitingMessage              0x00070004  4542436+17        0      3bca49ce518b0f13
@@ -5651,13 +5651,13 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    1642  FloatProperty     DeathMatchPlus      LastTauntTime               0x00070004  4542702+13        0      3bca49ce518b0f13
    1643  IntProperty       LadderInventory     PendingChange               0x00070004  4542715+13        0      3bca49ce518b0f13
    1644  Function          pbolt               Tick                        0x00070004  4542728+97        0      3bca49ce518b0f13
-   1645  Texture           Skins               Soldier1_1                  0x000f0004  4542825+87587     11     fa2fe63d555c04ae
+   1645  Texture           Skins               Soldier1_1                  0x000f0004  4542825+87587     11     ceabf0cc01c5f662
    1646  ObjectProperty    Login               BookCamera                  0x00070004  4630412+14        0      3bca49ce518b0f13
    1647  Mesh              -                   Soldier                     0x000f0004  4630426+745546    0      500b9a0c6d3d85c2
    1648  IntProperty       DeathMatchPlus      WinCount                    0x00070004  5375972+13        0      3bca49ce518b0f13
    1649  IntProperty       DeathMatchPlus      LoseCount                   0x00070004  5375985+13        0      3bca49ce518b0f13
    1650  StringProperty    CHNullHUD           Message4                    0x00070004  5375998+18        0      3bca49ce518b0f13
-   1651  Texture           Skins               Commando1_4                 0x000f0004  5376016+87587     11     b081b4a03d9f34ee
+   1651  Texture           Skins               Commando1_4                 0x000f0004  5376016+87587     11     c8450c0326698036
    1652  FloatProperty     Assault             LastIncoming                0x00070004  5463603+13        0      3bca49ce518b0f13
    1653  StringProperty    CHNullHUD           Message5                    0x00070004  5463616+18        0      3bca49ce518b0f13
    1654  IntProperty       PostBeginPlay       RealBots                    0x00070004  5463634+12        0      3bca49ce518b0f13
@@ -5668,14 +5668,14 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    1659  IntProperty       ChallengeHUD        TutIconY                    0x00070004  5463703+13        0      3bca49ce518b0f13
    1660  StructProperty    ProjectileFire      X                           0x00070004  5463716+14        0      3bca49ce518b0f13
    1661  ObjectProperty    TraceFire           Other                       0x00070004  5463730+13        0      3bca49ce518b0f13
-   1662  Texture           Skins               Commando1_3                 0x000f0004  5463743+87587     11     0e86441b9ff47c08
+   1662  Texture           Skins               Commando1_3                 0x000f0004  5463743+87587     11     80189c83d1c3bbd3
    1663  ObjectProperty    ChooseAttackMode    changeEn                    0x00070004  5551330+13        0      3bca49ce518b0f13
    1664  StringProperty    CHNullHUD           Message6                    0x00070004  5551343+18        0      3bca49ce518b0f13
    1665  StructProperty    TraceFire           HitNormal                   0x00070004  5551361+14        0      3bca49ce518b0f13
    1666  StringProperty    GetCallSign         ReturnValue                 0x00070004  5551375+16        0      3bca49ce518b0f13
-   1667  Texture           Skins               Commando1_2                 0x000f0004  5551391+87587     11     3a4470ee7b167651
+   1667  Texture           Skins               Commando1_2                 0x000f0004  5551391+87587     11     f42cd11ac158d07c
    1668  StringProperty    CHNullHUD           Message7                    0x00070004  5638978+18        0      3bca49ce518b0f13
-   1669  Texture           Skins               Commando1_1                 0x000f0004  5638996+87587     11     4b4f8d0c59a8f9ec
+   1669  Texture           Skins               Commando1_1                 0x000f0004  5638996+87587     11     b4c7c0b089a0c50c
    1670  StructProperty    TraceFire           X                           0x00070004  5726583+14        0      3bca49ce518b0f13
    1671  BoolProperty      AddBot              ReturnValue                 0x00070004  5726597+13        0      3bca49ce518b0f13
    1672  ObjectProperty    Trigger             currentEnemy                0x00070004  5726610+13        0      3bca49ce518b0f13
@@ -6146,7 +6146,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    2137  StringProperty    GetRungName         ReturnValue                 0x00070004  6564725+16        0      3bca49ce518b0f13
    2138  Function          ImpactHammer        Fire                        0x00070004  6564741+85        0      3bca49ce518b0f13
    2139  FloatProperty     SuggestDefenseStyle ReturnValue                 0x00070004  6564826+12        0      3bca49ce518b0f13
-   2140  Texture           Skins               JChainSawPick1              0x000f0004  6564838+87587     11     6c5e6e05d1e760d6
+   2140  Texture           Skins               JChainSawPick1              0x000f0004  6564838+87587     11     6a4ba038c532dc2e
    2141  Mesh              -                   ChainSawPick                0x000f0004  6652425+7654      0      2a0836e81fa90e88
    2142  ObjectProperty    TakeDamage          EventInstigator             0x00070004  6660079+14        0      3bca49ce518b0f13
    2143  IntProperty       TakeDamage          Damage                      0x00070004  6660093+13        0      3bca49ce518b0f13
@@ -6175,7 +6175,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    2166  Function          Translocator        RateSelf                    0x00070004  6660618+46        0      3bca49ce518b0f13
    2167  FloatProperty     SetHand             hand                        0x00070004  6660664+12        0      3bca49ce518b0f13
    2168  IntProperty       DrawValues          Spacing                     0x00070004  6660676+12        0      3bca49ce518b0f13
-   2169  Texture           Skins               tloc                        0x000f0004  6660688+87587     11     a415eeda01292fd4
+   2169  Texture           Skins               tloc                        0x000f0004  6660688+87587     11     364648e3149e27e9
    2170  ObjectProperty    DrawValues          Canvas                      0x00070004  6748275+14        0      3bca49ce518b0f13
    2171  IntProperty       DrawValues          StartX                      0x00070004  6748289+13        0      3bca49ce518b0f13
    2172  BoolProperty      ProjectileFire      bWarn                       0x00070004  6748302+13        0      3bca49ce518b0f13
@@ -6183,7 +6183,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    2174  IntProperty       DrawOptions         StartX                      0x00070004  6748328+13        0      3bca49ce518b0f13
    2175  IntProperty       DrawOptions         StartY                      0x00070004  6748341+13        0      3bca49ce518b0f13
    2176  Mesh              -                   RazPick2                    0x000f0004  6748354+5999      0      e5a8927f9699f9de
-   2177  Texture           Skins               JRazorw                     0x000f0004  6754353+87587     11     40933afb30c7e4b9
+   2177  Texture           Skins               JRazorw                     0x000f0004  6754353+87587     11     1bb280ec3f088222
    2178  StructProperty    Explode             HitNormal                   0x00070004  6841940+13        0      3bca49ce518b0f13
    2179  IntProperty       DrawOptions         StartX                      0x00070004  6841953+13        0      3bca49ce518b0f13
    2180  BoolProperty      PutDown             ReturnValue                 0x00070004  6841966+12        0      3bca49ce518b0f13
@@ -6245,7 +6245,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    2236  ObjectProperty    SetOrderMessage     MessageSound                0x00070004  6842834+14        0      3bca49ce518b0f13
    2237  FloatProperty     CalcDesire          ReturnValue                 0x00070004  6842848+12        0      3bca49ce518b0f13
    2238  ObjectProperty    ZoneChange          NewZone                     0x00070004  6842860+14        0      3bca49ce518b0f13
-   2239  Texture           Skins               Jhealth2                    0x000f0004  6842874+87590     12     1fd78118673156d4
+   2239  Texture           Skins               Jhealth2                    0x000f0004  6842874+87590     12     b5a3509bf12dea4f
    2240  ObjectProperty    SetDefenseFor       aBot                        0x00070004  6930464+14        0      3bca49ce518b0f13
    2241  ObjectProperty    SetDefenseFor       ReturnValue                 0x00070004  6930478+14        0      3bca49ce518b0f13
    2242  ObjectProperty    SetOrderMessage     Recipient                   0x00070004  6930492+14        0      3bca49ce518b0f13
@@ -6259,8 +6259,8 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    2250  ObjectProperty    pbolt               SpriteAnim                  0x00070004  6934281+15        0      3bca49ce518b0f13
    2251  Function          PulseGun            AltFire                     0x00070004  6934296+201       0      3bca49ce518b0f13
    2252  StringProperty    EndOfMatch          Modifier                    0x00070004  6934497+16        0      3bca49ce518b0f13
-   2253  Texture           Skins               JPulseGun_02                0x000f0004  6934513+87590     12     4e346f0c21c6d383
-   2254  Texture           Skins               JPulseGun_01                0x000f0004  7022103+87590     12     de6bd813a66702a8
+   2253  Texture           Skins               JPulseGun_02                0x000f0004  6934513+87590     12     ac61dd445c1c5abd
+   2254  Texture           Skins               JPulseGun_01                0x000f0004  7022103+87590     12     1d6cbaaa93d6fa41
    2255  StructProperty    ProcessTraceHit     realLoc                     0x00070004  7109693+13        0      3bca49ce518b0f13
    2256  Function          ImpactHammer        AltFire                     0x00070004  7109706+46        0      3bca49ce518b0f13
    2257  StringProperty    ProcessMenuInput    InputString                 0x00070004  7109752+17        0      3bca49ce518b0f13
@@ -6370,7 +6370,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    2361  FloatProperty     SuggestAttackStyle  ReturnValue                 0x00070004  7516513+12        0      3bca49ce518b0f13
    2362  ObjectProperty    ImpactHammer        TensionSound                0x00070004  7516525+14        0      3bca49ce518b0f13
    2363  ObjectProperty    ImpactHammer        AltFireSound                0x00070004  7516539+15        0      3bca49ce518b0f13
-   2364  Texture           Skins               JImpPick1                   0x000f0004  7516554+87587     11     53dae88a1c981a95
+   2364  Texture           Skins               JImpPick1                   0x000f0004  7516554+87587     11     e82a7bdb9f9ad261
    2365  IntProperty       DrawLadder          StartX                      0x00070004  7604141+13        0      3bca49ce518b0f13
    2366  FloatProperty     AltFire             Value                       0x00070004  7604154+12        0      3bca49ce518b0f13
    2367  BoolProperty      PutDown             ReturnValue                 0x00070004  7604166+12        0      3bca49ce518b0f13
@@ -6441,7 +6441,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    2432  StructProperty    FollowHolder        Y                           0x00070004  7627138+14        0      3bca49ce518b0f13
    2433  FloatProperty     SetClientAckMessage MessageTime                 0x00070004  7627152+12        0      3bca49ce518b0f13
    2434  ObjectProperty    FlagBase            TakenSound                  0x00070004  7627164+14        0      3bca49ce518b0f13
-   2435  Texture           Skins               JpflagR                     0x000f0004  7627178+87590     12     3818f8d602f13ffb
+   2435  Texture           Skins               JpflagR                     0x000f0004  7627178+87590     12     3530d56c1719a8cd
    2436  Palette           Icons               Palette109                  0x00070004  7714768+1027      0      b46097ca6f7fd107
    2437  ObjectProperty    UpdateStatus        A                           0x00070004  7715795+14        0      3bca49ce518b0f13
    2438  NameProperty      ControlPoint        RedEvent                    0x00070004  7715809+14        0      3bca49ce518b0f13
@@ -6461,12 +6461,12 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    2452  BoolProperty      ProcessRight        ReturnValue                 0x00070004  7716947+12        0      3bca49ce518b0f13
    2453  Function          DeathMatchPlus      RateVs                      0x00070004  7716959+394       0      3bca49ce518b0f13
    2454  Palette           Skins               Palette17                   0x00070004  7717353+1027      0      50a1c75d62208895
-   2455  Texture           Skins               JFlag13                     0x000f0004  7718380+87587     11     de6c62ff732cb345
+   2455  Texture           Skins               JFlag13                     0x000f0004  7718380+87587     11     3c2d1d9074319e04
    2456  Palette           Skins               Palette19                   0x00070004  7805967+1027      0      7fa4a4d38e9d2e35
    2457  StructProperty    AllowTranslocation  Dest                        0x00070004  7806994+14        0      3bca49ce518b0f13
    2458  Palette           Skins               Palette23                   0x00070004  7807008+1027      0      539f03d6bf10ba4c
    2459  Function          TeamGamePlus        SetRatedBots                0x00070004  7808035+103       0      3bca49ce518b0f13
-   2460  Texture           Skins               JFlag14                     0x000f0004  7808138+87587     11     9571db3749a06cdd
+   2460  Texture           Skins               JFlag14                     0x000f0004  7808138+87587     11     dda5869f5e40b12a
    2461  ObjectProperty    ChangeTeam          aPlayer                     0x00070004  7895725+14        0      3bca49ce518b0f13
    2462  Palette           Skins               Palette21                   0x00070004  7895739+1027      0      f20da578cc260226
    2463  ObjectProperty    PlayTeleportEffect  Incoming                    0x00070004  7896766+14        0      3bca49ce518b0f13
@@ -6792,9 +6792,9 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    2783  Function          FortStandard        Touch                       0x00070004  13811592+137      0      3bca49ce518b0f13
    2784  Function          CPLabels            BeginState                  0x00070004  13811729+43       0      3bca49ce518b0f13
    2785  Function          FortStandard        Destroyed                   0x00070004  13811772+102      0      3bca49ce518b0f13
-   2786  Texture           Skins               DMFractal                   0x000f0004  13811874+87587    11     4501f7100989eba9
+   2786  Texture           Skins               DMFractal                   0x000f0004  13811874+87587    11     637c693282a4d4f3
    2787  Palette           Skins               Palette27                   0x00070004  13899461+1027     0      77189d774eee47db
-   2788  Texture           Skins               DMKgalleon                  0x000f0004  13900488+87587    11     82c2568ad85b8de3
+   2788  Texture           Skins               DMKgalleon                  0x000f0004  13900488+87587    11     597c0b5f12e0ffc6
    2789  Palette           Skins               Palette29                   0x00070004  13988075+1027     0      282d4e43ba8da015
    2790  Function          LastStatusIcon      BeginState                  0x00070004  13989102+43       0      3bca49ce518b0f13
    2791  Function          HowtoReturn         Timer                       0x00070004  13989145+184      0      3bca49ce518b0f13
@@ -6879,7 +6879,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    2870  Function          TMale2Carcass       ForceMeshToExist            0x00070004  14173835+39       0      3bca49ce518b0f13
    2871  Function          SkaarjBot           WalkStep                    0x00070004  14173874+114      0      3bca49ce518b0f13
    2872  Palette           Skins               Palette45                   0x00070004  14173988+1027     0      751533245f3b5235
-   2873  Texture           Skins               JTapR                       0x000f0004  14175015+22037    12     d1c6fac81bb50de4
+   2873  Texture           Skins               JTapR                       0x000f0004  14175015+22037    12     adc64ee0db271342
    2874  Palette           Skins               Palette47                   0x00070004  14197052+1027     0      be7133cea2cb6290
    2875  Mesh              -                   pflag                       0x000f0004  14198079+65797    0      59bdf1201960398a
    2876  Function          SkaarjBot           ForceMeshToExist            0x00070004  14263876+39       0      3bca49ce518b0f13
@@ -7179,9 +7179,9 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    3170  Function          VoiceMaleOne        SetOrderMessage             0x00070004  21881449+119      0      3bca49ce518b0f13
    3171  Function          Domination          Logout                      0x00070004  21881568+50       0      3bca49ce518b0f13
    3172  StructProperty    DrawMenu            NewRot                      0x00070004  21881618+13       0      3bca49ce518b0f13
-   3173  Texture           -                   RedTeamIcon                 0x000f0004  21881631+65616    11     fca21f3f1a4c6c0c
+   3173  Texture           -                   RedTeamIcon                 0x000f0004  21881631+65616    11     70687b61c61b7a8c
    3174  Palette           -                   Palette55                   0x00070004  21947247+1027     0      90f7646786e219e0
-   3175  Texture           -                   BlueTeamIcon                0x000f0004  21948274+65616    11     6f4cfcc346e268da
+   3175  Texture           -                   BlueTeamIcon                0x000f0004  21948274+65616    11     5eafcc96222a1f66
    3176  Palette           -                   Palette57                   0x00070004  22013890+1027     0      1141d59703828114
    3177  FloatProperty     TryToward           Weight                      0x00070004  22014917+13       0      3bca49ce518b0f13
    3178  Function          Hunting             TryToward                   0x00070004  22014930+332      0      3bca49ce518b0f13
@@ -7378,9 +7378,9 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    3369  Function          Roaming             BeginState                  0x00070004  23599831+93       0      3bca49ce518b0f13
    3370  Function          Roaming             ShareWithTeam               0x00070004  23599924+614      0      3bca49ce518b0f13
    3371  Function          ChallengeHUD        DrawTutIcon                 0x00070004  23600538+68       0      3bca49ce518b0f13
-   3372  Texture           Skins               DMNaliAirForce              0x000f0004  23600606+87587    11     5b25898de9403761
+   3372  Texture           Skins               DMNaliAirForce              0x000f0004  23600606+87587    11     c35f7ea493a050c3
    3373  Palette           Skins               Palette31                   0x00070004  23688193+1027     0      37ef5c263eac2c33
-   3374  Texture           Skins               DMZeto                      0x000f0004  23689220+87587    11     9dfdea961806b771
+   3374  Texture           Skins               DMZeto                      0x000f0004  23689220+87587    11     e7711c2c4a467c09
    3375  Function          ChallengeHUD        StopTutIcon                 0x00070004  23776807+40       0      3bca49ce518b0f13
    3376  Palette           Skins               Palette33                   0x00070004  23776847+1027     0      af3b5553fe733eec
    3377  Function          Roaming             AnimEnd                     0x00070004  23777874+52       0      3bca49ce518b0f13
@@ -7477,13 +7477,13 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    3468  Function          Bot                 PlayRangedAttack            0x00070004  23900370+47       0      3bca49ce518b0f13
    3469  Function          Bot                 PlayMeleeAttack             0x00070004  23900417+58       0      3bca49ce518b0f13
    3470  Function          Bot                 CanFireAtEnemy              0x00070004  23900475+375      0      3bca49ce518b0f13
-   3471  Texture           Icons               BlueSkull                   0x000f0004  23900850+1103     11     f739480e00003dee
+   3471  Texture           Icons               BlueSkull                   0x000f0004  23900850+1103     11     defa89fbed4e8e80
    3472  Palette           Icons               Palette97                   0x00070004  23901953+1027     0      8369ae4d1ab2f91f
-   3473  Texture           Icons               GreenSkull                  0x000f0004  23902980+1103     11     bacf20e55a4ad214
+   3473  Texture           Icons               GreenSkull                  0x000f0004  23902980+1103     11     b69afae02f10fe86
    3474  Palette           Icons               Palette99                   0x00070004  23904083+1027     0      734722bd8427b13d
-   3475  Texture           Icons               RedSkull                    0x000f0004  23905110+1103     11     14655f4d983a551b
+   3475  Texture           Icons               RedSkull                    0x000f0004  23905110+1103     11     78eb41700dd92254
    3476  Palette           Icons               Palette101                  0x00070004  23906213+1027     0      711e00f01c140cd2
-   3477  Texture           Icons               YellowSkull                 0x000f0004  23907240+1103     11     0f01de54192bddb8
+   3477  Texture           Icons               YellowSkull                 0x000f0004  23907240+1103     11     981c9e72b3359f15
    3478  Palette           Icons               Palette103                  0x00070004  23908343+1027     0      bb49d02d022048d8
    3479  Function          Bot                 RelativeStrength            0x00070004  23909370+264      0      3bca49ce518b0f13
    3480  State             TrainingCTF         CapturedFlag                0x00070004  23909634+44       0      3bca49ce518b0f13
@@ -7541,29 +7541,29 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    3532  Function          Bot                 SpawnCarcass                0x00070004  24172772+75       0      3bca49ce518b0f13
    3533  Function          Bot                 SpawnGibbedCarcass          0x00070004  24172847+87       0      3bca49ce518b0f13
    3534  Function          Bot                 Gibbed                      0x00070004  24172934+110      0      3bca49ce518b0f13
-   3535  Texture           Icons               I_BCapt                     0x000f0004  24173044+1103     11     4f0ed3daa25f5141
+   3535  Texture           Icons               I_BCapt                     0x000f0004  24173044+1103     11     c7893b307c9f7026
    3536  Palette           Icons               Palette105                  0x00070004  24174147+1027     0      e26181736827533b
-   3537  Texture           Icons               I_BDown                     0x000f0004  24175174+1103     11     9c267aeed3b01b7d
+   3537  Texture           Icons               I_BDown                     0x000f0004  24175174+1103     11     783d10b24ea8740c
    3538  Palette           Icons               Palette107                  0x00070004  24176277+1027     0      983823f5e3527e98
-   3539  Texture           Icons               I_BHome                     0x000f0004  24177304+1103     11     bc11e85477927b3c
+   3539  Texture           Icons               I_BHome                     0x000f0004  24177304+1103     11     bed96b87d5eb0f91
    3540  State             TrainingCTF         Returning                   0x00070004  24178407+44       0      3bca49ce518b0f13
-   3541  Texture           Icons               I_RCapt                     0x000f0004  24178451+1103     11     fc6280d3e3cfb2b5
+   3541  Texture           Icons               I_RCapt                     0x000f0004  24178451+1103     11     fc219e130d6234fd
    3542  Palette           Icons               Palette111                  0x00070004  24179554+1027     0      a6ca942471ff6ce0
-   3543  Texture           Icons               I_RDown                     0x000f0004  24180581+1103     11     f21d52d2ae1cb624
+   3543  Texture           Icons               I_RDown                     0x000f0004  24180581+1103     11     d85a3404d9471aec
    3544  Palette           Icons               Palette113                  0x00070004  24181684+1027     0      7cffb7663bac20c4
-   3545  Texture           Icons               I_RHome                     0x000f0004  24182711+1103     11     a2d9fc5339468f06
+   3545  Texture           Icons               I_RHome                     0x000f0004  24182711+1103     11     42a678aa048ca5b6
    3546  Palette           Icons               Palette115                  0x00070004  24183814+1027     0      509d38f78af18a2e
-   3547  Texture           Icons               I_YCapt                     0x000f0004  24184841+1103     11     a4d78076899c618d
+   3547  Texture           Icons               I_YCapt                     0x000f0004  24184841+1103     11     8d26aa069c1b9e21
    3548  Palette           Icons               Palette117                  0x00070004  24185944+1027     0      28b5728f3b07ad61
-   3549  Texture           Icons               I_YDown                     0x000f0004  24186971+1103     11     701c8ecbfefababd
+   3549  Texture           Icons               I_YDown                     0x000f0004  24186971+1103     11     7c72a46f2c0677ae
    3550  Palette           Icons               Palette119                  0x00070004  24188074+1027     0      42d3dc02e532d5b8
-   3551  Texture           Icons               I_YHome                     0x000f0004  24189101+1103     11     c237ac3203f9c616
+   3551  Texture           Icons               I_YHome                     0x000f0004  24189101+1103     11     262e99bd37777a9c
    3552  Palette           Icons               Palette121                  0x00070004  24190204+1027     0      33fa21531278fdbf
-   3553  Texture           Icons               I_GCapt                     0x000f0004  24191231+1103     11     d5dd518bfeff7e8f
+   3553  Texture           Icons               I_GCapt                     0x000f0004  24191231+1103     11     9dcbd52eb47e9128
    3554  Palette           Icons               Palette123                  0x00070004  24192334+1027     0      61078118633c8603
-   3555  Texture           Icons               I_GDown                     0x000f0004  24193361+1103     11     020144e0cba4b509
+   3555  Texture           Icons               I_GDown                     0x000f0004  24193361+1103     11     b6ff7e0091919b4d
    3556  Palette           Icons               Palette125                  0x00070004  24194464+1027     0      41654214a17fc009
-   3557  Texture           Icons               I_GHome                     0x000f0004  24195491+1103     11     4c300b1ac0b560d6
+   3557  Texture           Icons               I_GHome                     0x000f0004  24195491+1103     11     9d6a3e99e34a93ce
    3558  Palette           Icons               Palette127                  0x00070004  24196594+1027     0      8f117649b99ecf82
    3559  Function          Bot                 ChangedWeapon               0x00070004  24197621+222      0      3bca49ce518b0f13
    3560  FloatProperty     PainTimer           depth                       0x00070004  24197843+12       0      3bca49ce518b0f13
@@ -7585,15 +7585,15 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    3576  Function          Bot                 PlayFootStep                0x00070004  24200531+212      0      3bca49ce518b0f13
    3577  Function          Bot                 AdjustSkill                 0x00070004  24200743+131      0      3bca49ce518b0f13
    3578  FloatProperty     PlayDeathHit        Damage                      0x00070004  24200874+13       0      3bca49ce518b0f13
-   3579  Texture           Icons               I_DomB                      0x000f0004  24200887+1103     11     bf32da8ead60ad90
+   3579  Texture           Icons               I_DomB                      0x000f0004  24200887+1103     11     15cb81993ebeb9d8
    3580  Palette           Icons               Palette129                  0x00070004  24201990+1027     0      4df9008492099cb6
-   3581  Texture           Icons               I_DomN                      0x000f0004  24203017+1103     11     74f5811757c6e03c
+   3581  Texture           Icons               I_DomN                      0x000f0004  24203017+1103     11     6e81ea523c538f1b
    3582  Palette           Icons               Palette131                  0x00070004  24204120+1027     0      b43ee6fb0a44b249
-   3583  Texture           Icons               I_DomR                      0x000f0004  24205147+1103     11     59eb31cb86afd0f8
+   3583  Texture           Icons               I_DomR                      0x000f0004  24205147+1103     11     810587f0ef2ba192
    3584  Palette           Icons               Palette133                  0x00070004  24206250+1027     0      ac015749baf9ce02
-   3585  Texture           Icons               I_DomG                      0x000f0004  24207277+1103     11     df4310bf80822126
+   3585  Texture           Icons               I_DomG                      0x000f0004  24207277+1103     11     a26f55204edc2b0f
    3586  Palette           Icons               Palette135                  0x00070004  24208380+1027     0      a0c89911f2f1baa1
-   3587  Texture           Icons               I_DomY                      0x000f0004  24209407+1103     11     cbff32658d44fd2b
+   3587  Texture           Icons               I_DomY                      0x000f0004  24209407+1103     11     afd4ebf86ad2a7f9
    3588  Palette           Icons               Palette137                  0x00070004  24210510+1027     0      342346d5ceb0760a
    3589  Function          ChallengeDominationHUD PostRender                  0x00070004  24211537+427      0      3bca49ce518b0f13
    3590  Function          Bot                 PlayDeathHit                0x00070004  24211964+482      0      3bca49ce518b0f13
@@ -7799,7 +7799,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    3790  Function          DoubleAutoMag       RenderOverlays              0x00070004  24298185+77       0      3bca49ce518b0f13
    3791  TextBuffer        PlainStud           ScriptText                  0x00340000  24298262+714      0      c7f8bde3cc5a2b8c
    3792  -                 -                   PlainStud                   0x000f0004  24298976+92       0      3bca49ce518b0f13
-   3793  Texture           Rifle               MuzzleFlash                 0x000f0004  24299068+65616    11     8c87b9faaf778baa
+   3793  Texture           Rifle               MuzzleFlash                 0x000f0004  24299068+65616    11     16193d4934a31407
    3794  Palette           Rifle               Palette139                  0x00070004  24364684+1027     0      a936bb7e5226d2ca
    3795  Function          ut_rifle            RenderOverlays              0x00070004  24365711+84       0      3bca49ce518b0f13
    3796  Function          FirstTry            Timer                       0x00070004  24365795+170      0      3bca49ce518b0f13
@@ -7814,20 +7814,20 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    3805  -                 -                   FlatMirror                  0x000f0004  24369360+92       0      3bca49ce518b0f13
    3806  TextBuffer        FastSprocket        ScriptText                  0x00340000  24369452+756      0      bb9bc3e817e2f9c9
    3807  Mesh              -                   Razor2                      0x000f0004  24370208+55313    0      468fff63a679e9d7
-   3808  Texture           Skins               JRazor2                     0x000f0004  24425521+87587    11     e63e733f699dbfb2
+   3808  Texture           Skins               JRazor2                     0x000f0004  24425521+87587    11     26fa270c24b779b0
    3809  Palette           Skins               Palette141                  0x00070004  24513108+1027     0      cf2445fb52fa5a3c
-   3810  Texture           Skins               JRazor3                     0x000f0004  24514135+87587    11     4222e68e9daa7857
+   3810  Texture           Skins               JRazor3                     0x000f0004  24514135+87587    11     d3980f9401fb4398
    3811  Palette           Skins               Palette143                  0x00070004  24601722+1027     0      74ce977307dc9c12
-   3812  Texture           Skins               JRazor4                     0x000f0004  24602749+87587    11     63911dd17bf81f20
+   3812  Texture           Skins               JRazor4                     0x000f0004  24602749+87587    11     8328a1cfb9ca36d9
    3813  Palette           Skins               Palette145                  0x00070004  24690336+1027     0      d5076d1861c10912
-   3814  Texture           Skins               JRazor5                     0x000f0004  24691363+87587    11     30bfa4cd01760eff
+   3814  Texture           Skins               JRazor5                     0x000f0004  24691363+87587    11     c83dd3d85ed18d46
    3815  Palette           Skins               Palette147                  0x00070004  24778950+1027     0      a78f2cf42b59f904
    3816  Function          FlagStandard        BeginState                  0x00070004  24779977+43       0      3bca49ce518b0f13
    3817  Palette           Skins               Palette149                  0x00070004  24780020+1027     0      d373825163129e72
    3818  Function          FlagStandard        Timer                       0x00070004  24781047+161      0      3bca49ce518b0f13
    3819  Function          RedBase             BeginState                  0x00070004  24781208+43       0      3bca49ce518b0f13
    3820  Palette           RazorEnergy         RazorEnergy                 0x00070000  24781251+1027     0      b86cf622253aa6ea
-   3821  FireTexture       RazorEnergy         RazorEnergy                 0x000f0004  24782278+2339     23     9ff9f710037ef42c
+   3821  FireTexture       RazorEnergy         RazorEnergy                 0x000f0004  24782278+2339     23     c2de874a58e37f54
    3822  Mesh              -                   Razor3rd2                   0x000f0004  24784617+3685     0      a454c13a04cde4da
    3823  Function          UT_Razorjack        PlayPostSelect              0x00070004  24788302+50       0      3bca49ce518b0f13
    3824  Function          UT_Razorjack        AltFire                     0x00070004  24788352+127      0      3bca49ce518b0f13
@@ -7970,13 +7970,13 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    3961  Function          Pickup              BeginState                  0x00070004  25797378+40       0      3bca49ce518b0f13
    3962  Function          Pickup              EndState                    0x00070004  25797418+133      0      3bca49ce518b0f13
    3963  Mesh              -                   ChainSaw                    0x000f0004  25797551+138868   0      6351f4169cbe169a
-   3964  Texture           Skins               Jchainsaw1                  0x000f0004  25936419+87587    11     27c88d5fcd85e61c
+   3964  Texture           Skins               Jchainsaw1                  0x000f0004  25936419+87587    11     940b17d86ca1cadb
    3965  Palette           Skins               Palette155                  0x00070004  26024006+1027     0      b86618e54160504b
-   3966  Texture           Skins               Jchainsaw2                  0x000f0004  26025033+87587    11     ca99c50015d66cc5
+   3966  Texture           Skins               Jchainsaw2                  0x000f0004  26025033+87587    11     bb9a0d1defd8667d
    3967  Palette           Skins               Palette157                  0x00070004  26112620+1027     0      be0fd19d8d20e2da
-   3968  Texture           Skins               Jchainsaw3                  0x000f0004  26113647+87587    11     f185a40b411fc7b8
+   3968  Texture           Skins               Jchainsaw3                  0x000f0004  26113647+87587    11     f927013f7063647b
    3969  Palette           Skins               Palette159                  0x00070004  26201234+1027     0      cf9e72f1a8fb896a
-   3970  Texture           Skins               Jchainsaw4                  0x000f0004  26202261+87587    11     6dede61a6f9023d6
+   3970  Texture           Skins               Jchainsaw4                  0x000f0004  26202261+87587    11     98e136987403aa98
    3971  Palette           Skins               Palette161                  0x00070004  26289848+1027     0      f25bbb712e50860e
    3972  Function          GameEnded           TakeDamage                  0x00070004  26290875+34       0      3bca49ce518b0f13
    3973  Function          VictoryDance        TakeDamage                  0x00070004  26290909+108      0      3bca49ce518b0f13
@@ -8004,21 +8004,21 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    3995  Function          ChainSaw            PlayIdleAnim                0x00070004  26441338+50       0      3bca49ce518b0f13
    3996  Function          ChainSaw            Finish                      0x00070004  26441388+219      0      3bca49ce518b0f13
    3997  Mesh              -                   WarHead                     0x000f0004  26441607+93443    0      59f8088e7d58f13b
-   3998  Texture           Skins               Jwarhead1                   0x000f0004  26535050+87587    11     1bb7e61b68e7369d
+   3998  Texture           Skins               Jwarhead1                   0x000f0004  26535050+87587    11     362199d0caa8b928
    3999  Palette           Skins               Palette165                  0x00070004  26622637+1027     0      06e2e9612afe7faa
-   4000  Texture           Skins               Jwarhead2                   0x000f0004  26623664+87587    11     825ca64b5a5f8e3c
+   4000  Texture           Skins               Jwarhead2                   0x000f0004  26623664+87587    11     2b88850dad63c8f3
    4001  Palette           Skins               Palette167                  0x00070004  26711251+1027     0      3b0599606dedb7d5
-   4002  Texture           Skins               Jwarhead3                   0x000f0004  26712278+87587    11     acc257b149500cc5
+   4002  Texture           Skins               Jwarhead3                   0x000f0004  26712278+87587    11     ee4af08d3410660a
    4003  Palette           Skins               Palette169                  0x00070004  26799865+1027     0      295578b497cdc2fa
-   4004  Texture           Skins               Jwarhead4                   0x000f0004  26800892+87587    11     a3780d93ceedcd1a
+   4004  Texture           Skins               Jwarhead4                   0x000f0004  26800892+87587    11     3b2588f0456855c9
    4005  Palette           Skins               Palette171                  0x00070004  26888479+1027     0      e9885ab2969bd011
    4006  Function          RangedAttack        TakeDamage                  0x00070004  26889506+84       0      3bca49ce518b0f13
-   4007  Texture           Skins               Jwhpick1                    0x000f0004  26889590+87587    11     c95eb9ded8961b62
+   4007  Texture           Skins               Jwhpick1                    0x000f0004  26889590+87587    11     3f30bb6ce96a7a21
    4008  Palette           Skins               Palette173                  0x00070004  26977177+1027     0      275d3da9ba2a86c1
    4009  Mesh              -                   WHHand                      0x000f0004  26978204+12974    0      bd52c422953cfe61
-   4010  Texture           Icons               Readout                     0x000f0004  26991178+8275     12     302290457695ae77
+   4010  Texture           Icons               Readout                     0x000f0004  26991178+8275     12     e547909675a37b49
    4011  Palette           Icons               Palette175                  0x00070004  26999453+1027     0      c3131c802aafa970
-   4012  Texture           Icons               GuidedX                     0x000f0004  27000480+65619    12     3ffd515054cb787c
+   4012  Texture           Icons               GuidedX                     0x000f0004  27000480+65619    12     eca332ae66b0f038
    4013  Palette           Icons               Palette177                  0x00070004  27066099+1027     0      b5a08ac6629f8c39
    4014  TextBuffer        translocdest        ScriptText                  0x00340000  27067126+1867     0      9d4737f2a5c253f2
    4015  Sound             Redeemer            WarheadShot                 0x000f0004  27068993+160099   0      f1fc2c848edc0a7b
@@ -8059,13 +8059,13 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4050  Function          Finishing           AltFire                     0x00070004  27497185+35       0      3bca49ce518b0f13
    4051  FloatProperty     AltFire             Value                       0x00070004  27497220+12       0      3bca49ce518b0f13
    4052  Mesh              -                   ImpactHammer                0x000f0004  27497232+89059    0      d47d3552d9c20c16
-   4053  Texture           Skins               JImpactHammer1              0x000f0004  27586291+87587    11     b907ac2a80671f3d
+   4053  Texture           Skins               JImpactHammer1              0x000f0004  27586291+87587    11     7b65662ec54f9ec4
    4054  Palette           Skins               Palette179                  0x00070004  27673878+1027     0      a6fde94161d6804b
-   4055  Texture           Skins               JImpactHammer2              0x000f0004  27674905+87587    11     74f777b767e65934
+   4055  Texture           Skins               JImpactHammer2              0x000f0004  27674905+87587    11     cce5f6cdec5b1f5e
    4056  Palette           Skins               Palette181                  0x00070004  27762492+1027     0      75e82e7af3d33576
-   4057  Texture           Skins               JImpactHammer3              0x000f0004  27763519+87587    11     3dc1deb3e7010b3d
+   4057  Texture           Skins               JImpactHammer3              0x000f0004  27763519+87587    11     724a4b3f03b3df6e
    4058  Palette           Skins               Palette183                  0x00070004  27851106+1027     0      5c3248be2f96fb64
-   4059  Texture           Skins               JImpactHammer4              0x000f0004  27852133+87587    11     fde15d2a6b5a67f5
+   4059  Texture           Skins               JImpactHammer4              0x000f0004  27852133+87587    11     2a52ee1132d97451
    4060  Palette           Skins               Palette185                  0x00070004  27939720+1027     0      992a33a9aa3469f8
    4061  Mesh              -                   ImpPick                     0x000f0004  27940747+12974    0      8c28037809fc134b
    4062  Function          FallingState        TakeDamage                  0x00070004  27953721+150      0      3bca49ce518b0f13
@@ -8154,10 +8154,10 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4145  Palette           Skins               Palette191                  0x00070004  28014747+1027     0      f43391598b7264b2
    4146  Mesh              -                   PulseGunR                   0x000f0004  28015774+508049   0      32ce114a9c19593a
    4147  Mesh              -                   PulseGun3rd                 0x000f0004  28523823+22127    0      73ace403ab7b3e7a
-   4148  Texture           Skins               JPulse3rd_01                0x000f0004  28545950+87590    12     5d98bc31cfac75ad
+   4148  Texture           Skins               JPulse3rd_01                0x000f0004  28545950+87590    12     02ef027e7dba81d0
    4149  Palette           Skins               Palette193                  0x00070004  28633540+1027     0      957682f27f493d20
    4150  StructProperty    DrawMenu            NewRot                      0x00070004  28634567+13       0      3bca49ce518b0f13
-   4151  Texture           Skins               JPulsePickup_01             0x000f0004  28634580+87590    12     5339e4c084fe034e
+   4151  Texture           Skins               JPulsePickup_01             0x000f0004  28634580+87590    12     3456a4000485b65b
    4152  Palette           Skins               Palette195                  0x00070004  28722170+1027     0      95bacd260ab0de25
    4153  TextBuffer        FemOneBot           ScriptText                  0x00340000  28723197+295      0      f9c1c960638054b4
    4154  Sound             PulseGun            PulseFire                   0x000f0004  28723492+40965    0      b8079b0cd0d6d1e9
@@ -8204,7 +8204,7 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4195  State             PulseGun            Idle                        0x00070004  28914649+172      0      3bca49ce518b0f13
    4196  Function          PulseGun            PlayIdleAnim                0x00070004  28914821+96       0      3bca49ce518b0f13
    4197  ObjectProperty    PickDestination     Path                        0x00070004  28914917+14       0      3bca49ce518b0f13
-   4198  Texture           Skins               JPammo_01                   0x000f0004  28914931+87590    12     1043bf4e6cd9e3fe
+   4198  Texture           Skins               JPammo_01                   0x000f0004  28914931+87590    12     056615d994e43828
    4199  Palette           Skins               Palette197                  0x00070004  29002521+1027     0      d15827aa7b1b2082
    4200  TextBuffer        CTFReplicationInfo  ScriptText                  0x00340000  29003548+415      0      9263e2b013835921
    4201  State             VocalTranslator     Activated                   0x00070004  29003963+78       0      3bca49ce518b0f13
@@ -8221,10 +8221,10 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4212  Sound             Pickups             UDActiv                     0x000f0004  29006586+42047    0      d4ea137f92a4015e
    4213  Sound             Pickups             UDDeactiv                   0x000f0004  29048633+36543    0      d03eaff535661aa1
    4214  Sound             Pickups             UDPickup                    0x000f0004  29085176+45537    0      f9b7c08a0a3bc368
-   4215  Texture           Icons               I_UDamage                   0x000f0004  29130713+1103     11     c593d72160d08409
+   4215  Texture           Icons               I_UDamage                   0x000f0004  29130713+1103     11     75a9c5ee77f26fb0
    4216  Palette           Icons               Palette201                  0x00070004  29131816+1027     0      55585be92a0cacae
    4217  TextBuffer        CTFMapList          ScriptText                  0x00340000  29132843+240      0      1242e4a275eadfe9
-   4218  Texture           Skins               Judamage1                   0x000f0004  29133083+87590    12     993a7bd1933f8147
+   4218  Texture           Skins               Judamage1                   0x000f0004  29133083+87590    12     6cc944d5c9918908
    4219  Palette           Skins               Palette203                  0x00070004  29220673+1027     0      f11d5d26d8518a4e
    4220  State             UDamage             Activated                   0x00070004  29221700+93       0      3bca49ce518b0f13
    4221  Function          Activated           Timer                       0x00070004  29221793+98       0      3bca49ce518b0f13
@@ -8333,12 +8333,12 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4324  Function          TeamScoreboard      Timer                       0x00070004  29517569+220      0      3bca49ce518b0f13
    4325  State             TrainingCTF         FlagCarrier                 0x00070004  29517789+44       0      3bca49ce518b0f13
    4326  Mesh              -                   WarShellm                   0x000f0004  29517833+6847     0      191f13a2f791c7fb
-   4327  Texture           -                   Jwars1                      0x000f0004  29524680+87587    11     3f3ad3963c4f81dc
+   4327  Texture           -                   Jwars1                      0x000f0004  29524680+87587    11     dde563e3aa9fdc55
    4328  Palette           -                   Palette217                  0x00070004  29612267+1027     0      a9f8fff4ba381044
    4329  State             TrainingDOM         IndicatorFunction           0x00070004  29613294+44       0      3bca49ce518b0f13
    4330  Sound             Redeemer            WarFly                      0x000f0004  29613338+28847    0      b8b17d7496669fea
    4331  Palette           whlvapor            whlvapor                    0x00070000  29642185+1027     0      2f92c6d0dbc4ce9a
-   4332  FireTexture       whlvapor            whlvapor                    0x000f0004  29643212+701      26     3e95277fd7ef17a9
+   4332  FireTexture       whlvapor            whlvapor                    0x000f0004  29643212+701      26     ef94b008fa32c3dd
    4333  ObjectProperty    TakeDamage          instigatedBy                0x00070004  29643913+14       0      3bca49ce518b0f13
    4334  IntProperty       TakeDamage          NDamage                     0x00070004  29643927+13       0      3bca49ce518b0f13
    4335  Function          ShockWave           PostBeginPlay               0x00070004  29643940+222      0      3bca49ce518b0f13
@@ -8363,44 +8363,44 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4354  Function          MortarSpawner       LaunchShell                 0x00070004  29647663+252      0      3bca49ce518b0f13
    4355  Mesh              -                   ShockWavem                  0x000f0004  29647915+10399    0      2d1f508665a20bbe
    4356  Function          Flying              BeginState                  0x00070004  29658314+113      0      3bca49ce518b0f13
-   4357  Texture           Skins               Shockt1                     0x000f0004  29658427+87587    11     ca64b62060322261
+   4357  Texture           Skins               Shockt1                     0x000f0004  29658427+87587    11     1cc0b424c5e5b9e0
    4358  Function          PlasmaSphere        Tick                        0x00070004  29746014+56       0      3bca49ce518b0f13
-   4359  Texture           WarExplosionS2      ne_a00                      0x000f0004  29746070+16485    15     fa23541c74f55002
+   4359  Texture           WarExplosionS2      ne_a00                      0x000f0004  29746070+16485    15     d4e2976171d8d655
    4360  Palette           WarExplosionS2      Palette42                   0x00070004  29762555+1027     0      ac9da15e78bc6df1
    4361  Palette           WarExplosionS2      Palette40                   0x00070004  29763582+1027     0      7f220be133bb599d
-   4362  Texture           WarExplosionS2      ne_a11                      0x000f0004  29764609+16471    13     a2f0b755301cf756
+   4362  Texture           WarExplosionS2      ne_a11                      0x000f0004  29764609+16471    13     5dc217440de766a4
    4363  Palette           WarExplosionS2      Palette38                   0x00070004  29781080+1027     0      e869079e8241aa20
    4364  Function          GuidedWarshell      Destroyed                   0x00070004  29782107+148      0      3bca49ce518b0f13
-   4365  Texture           WarExplosionS2      ne_a10                      0x000f0004  29782255+16471    13     3c7c2a57964a67ef
+   4365  Texture           WarExplosionS2      ne_a10                      0x000f0004  29782255+16471    13     082e7e3ca695c483
    4366  Function          GuidedWarshell      PostBeginPlay               0x00070004  29798726+56       0      3bca49ce518b0f13
    4367  Function          GuidedWarshell      Tick                        0x00070004  29798782+623      0      3bca49ce518b0f13
    4368  Palette           WarExplosionS2      Palette36                   0x00070004  29799405+1027     0      ed283b9f0118733e
    4369  Palette           WarExplosionS2      Palette34                   0x00070004  29800432+1027     0      ebdc5317b9b561a3
-   4370  Texture           WarExplosionS2      ne_a12                      0x000f0004  29801459+16467    12     7d8e965f0daadff7
+   4370  Texture           WarExplosionS2      ne_a12                      0x000f0004  29801459+16467    12     0988bbd79683834f
    4371  Palette           WarExplosionS2      Palette18                   0x00070004  29817926+1027     0      aeded91ddc4140e3
    4372  IntProperty       Tick                PitchDiff                   0x00070004  29818953+12       0      3bca49ce518b0f13
    4373  Function          GuidedWarshell      PostRender                  0x00070004  29818965+323      0      3bca49ce518b0f13
-   4374  Texture           WarExplosionS2      ne_a08                      0x000f0004  29819288+16471    13     132bb87e1d394c72
-   4375  Texture           WarExplosionS2      ne_a02                      0x000f0004  29835759+16471    13     11d7a4a18360cc45
+   4374  Texture           WarExplosionS2      ne_a08                      0x000f0004  29819288+16471    13     3d88ecaa709193ce
+   4375  Texture           WarExplosionS2      ne_a02                      0x000f0004  29835759+16471    13     afca69b773ff1043
    4376  Palette           WarExplosionS2      Palette22                   0x00070004  29852230+1027     0      bfdacd7be26f4180
-   4377  Texture           WarExplosionS2      ne_a03                      0x000f0004  29853257+16471    13     9105d6d24a9a910b
+   4377  Texture           WarExplosionS2      ne_a03                      0x000f0004  29853257+16471    13     c14adda6ca1cb56d
    4378  Palette           WarExplosionS2      Palette24                   0x00070004  29869728+1027     0      a4bd55e7e2bfc2da
-   4379  Texture           WarExplosionS2      ne_a04                      0x000f0004  29870755+16471    13     e916c45067c67d4a
+   4379  Texture           WarExplosionS2      ne_a04                      0x000f0004  29870755+16471    13     de2af139e319acba
    4380  Palette           WarExplosionS2      Palette26                   0x00070004  29887226+1027     0      e747d8c6b2fdcc63
-   4381  Texture           WarExplosionS2      ne_a05                      0x000f0004  29888253+16471    13     67c68fef0c2b9308
+   4381  Texture           WarExplosionS2      ne_a05                      0x000f0004  29888253+16471    13     4fd427b092e8f28e
    4382  Palette           WarExplosionS2      Palette28                   0x00070004  29904724+1027     0      f6099f381880458c
-   4383  Texture           WarExplosionS2      ne_a06                      0x000f0004  29905751+16471    13     96de25048b16c8ed
+   4383  Texture           WarExplosionS2      ne_a06                      0x000f0004  29905751+16471    13     dc2f11c93a65e6fc
    4384  Palette           Effects             Palette219                  0x00070004  29922222+1027     0      476a24aa0981b889
    4385  Mesh              -                   pbolt                       0x000f0004  29923249+690      0      f5752102307d4431
    4386  Palette           WarExplosionS2      Palette30                   0x00070004  29923939+1027     0      c57d3d09c45e5f0b
    4387  Palette           Skins               Palette221                  0x00070004  29924966+1027     0      de3cc6dade13026b
-   4388  Texture           Skins               pbolt1                      0x000f0004  29925993+11114    12     3fe75554a0513ac7
+   4388  Texture           Skins               pbolt1                      0x000f0004  29925993+11114    12     1040012db16286ae
    4389  Palette           Skins               Palette223                  0x00070004  29937107+1027     0      36c52b4b6fa4a241
-   4390  Texture           Skins               pbolt2                      0x000f0004  29938134+11114    12     0c9fd7eec2cca596
+   4390  Texture           Skins               pbolt2                      0x000f0004  29938134+11114    12     59c6221e4e33d4e0
    4391  Palette           Skins               Palette225                  0x00070004  29949248+1027     0      9636b91c7e700ca7
-   4392  Texture           Skins               pbolt3                      0x000f0004  29950275+11114    12     0a16aea5d6b5fb8f
+   4392  Texture           Skins               pbolt3                      0x000f0004  29950275+11114    12     302c04cf2a5b2bf9
    4393  Palette           Skins               Palette227                  0x00070004  29961389+1027     0      51dcf049c1716d7f
-   4394  Texture           Skins               pbolt4                      0x000f0004  29962416+11114    12     5f4e11d2168c0eff
+   4394  Texture           Skins               pbolt4                      0x000f0004  29962416+11114    12     5f48e458de266f8a
    4395  Palette           Skins               Palette229                  0x00070004  29973530+1027     0      4d0081873fbf3604
    4396  NameProperty      TakeDamage          DamageType                  0x00070004  29974557+12       0      3bca49ce518b0f13
    4397  StructProperty    TakeDamage          Momentum                    0x00070004  29974569+14       0      3bca49ce518b0f13
@@ -8408,89 +8408,89 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4399  StructProperty    TakeDamage          HitLocation                 0x00070004  29975610+14       0      3bca49ce518b0f13
    4400  Palette           WarExplosionS2      Palette20                   0x00070004  29975624+1027     0      d174850b41577bdb
    4401  Function          WarExplosion        PostBeginPlay               0x00070004  29976651+100      0      3bca49ce518b0f13
-   4402  Texture           WarExplosionS       we_a00                      0x000f0004  29976751+16485    15     70daf0475034ca03
+   4402  Texture           WarExplosionS       we_a00                      0x000f0004  29976751+16485    15     5a2d1acddbc88af1
    4403  Palette           WarExplosionS       Palette35                   0x00070004  29993236+1027     0      6c3573b23ca18119
    4404  Palette           WarExplosionS       Palette33                   0x00070004  29994263+1027     0      32c700bf9c345c24
-   4405  Texture           WarExplosionS       we_a16                      0x000f0004  29995290+16471    13     4ab0c927b5f72c4f
+   4405  Texture           WarExplosionS       we_a16                      0x000f0004  29995290+16471    13     1ff56170d35d1a6a
    4406  Palette           WarExplosionS       Palette31                   0x00070004  30011761+1027     0      f4b8bd92fca20421
-   4407  Texture           WarExplosionS       we_a15                      0x000f0004  30012788+16471    13     601b12836bf16d52
+   4407  Texture           WarExplosionS       we_a15                      0x000f0004  30012788+16471    13     c5345eb322b9addc
    4408  Function          pbolt               Destroyed                   0x00070004  30029259+77       0      3bca49ce518b0f13
    4409  Palette           WarExplosionS       Palette29                   0x00070004  30029336+1027     0      cea373c069bad16c
    4410  Palette           WarExplosionS       Palette27                   0x00070004  30030363+1027     0      c4eb0ab2233a3896
    4411  Function          pbolt               CheckBeam                   0x00070004  30031390+871      0      3bca49ce518b0f13
-   4412  Texture           WarExplosionS       we_a13                      0x000f0004  30032261+16471    13     c47b19da01a06308
+   4412  Texture           WarExplosionS       we_a13                      0x000f0004  30032261+16471    13     60f11758ac5f33d7
    4413  Palette           WarExplosionS       Palette25                   0x00070004  30048732+1027     0      791d127398c11f41
-   4414  Texture           WarExplosionS       we_a12                      0x000f0004  30049759+16471    13     2a5c6c56ddf9cb04
+   4414  Texture           WarExplosionS       we_a12                      0x000f0004  30049759+16471    13     f4c4e8352e62a14e
    4415  Palette           WarExplosionS       Palette23                   0x00070004  30066230+1027     0      04a0bd3abc01c1a3
-   4416  Texture           WarExplosionS       we_a11                      0x000f0004  30067257+16471    13     01adca2808909842
+   4416  Texture           WarExplosionS       we_a11                      0x000f0004  30067257+16471    13     1bccf1da8c936677
    4417  Function          pbolt               UpdateBeam                  0x00070004  30083728+79       0      3bca49ce518b0f13
    4418  Palette           WarExplosionS       Palette21                   0x00070004  30083807+1027     0      ac3919e46556cb03
-   4419  Texture           WarExplosionS       we_a10                      0x000f0004  30084834+16471    13     2c72fb929f3ff2e7
+   4419  Texture           WarExplosionS       we_a10                      0x000f0004  30084834+16471    13     f22c3d7ad04e1e99
    4420  Palette           WarExplosionS       Palette19                   0x00070004  30101305+1027     0      b9f55853f0d11c4d
    4421  ObjectProperty    UpdateBeam          HitActor                    0x00070004  30102332+14       0      3bca49ce518b0f13
    4422  StructProperty    UpdateBeam          HitLocation                 0x00070004  30102346+14       0      3bca49ce518b0f13
    4423  StructProperty    UpdateBeam          HitNormal                   0x00070004  30102360+13       0      3bca49ce518b0f13
-   4424  Texture           Skins               sbolt0                      0x000f0004  30102373+11114    12     c3e987f1fb63b54e
+   4424  Texture           Skins               sbolt0                      0x000f0004  30102373+11114    12     342b7828aac0cf25
    4425  Palette           Skins               Palette231                  0x00070004  30113487+1027     0      c354fd7b026d1123
-   4426  Texture           Skins               sbolt1                      0x000f0004  30114514+11114    12     f1cdcef40e0fced8
+   4426  Texture           Skins               sbolt1                      0x000f0004  30114514+11114    12     c19e2ca579b97551
    4427  Palette           Skins               Palette233                  0x00070004  30125628+1027     0      443eb9bf573c3f7d
-   4428  Texture           Skins               sbolt2                      0x000f0004  30126655+11114    12     466f76d1a86190a5
+   4428  Texture           Skins               sbolt2                      0x000f0004  30126655+11114    12     514730f1dca78d2f
    4429  Palette           Skins               Palette235                  0x00070004  30137769+1027     0      4f7fa8bdeee6ee17
-   4430  Texture           Skins               sbolt3                      0x000f0004  30138796+11114    12     9e441dac4a43a100
+   4430  Texture           Skins               sbolt3                      0x000f0004  30138796+11114    12     e2c881069e586064
    4431  Palette           Skins               Palette237                  0x00070004  30149910+1027     0      bf0a1cd77e330f5d
-   4432  Texture           Skins               sbolt4                      0x000f0004  30150937+11114    12     766cfb4147e6371e
+   4432  Texture           Skins               sbolt4                      0x000f0004  30150937+11114    12     9a513193db4e5af0
    4433  Palette           Skins               Palette239                  0x00070004  30162051+1027     0      788282458d439978
    4434  Function          starterbolt         Tick                        0x00070004  30163078+546      0      3bca49ce518b0f13
    4435  Function          PlasmaSphere        ProcessTouch                0x00070004  30163624+164      0      3bca49ce518b0f13
-   4436  Texture           WarExplosionS       we_a08                      0x000f0004  30163788+16471    13     560e778d22b80251
+   4436  Texture           WarExplosionS       we_a08                      0x000f0004  30163788+16471    13     1cd5ed6b504543b3
    4437  Palette           WarExplosionS       Palette15                   0x00070004  30180259+1027     0      296973dbb41c068c
-   4438  Texture           WarExplosionS       we_a07                      0x000f0004  30181286+16471    13     7fe9cf5bd7c782c4
+   4438  Texture           WarExplosionS       we_a07                      0x000f0004  30181286+16471    13     6b976970403e1075
    4439  Palette           WarExplosionS       Palette13                   0x00070004  30197757+1027     0      6be49b781299dce9
-   4440  Texture           WarExplosionS       we_a06                      0x000f0004  30198784+16471    13     a2ee3473f0539aa2
+   4440  Texture           WarExplosionS       we_a06                      0x000f0004  30198784+16471    13     30eb8c66a96ccc69
    4441  Palette           WarExplosionS       Palette11                   0x00070004  30215255+1027     0      338948edd8a1fd50
-   4442  Texture           WarExplosionS       we_a05                      0x000f0004  30216282+16471    13     df8fb5d8e23e2e1e
+   4442  Texture           WarExplosionS       we_a05                      0x000f0004  30216282+16471    13     569b5b444167d9e7
    4443  Sound             PulseGun            PulseFly                    0x000f0004  30232753+72647    0      7ccd4de29c0acb83
    4444  Palette           PlasmaExplo         Palette11                   0x00070004  30305400+1027     0      bb82b6f9b3c5ffd5
    4445  Palette           PlasmaExplo         Palette1                    0x00070004  30306427+1027     0      39660994a59690f3
-   4446  Texture           PlasmaExplo         pblst_a01                   0x000f0004  30307454+22041    13     d16d426c1fb184b2
+   4446  Texture           PlasmaExplo         pblst_a01                   0x000f0004  30307454+22041    13     9ac74af124e654f4
    4447  Palette           PlasmaExplo         Palette3                    0x00070004  30329495+1027     0      3d65a5a2bf2cd7a0
-   4448  Texture           PlasmaExplo         pblst_a02                   0x000f0004  30330522+22041    13     c3b8aa86c871335e
+   4448  Texture           PlasmaExplo         pblst_a02                   0x000f0004  30330522+22041    13     4b22e7c4126c519a
    4449  Palette           PlasmaExplo         Palette5                    0x00070004  30352563+1027     0      9bc2d48c3b5e3a81
-   4450  Texture           PlasmaExplo         pblst_a03                   0x000f0004  30353590+22041    13     1b84102ed3aa8986
+   4450  Texture           PlasmaExplo         pblst_a03                   0x000f0004  30353590+22041    13     61067597544ea6d7
    4451  Palette           PlasmaExplo         Palette7                    0x00070004  30375631+1027     0      3290cf65d14578ec
-   4452  Texture           PlasmaExplo         pblst_a04                   0x000f0004  30376658+22041    13     4f8741d92e311e8e
+   4452  Texture           PlasmaExplo         pblst_a04                   0x000f0004  30376658+22041    13     9811db28fb10437c
    4453  Palette           PlasmaExplo         Palette9                    0x00070004  30398699+1027     0      8c9de41041f1fcb9
-   4454  Texture           PlasmaExplo         pblst_a05                   0x000f0004  30399726+22041    13     03a755a149aff544
-   4455  Texture           PlasmaExplo         pblst_a10                   0x000f0004  30421767+22037    12     eee72fcfb68c1f7a
-   4456  Texture           PlasmaExplo         pblst_a06                   0x000f0004  30443804+22041    13     a536e038df1504fe
+   4454  Texture           PlasmaExplo         pblst_a05                   0x000f0004  30399726+22041    13     84d363173408fad6
+   4455  Texture           PlasmaExplo         pblst_a10                   0x000f0004  30421767+22037    12     980b89cc9c0ecf45
+   4456  Texture           PlasmaExplo         pblst_a06                   0x000f0004  30443804+22041    13     ca4d06121b02ee96
    4457  Palette           PlasmaExplo         Palette13                   0x00070004  30465845+1027     0      ea51c70ff1ae9e68
-   4458  Texture           PlasmaExplo         pblst_a07                   0x000f0004  30466872+22041    13     bedae99bef4b2c0a
+   4458  Texture           PlasmaExplo         pblst_a07                   0x000f0004  30466872+22041    13     2eb784f6909fb7a3
    4459  Palette           PlasmaExplo         Palette15                   0x00070004  30488913+1027     0      63c18c0b8db78602
-   4460  Texture           PlasmaExplo         pblst_a08                   0x000f0004  30489940+22041    13     d9f7a96dfe40a839
+   4460  Texture           PlasmaExplo         pblst_a08                   0x000f0004  30489940+22041    13     828c88fd0e82355b
    4461  Palette           PlasmaExplo         Palette17                   0x00070004  30511981+1027     0      6a4c6d47af034dc6
-   4462  Texture           PlasmaExplo         pblst_a09                   0x000f0004  30513008+22041    13     62558376618645a7
+   4462  Texture           PlasmaExplo         pblst_a09                   0x000f0004  30513008+22041    13     41ca6d5dcc3a56cb
    4463  Palette           PlasmaExplo         Palette19                   0x00070004  30535049+1027     0      c31ef0cdf5636d10
    4464  Palette           PlasmaExplo         Palette21                   0x00070004  30536076+1027     0      3ed6cd6c81a00ac1
    4465  StructProperty    ProcessTouch        HitLocation                 0x00070004  30537103+13       0      3bca49ce518b0f13
    4466  Sound             PulseGun            PulseExp                    0x000f0004  30537116+78931    0      c7464b428f32b8e3
-   4467  Texture           WarExplosionS       we_a04                      0x000f0004  30616047+16471    13     5a7082c352c291b6
+   4467  Texture           WarExplosionS       we_a04                      0x000f0004  30616047+16471    13     c2886812d10979b8
    4468  Palette           WarExplosionS       Palette7                    0x00070004  30632518+1027     0      757cbbb82963dce5
-   4469  Texture           WarExplosionS       we_a03                      0x000f0004  30633545+16471    13     ec73feeb946dec45
+   4469  Texture           WarExplosionS       we_a03                      0x000f0004  30633545+16471    13     3f953edbda726d60
    4470  Palette           WarExplosionS       Palette5                    0x00070004  30650016+1027     0      38cebd78110e0ea6
-   4471  Texture           WarExplosionS       we_a02                      0x000f0004  30651043+16471    13     ac0b486037a4a6d1
+   4471  Texture           WarExplosionS       we_a02                      0x000f0004  30651043+16471    13     a92749625d915e7a
    4472  Palette           WarExplosionS       Palette3                    0x00070004  30667514+1027     0      b16910c3969fdb8f
    4473  ObjectProperty    PlasmaSphere        SpriteAnim                  0x00070004  30668541+15       0      3bca49ce518b0f13
    4474  IntProperty       PlasmaSphere        NumFrames                   0x00070004  30668556+14       0      3bca49ce518b0f13
    4475  FloatProperty     PlasmaSphere        AnimTime                    0x00070004  30668570+12       0      3bca49ce518b0f13
-   4476  Texture           WarExplosionS2      ne_a09                      0x000f0004  30668582+16471    13     321d4289e31ea816
-   4477  Texture           WarExplosionS2      ne_a01                      0x000f0004  30685053+16471    13     2ade176f51e381f1
+   4476  Texture           WarExplosionS2      ne_a09                      0x000f0004  30668582+16471    13     98a4d3a67ea217ba
+   4477  Texture           WarExplosionS2      ne_a01                      0x000f0004  30685053+16471    13     9ab62763918e62cd
    4478  Palette           Icons               Palette245                  0x00070004  30701524+1027     0      37d686f493296674
-   4479  Texture           WarExplosionS2      ne_a07                      0x000f0004  30702551+16471    13     393339accd28ae7d
+   4479  Texture           WarExplosionS2      ne_a07                      0x000f0004  30702551+16471    13     54e136dbc0c0f187
    4480  Palette           WarExplosionS       Palette1                    0x00070004  30719022+1027     0      ea1ed1ce135ff867
-   4481  Texture           WarExplosionS       we_a09                      0x000f0004  30720049+16471    13     3d8dd6397773bc71
-   4482  Texture           WarExplosionS       we_a14                      0x000f0004  30736520+16471    13     b8de80eb7d72bf41
+   4481  Texture           WarExplosionS       we_a09                      0x000f0004  30720049+16471    13     4946f03bba9e5baf
+   4482  Texture           WarExplosionS       we_a14                      0x000f0004  30736520+16471    13     c6baa1ee8eaaba76
    4483  Palette           WarExplosionS       Palette17                   0x00070004  30752991+1027     0      c8eec49f61270ea9
-   4484  Texture           WarExplosionS       we_a17                      0x000f0004  30754018+16467    12     fa0a020c78cddc75
+   4484  Texture           WarExplosionS       we_a17                      0x000f0004  30754018+16467    12     ea7f0b882e60741f
    4485  Function          PlasmaSphere        BlowUp                      0x00070004  30770485+76       0      3bca49ce518b0f13
    4486  Palette           Icons               Palette247                  0x00070004  30770561+1027     0      0dc8a014365be548
    4487  Function          PlasmaSphere        Explode                     0x00070004  30771588+161      0      3bca49ce518b0f13
@@ -8500,26 +8500,26 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4491  Palette           Icons               Palette249                  0x00070004  31159726+1027     0      108a04443b997fb5
    4492  Palette           Icons               Palette253                  0x00070004  31160753+1027     0      3cbca1831716fb53
    4493  Mesh              -                   MiniTrace                   0x000f0004  31161780+1063     0      6ad5fcef45dc0917
-   4494  Texture           Icons               I_BlueBox                   0x000f0004  31162843+143      11     e893cd8bc982ba12
+   4494  Texture           Icons               I_BlueBox                   0x000f0004  31162843+143      11     27f957b71af8b01f
    4495  Palette           Effects             Palette241                  0x00070004  31162986+1027     0      a26eb37f3b68d3de
    4496  Function          MTracer             PostBeginPlay               0x00070004  31164013+48       0      3bca49ce518b0f13
    4497  Function          MTracer             Explode                     0x00070004  31164061+39       0      3bca49ce518b0f13
    4498  StructProperty    Explode             HitLocation                 0x00070004  31164100+14       0      3bca49ce518b0f13
    4499  StructProperty    Explode             HitNormal                   0x00070004  31164114+13       0      3bca49ce518b0f13
    4500  Function          MTracer             ProcessTouch                0x00070004  31164127+50       0      3bca49ce518b0f13
-   4501  Texture           WarExplosionS       we_a01                      0x000f0004  31164177+16471    13     604c09e235245e23
+   4501  Texture           WarExplosionS       we_a01                      0x000f0004  31164177+16471    13     3abb1b76066b02ae
    4502  Palette           Icons               Palette251                  0x00070004  31180648+1027     0      fca43c8ac537f884
    4503  Function          UnrealCTFScoreboard ShowScores                  0x00070004  31181675+1318     0      3bca49ce518b0f13
    4504  ObjectProperty    ShowScores          Flag                        0x00070004  31182993+13       0      3bca49ce518b0f13
    4505  Function          GreenBloodSpray     SpawnCloud                  0x00070004  31183006+40       0      3bca49ce518b0f13
-   4506  Texture           Icons               I_RedBox                    0x000f0004  31183046+143      11     65bc61cd78b72393
+   4506  Texture           Icons               I_RedBox                    0x000f0004  31183046+143      11     5338d6eb0d45a9a4
    4507  Sound             Male                MDrown1                     0x000f0004  31183189+29383    0      4edc58c73e35d3ba
    4508  Sound             Male                MInjur2                     0x000f0004  31212572+21177    0      d1f73f50bd7649a0
-   4509  Texture           Effects             gbProj4                     0x000f0004  31233749+5633     11     607672515a25a0ce
-   4510  Texture           Effects             PalRed                      0x000f0004  31239382+481      11     d75e303f70d52dea
+   4509  Texture           Effects             gbProj4                     0x000f0004  31233749+5633     11     3c925a98b0698d52
+   4510  Texture           Effects             PalRed                      0x000f0004  31239382+481      11     83a199682b59c079
    4511  Sound             Male                MJump1                      0x000f0004  31239863+10439    0      e40009c06232f01b
    4512  Sound             Male                MGasp2                      0x000f0004  31250302+52995    0      e0113f24baceb733
-   4513  Texture           Icons               GreenFlag                   0x000f0004  31303297+1103     11     e84d93bf545ee68e
+   4513  Texture           Icons               GreenFlag                   0x000f0004  31303297+1103     11     e0f06e1f6e8f06a5
    4514  Sound             Male                MInjur1                     0x000f0004  31304400+13815    0      21561b22078ed089
    4515  Sound             Male                MDeath4                     0x000f0004  31318215+58591    0      e68b1cd41cbe6c72
    4516  Sound             Male                MInjur3                     0x000f0004  31376806+17603    0      6afa2010b4dfa31c
@@ -8535,16 +8535,16 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4526  Package           -                   PlasmaExplo                 0x00070004  31712379+1        0      3bca49ce518b0f13
    4527  Sound             Male                MGasp1                      0x000f0004  31712380+24897    0      f65a605947468fb0
    4528  Package           -                   WarExplosionS               0x00070004  31737277+1        0      3bca49ce518b0f13
-   4529  Texture           Icons               YellowFlag                  0x000f0004  31737278+1103     11     8a77002d656e968e
-   4530  Texture           Effects             PalGreen                    0x000f0004  31738381+481      11     fcbf75b4308d9740
+   4529  Texture           Icons               YellowFlag                  0x000f0004  31737278+1103     11     88553431654a91de
+   4530  Texture           Effects             PalGreen                    0x000f0004  31738381+481      11     6e1da9625c225444
    4531  Sound             Male1Speech         M1QuietHere                 0x000f0004  31738862+16227    0      4bef0c7333969db5
-   4532  Texture           Icons               RedFlag                     0x000f0004  31755089+1103     11     f115da18e47b19b0
+   4532  Texture           Icons               RedFlag                     0x000f0004  31755089+1103     11     709b8d4fc2193a90
    4533  Sound             Male                MUWHit1                     0x000f0004  31756192+26627    0      d313c07896698249
    4534  Sound             Male                lland01                     0x000f0004  31782819+10819    0      5dcd7f96babe13b9
    4535  Sound             Male                metwalk1                    0x000f0004  31793638+9363     0      187049f943053cdf
    4536  Sound             Male                metwalk2                    0x000f0004  31803001+9667     0      2ba22f6e99f83c38
    4537  Sound             Male                metwalk3                    0x000f0004  31812668+9713     0      c66089871855f095
-   4538  Texture           Icons               BlueFlag                    0x000f0004  31822381+1103     11     3c0b1cb4921d8a2f
+   4538  Texture           Icons               BlueFlag                    0x000f0004  31822381+1103     11     e4c0fdda6e8e8452
    4539  Package           -                   Skaarj                      0x00070004  31823484+1        0      3bca49ce518b0f13
    4540  Sound             Skaarj              SKPGasp1                    0x000f0004  31823485+22275    0      01ffd1be25d83350
    4541  Sound             Skaarj              SKPDrown1                   0x000f0004  31845760+24331    0      fefeda1ab3d12bb4
@@ -8562,10 +8562,10 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4553  Sound             Skaarj              Land1SK                     0x000f0004  32102368+20277    0      0eca447b3972eb3a
    4554  Package           -                   Domination                  0x00070004  32122645+1        0      3bca49ce518b0f13
    4555  Mesh              -                   Flag1M                      0x000f0004  32122646+7209     0      a5cbb128de202b16
-   4556  Texture           Skins               JFlag11                     0x000f0004  32129855+87587    11     8c52728719c3a01c
+   4556  Texture           Skins               JFlag11                     0x000f0004  32129855+87587    11     22ddeff81d4b4fd7
    4557  Sound             Female1Speech       F1Proceeding                0x000f0004  32217442+24579    0      e490a36bce5b6ac2
-   4558  Texture           Skins               JFlag12                     0x000f0004  32242021+87587    11     302401b77d041616
-   4559  Texture           Skins               JFlag15                     0x000f0004  32329608+22034    11     73c09ea17f961c87
+   4558  Texture           Skins               JFlag12                     0x000f0004  32242021+87587    11     34bf0589068e98d0
+   4559  Texture           Skins               JFlag15                     0x000f0004  32329608+22034    11     97cc050042f16371
    4560  Package           -                   CTF                         0x00070004  32351642+1        0      3bca49ce518b0f13
    4561  Package           -                   CTFTutorial                 0x00070004  32351643+1        0      3bca49ce518b0f13
    4562  Package           -                   DOMTutorial                 0x00070004  32351644+1        0      3bca49ce518b0f13
@@ -8580,26 +8580,26 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4571  Sound             Male1Speech         M1Proceeding                0x000f0004  32505841+18947    0      3dff0cf8f3201e57
    4572  Package           -                   Icons                       0x00070004  32524788+1        0      3bca49ce518b0f13
    4573  Package           -                   Intro                       0x00070004  32524789+1        0      3bca49ce518b0f13
-   4574  Texture           Icons               HalfHud                     0x000f0004  32524790+2127     11     dd1d2b031c61b5df
-   4575  Texture           Icons               HudLine                     0x000f0004  32526917+143      11     991cee299e38bd0e
-   4576  Texture           Icons               HudGreenAmmo                0x000f0004  32527060+143      11     2c49a3cc78b703e8
-   4577  Texture           Icons               IconHealth                  0x000f0004  32527203+1103     11     316589a1d534f35e
-   4578  Texture           Icons               IconSelection               0x000f0004  32528306+1106     12     3aa9ce0371dc506c
-   4579  Texture           Icons               IconSkull                   0x000f0004  32529412+1103     11     b46ad629ca921980
-   4580  Texture           Icons               Crosshair1                  0x000f0004  32530515+338      12     424e96f14a78c5aa
-   4581  Texture           Icons               Crosshair2                  0x000f0004  32530853+338      12     de3983f018fc8bbd
-   4582  Texture           Icons               Crosshair3                  0x000f0004  32531191+338      12     f01378d025ea06db
+   4574  Texture           Icons               HalfHud                     0x000f0004  32524790+2127     11     08a3e97d00a33423
+   4575  Texture           Icons               HudLine                     0x000f0004  32526917+143      11     b46849de3d3b446e
+   4576  Texture           Icons               HudGreenAmmo                0x000f0004  32527060+143      11     b03f7317ba8cc0f9
+   4577  Texture           Icons               IconHealth                  0x000f0004  32527203+1103     11     280e2bd4234b73dd
+   4578  Texture           Icons               IconSelection               0x000f0004  32528306+1106     12     070cd658f79ada68
+   4579  Texture           Icons               IconSkull                   0x000f0004  32529412+1103     11     8358b5088d53cbbd
+   4580  Texture           Icons               Crosshair1                  0x000f0004  32530515+338      12     6b3e176a26551909
+   4581  Texture           Icons               Crosshair2                  0x000f0004  32530853+338      12     78d3f4fc89925fec
+   4582  Texture           Icons               Crosshair3                  0x000f0004  32531191+338      12     2be1d9b21b9ca0b0
    4583  Package           -                   RazorEnergy                 0x00070004  32531529+1        0      3bca49ce518b0f13
-   4584  Texture           Icons               Crosshair4                  0x000f0004  32531530+338      12     aab798e3d8313cbe
-   4585  Texture           Icons               Crosshair5                  0x000f0004  32531868+338      12     2bd5e82668147313
-   4586  Texture           Icons               Crosshair6                  0x000f0004  32532206+338      12     747fd0b8d506177b
+   4584  Texture           Icons               Crosshair4                  0x000f0004  32531530+338      12     e964c1b2e887ff7f
+   4585  Texture           Icons               Crosshair5                  0x000f0004  32531868+338      12     8f33628b55cff2e2
+   4586  Texture           Icons               Crosshair6                  0x000f0004  32532206+338      12     7d254d123b075227
    4587  Package           -                   Translocator                0x00070004  32532544+1        0      3bca49ce518b0f13
-   4588  Texture           Icons               Crosshair7                  0x000f0004  32532545+338      12     ca4933aa4063b162
-   4589  Font              -                   LargeRedFont                0x000f0004  32532883+20600    17     ea3bacacc0cb314a
-   4590  Font              -                   TinyFont                    0x000f0004  32553483+6263     17     0ce0dd2f77e567cd
-   4591  Font              -                   TinyWhiteFont               0x000f0004  32559746+6263     17     29677c24321c5b91
-   4592  Font              -                   TinyRedFont                 0x000f0004  32566009+6263     17     2f2add080354a260
-   4593  Font              -                   WhiteFont                   0x000f0004  32572272+36984    17     1134b0683b44d57c
+   4588  Texture           Icons               Crosshair7                  0x000f0004  32532545+338      12     6f2a08c01be3fcd1
+   4589  Font              -                   LargeRedFont                0x000f0004  32532883+20600    17     9613db59181a588e
+   4590  Font              -                   TinyFont                    0x000f0004  32553483+6263     17     80ca1702b197a2a6
+   4591  Font              -                   TinyWhiteFont               0x000f0004  32559746+6263     17     23f7ff3220536afe
+   4592  Font              -                   TinyRedFont                 0x000f0004  32566009+6263     17     e7e97ef5568c134a
+   4593  Font              -                   WhiteFont                   0x000f0004  32572272+36984    17     9bdd5a57c59c6720
    4594  Sound             Translocator        TDisrupt                    0x000f0004  32609256+18179    0      e719344886455044
    4595  Package           -                   Rifle                       0x00070004  32627435+1        0      3bca49ce518b0f13
    4596  Sound             Female              hinjur4fem                  0x000f0004  32627436+27651    0      a57cdfa887ba85ee
@@ -8609,26 +8609,26 @@ sha256   395ea33b98bc839fc485fd97694a979bebaf2597d9fd96f2e377f9516b40337a
    4600  Sound             Female              hgasp3fem                   0x000f0004  32710784+35585    0      50a6c611b0d0a12e
    4601  Sound             Female              mdrown2fem                  0x000f0004  32746369+28287    0      409e4ae7cb6732ad
    4602  Sound             Female              stwalk3                     0x000f0004  32774656+16099    0      5504a21ca1dca8a8
-   4603  Texture           Effects             gbProj0                     0x000f0004  32790755+5633     11     4accdfdc12964238
+   4603  Texture           Effects             gbProj0                     0x000f0004  32790755+5633     11     73a11660e6deddf4
    4604  Package           -                   Effects                     0x00070004  32796388+1        0      3bca49ce518b0f13
    4605  Package           -                   PulseGun                    0x00070004  32796389+1        0      3bca49ce518b0f13
    4606  Sound             Female              stwalk2                     0x000f0004  32796390+18403    0      bce57cb62fbd384b
    4607  Sound             Female              stwalk1                     0x000f0004  32814793+16899    0      4597f291a5f913cc
    4608  Package           -                   Redeemer                    0x00070004  32831692+1        0      3bca49ce518b0f13
    4609  Package           -                   Pickups                     0x00070004  32831693+1        0      3bca49ce518b0f13
-   4610  Texture           Effects             gbProj1                     0x000f0004  32831694+5633     11     cb674e4b2df72c8b
+   4610  Texture           Effects             gbProj1                     0x000f0004  32831694+5633     11     042f448548ae4705
    4611  Package           -                   Shockws                     0x00070004  32837327+1        0      3bca49ce518b0f13
    4612  Package           -                   Female                      0x00070004  32837328+1        0      3bca49ce518b0f13
-   4613  Texture           Effects             gbProj2                     0x000f0004  32837329+5633     11     242c9136adf497fe
-   4614  FireTexture       Shockws             Shockwskin                  0x000f0004  32842962+6091     23     abfa9962aa9f1d32
+   4613  Texture           Effects             gbProj2                     0x000f0004  32837329+5633     11     fbe26c5ce71243f1
+   4614  FireTexture       Shockws             Shockwskin                  0x000f0004  32842962+6091     23     438279a982b94944
    4615  Sound             Generic             LSplash                     0x000f0004  32849053+57739    0      3d02a743bcbfaff4
    4616  Sound             Generic             Land1                       0x000f0004  32906792+20457    0      7fb5424aa2d3cdd4
    4617  Package           -                   Generic                     0x00070004  32927249+1        0      3bca49ce518b0f13
-   4618  Texture           Effects             gbProj3                     0x000f0004  32927250+5633     11     9aaf47d50768bcb8
+   4618  Texture           Effects             gbProj3                     0x000f0004  32927250+5633     11     5bac7079bd159a53
    4619  Sound             Male                MLand2                      0x000f0004  32932883+18115    0      e5a73805f9827364
    4620  Package           -                   flak                        0x00070004  32950998+1        0      3bca49ce518b0f13
    4621  Sound             Male                MJump2                      0x000f0004  32950999+11651    0      74923040c9624753
-   4622  Texture           Effects             gbProj5                     0x000f0004  32962650+5633     11     9f6353b9762193e9
+   4622  Texture           Effects             gbProj5                     0x000f0004  32962650+5633     11     074b6e7b5979b1c4
    4623  Sound             Male                MLand3                      0x000f0004  32968283+15037    0      347f5b13ee15362e
    4624  Sound             Male                MJump3                      0x000f0004  32983320+10885    0      c76d1d4d6a24d463
    4625  Package           -                   Male                        0x00070004  32994205+1        0      3bca49ce518b0f13

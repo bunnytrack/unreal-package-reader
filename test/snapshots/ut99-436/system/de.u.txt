@@ -525,7 +525,7 @@ sha256   335e2298c977e4a513d2d1bc76007e0c1a17bdeff5b1a54bee13cd814168d616
     172  IntProperty       VolatileWeapon      mMaxDischarges              0x00070004  7208+12           0      3bca49ce518b0f13
     173  ObjectProperty    TakeDamage          instigatedBy                0x00070004  7220+14           0      3bca49ce518b0f13
     174  ObjectProperty    ProcessTraceHit     instigatedBy                0x00070004  7234+14           0      3bca49ce518b0f13
-    175  Texture           de                  TSignR                      0x000f0004  7248+4178         12     c0c834e3063aa86b
+    175  Texture           de                  TSignR                      0x000f0004  7248+4178         12     86992171b85e90db
     176  ObjectProperty    TraceFire           instigatedBy                0x00070004  11426+14          0      3bca49ce518b0f13
     177  ObjectProperty    TakeDamage          instigatedBy                0x00070004  11440+14          0      3bca49ce518b0f13
     178  Function          VMiniAmmo           ProcessTraceHit             0x00070004  11454+179         0      3bca49ce518b0f13
@@ -770,8 +770,8 @@ sha256   335e2298c977e4a513d2d1bc76007e0c1a17bdeff5b1a54bee13cd814168d616
     417  IntProperty       TakeDamage          Dam                         0x00070004  49971+13          0      3bca49ce518b0f13
     418  TextBuffer        VShockCore          ScriptText                  0x00340000  49984+1061        0      d9c0979f0ad8c111
     419  Function          TeamBeacon          PostBeginPlay               0x00070004  51045+47          0      3bca49ce518b0f13
-    420  Texture           de                  TSignB                      0x000f0004  51092+4171        11     b49bd978b17d66cd
-    421  Texture           de                  TSignG                      0x000f0004  55263+4178        12     6b9da41456c4b463
-    422  Texture           de                  TSignY                      0x000f0004  59441+4178        12     f287387e279a1edb
+    420  Texture           de                  TSignB                      0x000f0004  51092+4171        11     96e8d737f37da006
+    421  Texture           de                  TSignG                      0x000f0004  55263+4178        12     17061955b8b46464
+    422  Texture           de                  TSignY                      0x000f0004  59441+4178        12     d3d13ffa5bbad76b
     423  Palette           de                  Palette7                    0x00070004  63619+1027        0      e6815e5d22e6b7ba
     424  Package           -                   de                          0x00070004  64646+1           0      3bca49ce518b0f13

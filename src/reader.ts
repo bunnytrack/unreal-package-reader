@@ -35,7 +35,7 @@ import {
   type ObjectData,
   type UObject,
 } from "./package/index.ts";
-import type { Polygon } from "./structs/index.ts";
+import type { ObjectRef, Polygon } from "./structs/index.ts";
 import type { UModel, USound } from "./natives/index.ts";
 import {
   getLevelScreenshots,
@@ -208,9 +208,7 @@ export class UnrealPackageReader {
     const brushProp = brushObject.getProp("brush");
 
     if (brushProp && "value" in brushProp) {
-      const modelObject = this.getObject(
-        brushProp.value as number,
-      ) as ExportTableObject;
+      const modelObject = brushProp.value as ExportTableObject;
       const modelData = modelObject.readData() as ObjectData & UModel;
 
       data.model.object = modelObject;
@@ -358,7 +356,7 @@ export class UnrealPackageReader {
       "Song",
       "Title",
     ];
-    const valueIsObjIndex = [
+    const valueIsObject = [
       "Song",
       "DefaultGameType",
       "Summary",
@@ -370,8 +368,8 @@ export class UnrealPackageReader {
       if (allProperties || mainProperties.includes(prop.name)) {
         const value = "value" in prop ? prop.value : undefined;
 
-        levelSummary[prop.name] = valueIsObjIndex.includes(prop.name)
-          ? this.getObjectNameFromIndex(value as number)
+        levelSummary[prop.name] = valueIsObject.includes(prop.name)
+          ? (value as ObjectRef)?.objectName || "None"
           : value;
       }
     });

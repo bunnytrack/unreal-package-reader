@@ -6304,7 +6304,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    2464  BoolProperty      ProcessServerTravel bItems                      0x00070004  189773+15         0      3bca49ce518b0f13
    2465  Function          StatLog             ExecuteSilentLogBatcher     0x00070004  189788+29         0      3bca49ce518b0f13
    2466  BoolProperty      Weapon              bInstantHit                 0x00070004  189817+14         0      3bca49ce518b0f13
-   2467  Texture           -                   S_Weapon                    0x000f0004  189831+1107       12     4ea817df4d59c986
+   2467  Texture           -                   S_Weapon                    0x000f0004  189831+1107       12     a293fc9e1ab6eca5
    2468  BoolProperty      ActivateTranslator  bHint                       0x00070004  190938+14         0      3bca49ce518b0f13
    2469  StrProperty       LogEventString      EventString                 0x00070004  190952+14         0      3bca49ce518b0f13
    2470  State             Inventory           Activated                   0x00070004  190966+45         0      3bca49ce518b0f13
@@ -6361,7 +6361,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    2521  ClassProperty     GameInfo            MutatorClass                0x00070004  192333+17         0      3bca49ce518b0f13
    2522  IntProperty       GameInfo            CurrentID                   0x00070004  192350+15         0      3bca49ce518b0f13
    2523  BoolProperty      Inventory           bDisplayableInv             0x00070004  192365+14         0      3bca49ce518b0f13
-   2524  Texture           -                   S_Camera                    0x000f0004  192379+1107       12     951c2981b0510e79
+   2524  Texture           -                   S_Camera                    0x000f0004  192379+1107       12     ffe3269731e8f6bc
    2525  StrProperty       StatLog             GameCreatorURL              0x00070004  193486+14         0      3bca49ce518b0f13
    2526  ObjectProperty    Trigger             EventInstigator             0x00070004  193500+15         0      3bca49ce518b0f13
    2527  ObjectProperty    Trigger             Other                       0x00070004  193515+16         0      3bca49ce518b0f13
@@ -6457,7 +6457,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    2617  IntProperty       GameReplicationInfo ElapsedTime                 0x00070004  195190+17         0      3bca49ce518b0f13
    2618  ObjectProperty    PlayTeleportEffect  Incoming                    0x00070004  195207+16         0      3bca49ce518b0f13
    2619  BoolProperty      GameReplicationInfo bTeamGame                   0x00070004  195223+17         0      3bca49ce518b0f13
-   2620  Texture           -                   S_Pickup                    0x000f0004  195240+1107       12     a77638f90af4092b
+   2620  Texture           -                   S_Pickup                    0x000f0004  195240+1107       12     b9ebac5c5d36e293
    2621  BoolProperty      GameReplicationInfo bClassicDeathMessages       0x00070004  196347+15         0      3bca49ce518b0f13
    2622  IntProperty       OtherStatic         i                           0x00070004  196362+15         0      3bca49ce518b0f13
    2623  Enum              Mover               EMoverEncroachType          0x00070004  196377+13         0      3bca49ce518b0f13
@@ -6555,7 +6555,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    2715  ObjectProperty    HandleDoor          Other                       0x00070004  202433+16         0      3bca49ce518b0f13
    2716  IntProperty       GetMsgText          Index                       0x00070004  202449+15         0      3bca49ce518b0f13
    2717  FloatProperty     locationid          Radius                      0x00070004  202464+15         0      3bca49ce518b0f13
-   2718  Texture           -                   Border                      0x000f0004  202479+22035      11     d5357f40934d2bda
+   2718  Texture           -                   Border                      0x000f0004  202479+22035      11     87fa8817b80101cb
    2719  ObjectProperty    LogSuicide          Instigator                  0x00070004  224514+16         0      3bca49ce518b0f13
    2720  BoolProperty      ChangeName          bNameChange                 0x00070004  224530+14         0      3bca49ce518b0f13
    2721  ObjectProperty    UnTrigger           EventInstigator             0x00070004  224544+15         0      3bca49ce518b0f13
@@ -6664,7 +6664,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    2824  BoolProperty      HandleDoor          ReturnValue                 0x00070004  231334+14         0      3bca49ce518b0f13
    2825  Function          TriggerPound        Trigger                     0x00070004  231348+56         0      3bca49ce518b0f13
    2826  Function          PlayerPawn          GetWeapon                   0x00070004  231404+215        0      3bca49ce518b0f13
-   2827  Texture           -                   S_Interp                    0x000f0004  231619+1107       12     0235b8019471f206
+   2827  Texture           -                   S_Interp                    0x000f0004  231619+1107       12     5fe127310066c7ae
    2828  ByteProperty      FunctionKey         Num                         0x00070004  232726+15         0      3bca49ce518b0f13
    2829  FloatProperty     InterpolationPoint  FovModifier                 0x00070004  232741+15         0      3bca49ce518b0f13
    2830  Function          Mover               FinishNotify                0x00070004  232756+243        0      3bca49ce518b0f13
@@ -6679,7 +6679,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    2839  Function          PlayerPawn          StartZoom                   0x00070004  233900+47         0      3bca49ce518b0f13
    2840  ObjectProperty    SpecialHandling     ReturnValue                 0x00070004  233947+15         0      3bca49ce518b0f13
    2841  Function          PlayerPawn          ToggleZoom                  0x00070004  233962+54         0      3bca49ce518b0f13
-   2842  Texture           -                   S_Ambient                   0x000f0004  234016+1107       12     4c4c0ab92f9ab8ce
+   2842  Texture           -                   S_Ambient                   0x000f0004  234016+1107       12     67e86a03a4cc1737
    2843  Function          PlayerPawn          LocalTravel                 0x00070004  235123+66         0      3bca49ce518b0f13
    2844  FloatProperty     DoJump              F                           0x00070004  235189+14         0      3bca49ce518b0f13
    2845  Function          Mover               SpecialHandling             0x00070004  235203+171        0      3bca49ce518b0f13
@@ -6840,7 +6840,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    3000  Function          PlayerPawn          PreClientTravel             0x00070004  250804+30         0      3bca49ce518b0f13
    3001  Function          StatLog             LogTypingEvent              0x00070004  250834+98         0      3bca49ce518b0f13
    3002  Function          PlayerPawn          Invisible                   0x00070004  250932+106        0      3bca49ce518b0f13
-   3003  Texture           -                   S_Keypoint                  0x000f0004  251038+1107       12     cc4bbed1d2ce7a87
+   3003  Texture           -                   S_Keypoint                  0x000f0004  251038+1107       12     b7f7d38847023e88
    3004  Function          locationid          PostBeginPlay               0x00070004  252145+141        0      3bca49ce518b0f13
    3005  Function          Dying               PlayerCalcView              0x00070004  252286+503        0      3bca49ce518b0f13
    3006  Function          Dying               SwitchWeapon                0x00070004  252789+34         0      3bca49ce518b0f13
@@ -6910,7 +6910,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    3070  FloatProperty     Fire                F                           0x00070004  255787+14         0      3bca49ce518b0f13
    3071  Function          PlayerSpectating    ProcessMove                 0x00070004  255801+47         0      3bca49ce518b0f13
    3072  StructProperty    ZoneInfo            ZoneGravity                 0x00070004  255848+17         0      3bca49ce518b0f13
-   3073  Texture           -                   S_ZoneInfo                  0x000f0004  255865+1107       12     59b5af11f8433912
+   3073  Texture           -                   S_ZoneInfo                  0x000f0004  255865+1107       12     4a4f773849795fd1
    3074  StructProperty    WarnTarget          FireDir                     0x00070004  256972+15         0      3bca49ce518b0f13
    3075  IntProperty       Brush               PolyFlags                   0x00070004  256987+15         0      3bca49ce518b0f13
    3076  FloatProperty     ZoneInfo            ZoneFluidFriction           0x00070004  257002+14         0      3bca49ce518b0f13
@@ -7017,7 +7017,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    3177  StructProperty    WalkTexture         StepNormal                  0x00070004  262217+15         0      3bca49ce518b0f13
    3178  StructProperty    WalkTexture         StepLocation                0x00070004  262232+16         0      3bca49ce518b0f13
    3179  Function          Spectator           TakeDamage                  0x00070004  262248+31         0      3bca49ce518b0f13
-   3180  Texture           -                   DefaultTexture              0x000f0004  262279+22035      11     5b49679321e23a12
+   3180  Texture           -                   DefaultTexture              0x000f0004  262279+22035      11     a7042bfd7952f990
    3181  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    3182  Function          Pawn                WalkTexture                 0x00070004  284314+31         0      3bca49ce518b0f13
    3183  ObjectProperty    damageAttitudeTo    Other                       0x00070004  284345+15         0      3bca49ce518b0f13
@@ -7699,7 +7699,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    3859  FloatProperty     Pawn                Stimulus                    0x00070004  325229+15         0      3bca49ce518b0f13
    3860  ByteProperty      PlayerStart         TeamNumber                  0x00070004  325244+16         0      3bca49ce518b0f13
    3861  FloatProperty     Pawn                Alertness                   0x00070004  325260+15         0      3bca49ce518b0f13
-   3862  Texture           -                   S_Player                    0x000f0004  325275+1107       12     05b690751fb500a6
+   3862  Texture           -                   S_Player                    0x000f0004  325275+1107       12     8b019894dbc25b9c
    3863  BoolProperty      PlayerStart         bCoopStart                  0x00070004  326382+15         0      3bca49ce518b0f13
    3864  FloatProperty     Pawn                AirControl                  0x00070004  326397+16         0      3bca49ce518b0f13
    3865  Function          PlayerStart         Trigger                     0x00070004  326413+42         0      3bca49ce518b0f13
@@ -7710,7 +7710,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    3870  Function          PlayerSpectating    Suicide                     0x00070004  326627+33         0      3bca49ce518b0f13
    3871  FloatProperty     Pawn                AirSpeed                    0x00070004  326660+16         0      3bca49ce518b0f13
    3872  NameProperty      Teleporter          ProductRequired             0x00070004  326676+15         0      3bca49ce518b0f13
-   3873  Texture           -                   S_Teleport                  0x000f0004  326691+1107       12     9f5134d8651d14e7
+   3873  Texture           -                   S_Teleport                  0x000f0004  326691+1107       12     300436a1acf5f414
    3874  Function          PlayerSpectating    SendVoiceMessage            0x00070004  327798+34         0      3bca49ce518b0f13
    3875  FloatProperty     Pawn                MeleeRange                  0x00070004  327832+15         0      3bca49ce518b0f13
    3876  ByteProperty      ZoneInfo            MasterGain                  0x00070004  327847+16         0      3bca49ce518b0f13
@@ -7745,7 +7745,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    3905  BoolProperty      Pawn                bFixedStart                 0x00070004  329623+15         0      3bca49ce518b0f13
    3906  BoolProperty      Pawn                bCanStrafe                  0x00070004  329638+15         0      3bca49ce518b0f13
    3907  BoolProperty      Pawn                bHitSlopedWall              0x00070004  329653+15         0      3bca49ce518b0f13
-   3908  Texture           -                   S_Pawn                      0x000f0004  329668+1107       12     a2257bc47299beaf
+   3908  Texture           -                   S_Pawn                      0x000f0004  329668+1107       12     7fe23704df8ed354
    3909  Function          Teleporter          SpecialHandling             0x00070004  330775+304        0      3bca49ce518b0f13
    3910  StrProperty       GetHumanName        ReturnValue                 0x00070004  331079+14         0      3bca49ce518b0f13
    3911  ObjectProperty    SpecialHandling     ReturnValue                 0x00070004  331093+16         0      3bca49ce518b0f13
@@ -7758,11 +7758,11 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    3918  Function          Ambushpoint         PreBeginPlay                0x00070004  331200+50         0      3bca49ce518b0f13
    3919  FloatProperty     HomeBase            Extent                      0x00070004  331250+15         0      3bca49ce518b0f13
    3920  NameProperty      Died                DamageType                  0x00070004  331265+15         0      3bca49ce518b0f13
-   3921  Texture           -                   S_Flag                      0x000f0004  331280+1107       12     c488f79a79e534b2
+   3921  Texture           -                   S_Flag                      0x000f0004  331280+1107       12     6dc9c52e8cc05412
    3922  Function          HomeBase            PreBeginPlay                0x00070004  332387+47         0      3bca49ce518b0f13
    3923  NameProperty      Died                DamageType                  0x00070004  332434+15         0      3bca49ce518b0f13
    3924  StructProperty    ActorEntered        AddVelocity                 0x00070004  332449+15         0      3bca49ce518b0f13
-   3925  Texture           -                   S_Patrol                    0x000f0004  332464+1107       12     561f4d400e1446fb
+   3925  Texture           -                   S_Patrol                    0x000f0004  332464+1107       12     1bccdafdd1f55b20
    3926  StructProperty    WarnTarget          FireDir                     0x00070004  333571+15         0      3bca49ce518b0f13
    3927  NameProperty      PatrolPoint         PatrolAnim                  0x00070004  333586+15         0      3bca49ce518b0f13
    3928  ObjectProperty    PatrolPoint         PatrolSound                 0x00070004  333601+16         0      3bca49ce518b0f13
@@ -7829,7 +7829,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    3989  ObjectProperty    PostTeleport        OutTeleporter               0x00070004  338382+16         0      3bca49ce518b0f13
    3990  StructProperty    Landed              HitNormal                   0x00070004  338398+15         0      3bca49ce518b0f13
    3991  ByteProperty      Carcass             flies                       0x00070004  338413+16         0      3bca49ce518b0f13
-   3992  Texture           -                   S_Corpse                    0x000f0004  338429+1107       12     07c30751efdde42d
+   3992  Texture           -                   S_Corpse                    0x000f0004  338429+1107       12     f35dacc70a3d4fa3
    3993  ByteProperty      Carcass             rats                        0x00070004  339536+16         0      3bca49ce518b0f13
    3994  BoolProperty      Carcass             bReducedHeight              0x00070004  339552+15         0      3bca49ce518b0f13
    3995  Function          Actor               PostTeleport                0x00070004  339567+31         0      3bca49ce518b0f13
@@ -7983,7 +7983,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    4143  BoolProperty      DisplayMessages     ReturnValue                 0x00070004  343908+14         0      3bca49ce518b0f13
    4144  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    4145  ObjectProperty    EncroachingOn       Other                       0x00070004  343922+16         0      3bca49ce518b0f13
-   4146  Texture           -                   S_Trigger                   0x000f0004  343938+1107       12     7d30094e663d3808
+   4146  Texture           -                   S_Trigger                   0x000f0004  343938+1107       12     f6a6983e3bd1431d
    4147  ObjectProperty    SpecialHandling     ReturnValue                 0x00070004  345045+15         0      3bca49ce518b0f13
    4148  ObjectProperty    SpecialHandling     Other                       0x00070004  345060+16         0      3bca49ce518b0f13
    4149  ObjectProperty    KillCredit          Other                       0x00070004  345076+15         0      3bca49ce518b0f13
@@ -8044,7 +8044,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    4204  Function          Actor               Spawned                     0x00070004  347602+30         0      3bca49ce518b0f13
    4205  Function          Actor               SetPhysics                  0x00070004  347632+33         0      3bca49ce518b0f13
    4206  Function          Actor               FinishInterpolation         0x00070004  347665+29         0      3bca49ce518b0f13
-   4207  Texture           -                   S_Counter                   0x000f0004  347694+1107       12     dd368359e3e0e18d
+   4207  Texture           -                   S_Counter                   0x000f0004  347694+1107       12     fe38030fedd2603b
    4208  BoolProperty      HasAnim             ReturnValue                 0x00070004  348801+14         0      3bca49ce518b0f13
    4209  Function          Actor               HasAnim                     0x00070004  348815+33         0      3bca49ce518b0f13
    4210  Function          Actor               FinishAnim                  0x00070004  348848+29         0      3bca49ce518b0f13
@@ -8059,7 +8059,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    4219  Function          Actor               TweenAnim                   0x00070004  349434+36         0      3bca49ce518b0f13
    4220  Function          Actor               LoopAnim                    0x00070004  349470+42         0      3bca49ce518b0f13
    4221  StrProperty       GameInfo            GameUMenuType               0x00070004  349512+14         0      3bca49ce518b0f13
-   4222  Texture           -                   S_Dispatcher                0x000f0004  349526+1107       12     348debb4c73da7e3
+   4222  Texture           -                   S_Dispatcher                0x000f0004  349526+1107       12     5d9b66c904f1e4fd
    4223  Function          Actor               PlayAnim                    0x00070004  350633+39         0      3bca49ce518b0f13
    4224  Function          Dispatcher          Trigger                     0x00070004  350672+42         0      3bca49ce518b0f13
    4225  ObjectProperty    Trigger             Other                       0x00070004  350714+16         0      3bca49ce518b0f13
@@ -8087,7 +8087,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    4247  Function          Actor               SetLocation                 0x00070004  351626+33         0      3bca49ce518b0f13
    4248  FloatProperty     ShakeView           shaketime                   0x00070004  351659+15         0      3bca49ce518b0f13
    4249  BoolProperty      Move                ReturnValue                 0x00070004  351674+14         0      3bca49ce518b0f13
-   4250  Texture           -                   S_SpecialEvent              0x000f0004  351688+1107       12     f2837082f6492f61
+   4250  Texture           -                   S_SpecialEvent              0x000f0004  351688+1107       12     23ddb28416b994a5
    4251  Function          Actor               Move                        0x00070004  352795+33         0      3bca49ce518b0f13
    4252  BoolProperty      SetCollisionSize    ReturnValue                 0x00070004  352828+14         0      3bca49ce518b0f13
    4253  Function          Actor               SetCollisionSize            0x00070004  352842+36         0      3bca49ce518b0f13
@@ -8126,7 +8126,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    4286  BoolProperty      Actor               bNetHear                    0x00070004  354281+15         0      3bca49ce518b0f13
    4287  BoolProperty      Actor               bNetSee                     0x00070004  354296+15         0      3bca49ce518b0f13
    4288  BoolProperty      Actor               bNetRelevant                0x00070004  354311+15         0      3bca49ce518b0f13
-   4289  Texture           -                   S_Inventory                 0x000f0004  354326+1107       12     1502a9cbd1641c90
+   4289  Texture           -                   S_Inventory                 0x000f0004  354326+1107       12     db803797cd5af324
    4290  FloatProperty     Actor               NetUpdateFrequency          0x00070004  355433+15         0      3bca49ce518b0f13
    4291  Function          Pawn                PlayTakeHitSound            0x00070004  355448+154        0      3bca49ce518b0f13
    4292  FloatProperty     Actor               OldAnimRate                 0x00070004  355602+15         0      3bca49ce518b0f13
@@ -8334,7 +8334,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    4494  Function          Pawn                PlayMovingAttack            0x00070004  362853+34         0      3bca49ce518b0f13
    4495  Function          GameInfo            ProcessServerTravel         0x00070004  362887+502        0      3bca49ce518b0f13
    4496  BoolProperty      Actor               bNoDelete                   0x00070004  363389+14         0      3bca49ce518b0f13
-   4497  Texture           -                   S_Actor                     0x000f0004  363403+1107       12     4823c732a0dd5e46
+   4497  Texture           -                   S_Actor                     0x000f0004  363403+1107       12     bc5fc3de8b022925
    4498  BoolProperty      Actor               bStatic                     0x00070004  364510+14         0      3bca49ce518b0f13
    4499  Function          ScriptedTexture     TextSize                    0x00070004  364524+42         0      3bca49ce518b0f13
    4500  Function          ScriptedTexture     ReplaceTexture              0x00070004  364566+33         0      3bca49ce518b0f13
@@ -8559,7 +8559,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    4719  Function          Activated           Activate                    0x00070004  374863+83         0      3bca49ce518b0f13
    4720  ObjectProperty    Texture             MacroTexture                0x00070004  374946+15         0      3bca49ce518b0f13
    4721  ObjectProperty    Texture             DetailTexture               0x00070004  374961+15         0      3bca49ce518b0f13
-   4722  Texture           -                   S_Ammo                      0x000f0004  374976+1107       12     10b6bb640512c4c1
+   4722  Texture           -                   S_Ammo                      0x000f0004  374976+1107       12     d0920aae8bd303bc
    4723  ObjectProperty    Texture             BumpMap                     0x00070004  376083+15         0      3bca49ce518b0f13
    4724  ByteProperty      Ammo                UsedInWeaponSlot            0x00070004  376098+16         0      3bca49ce518b0f13
    4725  ObjectProperty    Ammo                PAmmo                       0x00070004  376114+15         0      3bca49ce518b0f13
@@ -8643,7 +8643,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    4803  Function          Dying               BeginState                  0x00070004  379902+44         0      3bca49ce518b0f13
    4804  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    4805  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
-   4806  Texture           -                   S_Light                     0x000f0004  379946+1107       12     adff76a5ec2ff69f
+   4806  Texture           -                   S_Light                     0x000f0004  379946+1107       12     715ed3d9af498d75
    4807  Function          GameInfo            PlayerKillMessage           0x00070004  381053+56         0      3bca49ce518b0f13
    4808  ClassProperty     ReceiveLocalizedMessage Message                     0x00070004  381109+18         0      3bca49ce518b0f13
    4809  FloatProperty     Engine              CurrentTickRate             0x00070004  381127+15         0      3bca49ce518b0f13
@@ -8690,7 +8690,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    4850  BoolProperty      Effects             bOnlyTriggerable            0x00070004  382906+14         0      3bca49ce518b0f13
    4851  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    4852  Const             Console             MaxBorder                   0x00070000  382920+8          0      3bca49ce518b0f13
-   4853  Texture           -                   ConsoleBack                 0x000f0004  382928+22052      11     293cf5b4514d2393
+   4853  Texture           -                   ConsoleBack                 0x000f0004  382928+22052      11     5325db6682ae817e
    4854  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    4855  Function          Mutator             ModifyPlayer                0x00070004  404980+54         0      3bca49ce518b0f13
    4856  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
@@ -8924,16 +8924,16 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    5084  TextBuffer        Camera              ScriptText                  0x00340000  921707+346        0      6d719110359ae26d
    5085  TextBuffer        ButtonMarker        ScriptText                  0x00340000  922053+280        0      dbb6c45726c9d3c9
    5086  StrProperty       GetNextMap          ReturnValue                 0x00070004  922333+15         0      3bca49ce518b0f13
-   5087  Texture           SmallFont           Texture0                    0x00070000  922348+32838      10     25c421fda92fe0c9
+   5087  Texture           SmallFont           Texture0                    0x00070000  922348+32838      10     0271a98a317b855a
    5088  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    5089  Font              -                   MedFont                     0x000f0004  955186+4112       0      004fa38e30ae31db
-   5090  Texture           MedFont             Texture1                    0x00070000  959298+32838      10     f19ca4dc9549b8fa
+   5090  Texture           MedFont             Texture1                    0x00070000  959298+32838      10     b8595641f10933b6
    5091  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    5092  Font              -                   LargeFont                   0x000f0004  992136+4112       0      0a8057a1d788f350
-   5093  Texture           LargeFont           Texture2                    0x00070000  996248+65606      10     d3bbf0e149c452c6
+   5093  Texture           LargeFont           Texture2                    0x00070000  996248+65606      10     9a22192385018dca
    5094  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    5095  Font              -                   BigFont                     0x000f0004  1061854+4112      0      870575b2a2b88a4b
-   5096  Texture           BigFont             Texture3                    0x00070000  1065966+16454     10     d569daca4ed6bdb1
+   5096  Texture           BigFont             Texture3                    0x00070000  1065966+16454     10     84fea9ac7a372bd0
    5097  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    5098  TextBuffer        Brush               ScriptText                  0x00340000  1082420+953       0      20653acc449958b4
    5099  TextBuffer        BlockPlayer         ScriptText                  0x00340000  1083373+308       0      c22b530282363a41
@@ -9167,7 +9167,7 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    5327  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    5328  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    5329  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
-   5330  Texture           -                   S_ClipMarker                0x000f0004  1144208+1107      12     55f8f0df745e5c65
+   5330  Texture           -                   S_ClipMarker                0x000f0004  1144208+1107      12     20f2bc9370e344fd
    5331  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    5332  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
    5333  -                 -                   None                        0x00000000  -                 0      3bca49ce518b0f13
@@ -9203,9 +9203,9 @@ sha256   18c46a8b7796c76717273eb2e043de8e56e0429c43bbb08a46c23b7d343c233b
    5363  Palette           -                   Palette57                   0x00070004  1148648+1028      0      4328a77cfe2b5548
    5364  Palette           SmallFont           Palette59                   0x00070004  1149676+1028      0      bd054c3e7346de20
    5365  Palette           BigFont             Palette65                   0x00070004  1150704+1028      0      cb6b93f49ac3d363
-   5366  Texture           -                   S_ClipMarker2               0x000f0004  1151732+1107      12     ac78f4f256ce9d8d
-   5367  Texture           -                   S_ClipMarker1               0x000f0004  1152839+1107      12     1a3e9f15e92f6fdc
-   5368  Texture           -                   S_ClipMarker3               0x000f0004  1153946+1107      12     704b355469d7f694
+   5366  Texture           -                   S_ClipMarker2               0x000f0004  1151732+1107      12     e6206168147fbaf8
+   5367  Texture           -                   S_ClipMarker1               0x000f0004  1152839+1107      12     1379db3d16f22db2
+   5368  Texture           -                   S_ClipMarker3               0x000f0004  1153946+1107      12     89a60d233ae29fa5
    5369  StrProperty       Say                 Msg                         0x00070004  1155053+15        0      3bca49ce518b0f13
    5370  ObjectProperty    Say                 P                           0x00070004  1155068+15        0      3bca49ce518b0f13
    5371  ObjectProperty    KickBanId           P                           0x00070004  1155083+16        0      3bca49ce518b0f13

@@ -533,8 +533,7 @@ $(function () {
     // Set palette canvas, if not a compressed format
     const paletteProp = textureObject.getProp("palette");
     if (paletteProp) {
-      const paletteObject = utPackage.getObject(paletteProp.value);
-      const paletteCanvas = utPackage.getPaletteCanvas(paletteObject);
+      const paletteCanvas = utPackage.getPaletteCanvas(paletteProp.value);
       paletteWrapper.append(paletteCanvas);
     }
 
@@ -1487,14 +1486,11 @@ $(function () {
       for (let texture of meshData.textures) {
         if (texture?.table === "export") {
           if (texture.className === "ScriptedTexture") {
-            const sourceTextureIndex =
-              texture.getProp("SourceTexture")?.value ?? null;
+            const sourceProp = texture.getProp("SourceTexture");
 
-            if (sourceTextureIndex !== null) {
-              const sourceTexture = utPackage.getObject(sourceTextureIndex);
-
-              if (sourceTexture) {
-                texture = sourceTexture;
+            if (sourceProp) {
+              if (sourceProp.value) {
+                texture = sourceProp.value;
               } else {
                 continue;
               }
@@ -2163,7 +2159,7 @@ $(function () {
         case "closedsound":
         case "moveambientsound":
         case "openedsound":
-          propValue = utPackage.getObjectNameFromIndex(propValue);
+          propValue = propValue?.objectName ?? "None";
           break;
 
         case "bumptype":

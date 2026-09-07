@@ -196,18 +196,18 @@ sha256   debb0ece16ef8ad33d48a59cda7a3a1ab9b173b2cdf261e4a158683c484842a9
      14  Palette           TCowMeshSkins       Palette4                    0x00070004  33072+1028        0      f7343e20bb6b02f1
      15  Palette           TCowMeshSkins       Palette120                  0x00070004  34100+1028        0      93693bc24a5054a8
      16  Package           -                   TCowMeshSkins               0x00070004  35128+2           0      3bca49ce518b0f13
-     17  Texture           TCowMeshSkins       COW-face                    0x000f0004  35130+4179        12     412a2cdc9056dc0c
-     18  Texture           TCowMeshSkins       cowpack                     0x000f0004  39309+87583       11     6ae53d93cd94f692
+     17  Texture           TCowMeshSkins       COW-face                    0x000f0004  35130+4179        12     fc2159ed699fba87
+     18  Texture           TCowMeshSkins       cowpack                     0x000f0004  39309+87583       11     4eb4b785568d3029
      19  LodMesh           -                   TCowMesh                    0x000f0004  126892+373433     0      f0a3d52a5ab9b7e5
-     20  Texture           TCowMeshSkins       warcow                      0x000f0004  500325+87590      12     63361109cfc8bcc1
-     21  Texture           TCowMeshSkins       T_cow_3                     0x000f0004  587915+87590      12     b0962392a0b61f43
-     22  Texture           TCowMeshSkins       T_cow_0                     0x000f0004  675505+87590      12     33a0a5b1e867015c
-     23  Texture           TCowMeshSkins       T_cow_2                     0x000f0004  763095+87590      12     e125a9ec97b14b97
-     24  Texture           TCowMeshSkins       T_cow_1                     0x000f0004  850685+87590      12     6df038ee0e421909
-     25  Texture           TCowMeshSkins       warcowface                  0x000f0004  938275+4179       12     ee60dee550bcc807
+     20  Texture           TCowMeshSkins       warcow                      0x000f0004  500325+87590      12     fff3a3066e721695
+     21  Texture           TCowMeshSkins       T_cow_3                     0x000f0004  587915+87590      12     db696765688ae370
+     22  Texture           TCowMeshSkins       T_cow_0                     0x000f0004  675505+87590      12     994065346d66b32b
+     23  Texture           TCowMeshSkins       T_cow_2                     0x000f0004  763095+87590      12     7a00426d0f892e1c
+     24  Texture           TCowMeshSkins       T_cow_1                     0x000f0004  850685+87590      12     ee3efff4ded97a72
+     25  Texture           TCowMeshSkins       warcowface                  0x000f0004  938275+4179       12     dd2d6fb1e252eac0
      26  LodMesh           -                   tnalimesh                   0x000f0004  942454+477454     0      88feebef42812edd
      27  LodMesh           -                   TSkM                        0x000f0004  1419908+916462    0      07c2abe4b186aba9
      28  Palette           TCowMeshSkins       Palette7                    0x00070004  2336370+1028      0      f5ab1cf566dc6dfb
      29  Palette           TCowMeshSkins       Palette5                    0x00070004  2337398+1028      0      f352a772fc368029
-     30  Texture           TCowMeshSkins       atomiccow                   0x000f0004  2338426+65620     12     01836a381dd733df
-     31  Texture           TCowMeshSkins       atomiccowface               0x000f0004  2404046+4179      12     6b033785502d1fc4
+     30  Texture           TCowMeshSkins       atomiccow                   0x000f0004  2338426+65620     12     d5eee1e1a741e423
+     31  Texture           TCowMeshSkins       atomiccowface               0x000f0004  2404046+4179      12     1281907c5bfd2b97

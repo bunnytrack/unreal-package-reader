@@ -929,9 +929,9 @@
       case "Float":
         return { ...tag, type, value: cursor.float32() };
       case "Object":
-        return { ...tag, type, value: cursor.compactIndex() };
+        return { ...tag, type, value: readObjectRef(ctx) };
       case "Class":
-        return { ...tag, type, value: cursor.compactIndex() };
+        return { ...tag, type, value: readObjectRef(ctx) };
       case "Name":
         return { ...tag, type, value: ctx.name() };
       case "Str":
@@ -2007,9 +2007,7 @@
     switch (format) {
       case TEXTURE_FORMAT.P8: {
         const paletteProp = textureObject.getProp("palette");
-        const paletteObject = reader.getObject(
-          paletteProp.value
-        );
+        const paletteObject = paletteProp.value;
         const palette = paletteObject.readData();
         return createCanvas({
           width: mipMap.width,
@@ -2052,7 +2050,7 @@
       while (true) {
         const animNext = current.getProp("AnimNext");
         if (!animNext || !("value" in animNext)) break;
-        const next = reader.getObject(animNext.value);
+        const next = animNext.value;
         if (!next?.isExportTableObject() || frameObjects.includes(next)) break;
         frameObjects.push(next);
         current = next;
@@ -2061,9 +2059,7 @@
       const levelInfo = reader.getExportObjectByName("LevelInfo0");
       const screenshotProp = levelInfo?.getProp("Screenshot");
       if (screenshotProp && "value" in screenshotProp) {
-        const texture = reader.getObject(
-          screenshotProp.value
-        );
+        const texture = screenshotProp.value;
         if (texture?.isExportTableObject()) {
           frameObjects.push(texture);
         }
@@ -2178,9 +2174,7 @@
       const data = { brush: brushObject, model: {}, polys: {} };
       const brushProp = brushObject.getProp("brush");
       if (brushProp && "value" in brushProp) {
-        const modelObject = this.getObject(
-          brushProp.value
-        );
+        const modelObject = brushProp.value;
         const modelData = modelObject.readData();
         data.model.object = modelObject;
         data.model.properties = modelData;
@@ -2285,7 +2279,7 @@
         "Song",
         "Title"
       ];
-      const valueIsObjIndex = [
+      const valueIsObject = [
         "Song",
         "DefaultGameType",
         "Summary",
@@ -2295,7 +2289,7 @@
       levelInfo?.properties.forEach((prop) => {
         if (allProperties || mainProperties.includes(prop.name)) {
           const value = "value" in prop ? prop.value : void 0;
-          levelSummary[prop.name] = valueIsObjIndex.includes(prop.name) ? this.getObjectNameFromIndex(value) : value;
+          levelSummary[prop.name] = valueIsObject.includes(prop.name) ? value?.objectName || "None" : value;
         }
       });
       return levelSummary;

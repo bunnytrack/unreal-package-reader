@@ -178,9 +178,7 @@ export function textureToCanvas(
   switch (format) {
     case TEXTURE_FORMAT.P8: {
       const paletteProp = textureObject.getProp("palette") as ObjectProperty;
-      const paletteObject = reader.getObject(
-        paletteProp.value,
-      ) as ExportTableObject;
+      const paletteObject = paletteProp.value as ExportTableObject;
       const palette = paletteObject.readData() as UPalette;
 
       return createCanvas({
@@ -271,7 +269,7 @@ export function getLevelScreenshots(
 
       if (!animNext || !("value" in animNext)) break;
 
-      const next = reader.getObject((animNext as ObjectProperty).value);
+      const next = (animNext as ObjectProperty).value;
 
       if (!next?.isExportTableObject() || frameObjects.includes(next)) break;
 
@@ -283,9 +281,7 @@ export function getLevelScreenshots(
     const screenshotProp = levelInfo?.getProp("Screenshot");
 
     if (screenshotProp && "value" in screenshotProp) {
-      const texture = reader.getObject(
-        (screenshotProp as ObjectProperty).value,
-      );
+      const texture = (screenshotProp as ObjectProperty).value;
 
       if (texture?.isExportTableObject()) {
         frameObjects.push(texture);

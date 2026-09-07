@@ -188,38 +188,38 @@ sha256   54fe1249f498f56e4f419ba298445e9728392f1b05050be4fdaa5ba9081d3bf0
       3  Palette           -                   cyberFire                   0x00070000  3654+1027         0      bfd898c282a725f0
       4  Palette           -                   Palette0                    0x00070000  4681+1027         0      4054b6e4a1a006cd
       5  Palette           -                   testlight                   0x00070000  5708+1027         0      f034897f666e7c11
-      6  Texture           -                   inoxxy                      0x000f0004  6735+87550        11     467a2fe9e8cac28e
+      6  Texture           -                   inoxxy                      0x000f0004  6735+87550        11     e27d56f07e9fa59f
       7  Palette           -                   Palette3                    0x00070004  94285+1027        0      1fa8e3355c574b11
       8  Palette           -                   wavexxx                     0x00070000  95312+1027        0      0b5f893cb2af49d8
       9  Palette           -                   SpaceBlood                  0x00070000  96339+1027        0      3dc3c67163ea5bec
      10  Palette           xbeg                xfx1                        0x00070000  97366+1027        0      e8550c726f90d665
-     11  Texture           -                   inoxBlu1                    0x000f0004  98393+87550       11     bde3b227df77f992
+     11  Texture           -                   inoxBlu1                    0x000f0004  98393+87550       11     4a95d60a9a32a7e0
      12  Palette           -                   xeolighting                 0x00070000  185943+1027       0      4fec143caf2d486e
      13  Palette           xtreme              Elektroshok                 0x00070000  186970+1027       0      d104c5705f521fea
      14  Package           -                   xtreme                      0x00070004  187997+1          0      3bca49ce518b0f13
-     15  WetTexture        xtreme              brainwave                   0x000f0004  187998+623        65     901f2ae9ee4f019d
+     15  WetTexture        xtreme              brainwave                   0x000f0004  187998+623        65     60400b233c6536a7
      16  Package           -                   xbeg                        0x00070004  188621+1          0      3bca49ce518b0f13
-     17  FireTexture       -                   chinese                     0x000f0004  188622+595        24     3d9653b9beb9e6ac
-     18  WetTexture        -                   ErikEnergy                  0x000f0004  189217+1436       126    c05f445cd532caee
-     19  WetTexture        -                   beg2                        0x000f0004  190653+604        62     e18a9bcdeec6b914
-     20  WaveTexture       -                   wavexxx                     0x000f0004  191257+236        36     5fa1da9341a2525a
-     21  FireTexture       -                   darkshield                  0x000f0004  191493+147        24     2967ab2ace1f63e2
-     22  FireTexture       -                   pinkbunny                   0x000f0004  191640+689        23     490313100f1f99ab
-     23  FireTexture       -                   cloud                       0x000f0004  192329+304        23     a21c78ff39a59e73
-     24  FireTexture       -                   elextropink                 0x000f0004  192633+120        23     f90f88dc519cac39
-     25  WetTexture        -                   detailtest                  0x000f0004  192753+604        62     9d323813126e856f
-     26  FireTexture       -                   testmore                    0x000f0004  193357+147        24     fb5c97964fee25ba
-     27  FireTexture       -                   xeolighting                 0x000f0004  193504+195        24     65986b709863e673
-     28  FireTexture       -                   testlight                   0x000f0004  193699+352        23     b5a1ddcbac5a775e
-     29  IceTexture        -                   lightVision                 0x000f0004  194051+123        24     68b8be35641fae08
-     30  IceTexture        -                   flareZw                     0x000f0004  194174+123        24     b9c5e9474e1813ff
-     31  FireTexture       xtreme              Elektroshok                 0x000f0004  194297+120        23     e46f906e64b15513
-     32  FireTexture       xbeg                xfx1                        0x000f0004  194417+195        24     c3fab962cace5a4a
-     33  FireTexture       -                   mandarin                    0x000f0004  194612+120        23     9926dc0f3e4622b9
-     34  FireTexture       -                   pinkpink                    0x000f0004  194732+128        23     bfa36dcbec87c59b
-     35  WetTexture        -                   ionwave                     0x000f0004  194860+763        75     2281598184c2a4ce
-     36  FireTexture       -                   cyberFire                   0x000f0004  195623+264        23     c84d7371f995cdb7
-     37  FireTexture       -                   SpaceBlood                  0x000f0004  195887+299        24     98a9c9b7cab50d2b
-     38  WetTexture        -                   wavyx                       0x000f0004  196186+659        67     3827ac9efdbb9493
-     39  FireTexture       -                   revenge                     0x000f0004  196845+147        24     2494372070cc08b9
-     40  FireTexture       -                   fishlightning               0x000f0004  196992+496        23     27a031eb213f6aa2
+     17  FireTexture       -                   chinese                     0x000f0004  188622+595        24     cf159313596c46e1
+     18  WetTexture        -                   ErikEnergy                  0x000f0004  189217+1436       126    706f10ba031521d0
+     19  WetTexture        -                   beg2                        0x000f0004  190653+604        62     f684c0492fcf5aec
+     20  WaveTexture       -                   wavexxx                     0x000f0004  191257+236        36     cb867ba22da75e42
+     21  FireTexture       -                   darkshield                  0x000f0004  191493+147        24     893f8279f6cd089b
+     22  FireTexture       -                   pinkbunny                   0x000f0004  191640+689        23     83c364cd64d664d0
+     23  FireTexture       -                   cloud                       0x000f0004  192329+304        23     679d8be9d4f931be
+     24  FireTexture       -                   elextropink                 0x000f0004  192633+120        23     a22457c7f60d671b
+     25  WetTexture        -                   detailtest                  0x000f0004  192753+604        62     9139d1a63ba7d764
+     26  FireTexture       -                   testmore                    0x000f0004  193357+147        24     cfd7b46b4dccb86c
+     27  FireTexture       -                   xeolighting                 0x000f0004  193504+195        24     904aef5b69c3e9e7
+     28  FireTexture       -                   testlight                   0x000f0004  193699+352        23     6446272d2bb3d317
+     29  IceTexture        -                   lightVision                 0x000f0004  194051+123        24     47a899c6f9fc3465
+     30  IceTexture        -                   flareZw                     0x000f0004  194174+123        24     4c0b7518b6ca79fb
+     31  FireTexture       xtreme              Elektroshok                 0x000f0004  194297+120        23     77b4824050fc0e4e
+     32  FireTexture       xbeg                xfx1                        0x000f0004  194417+195        24     eba4767103e4bb00
+     33  FireTexture       -                   mandarin                    0x000f0004  194612+120        23     1149968abf75759a
+     34  FireTexture       -                   pinkpink                    0x000f0004  194732+128        23     3d7656613d6d8d28
+     35  WetTexture        -                   ionwave                     0x000f0004  194860+763        75     5bb51ff41d0aafb4
+     36  FireTexture       -                   cyberFire                   0x000f0004  195623+264        23     96503fa1cf30db56
+     37  FireTexture       -                   SpaceBlood                  0x000f0004  195887+299        24     9984666e2ddf358c
+     38  WetTexture        -                   wavyx                       0x000f0004  196186+659        67     1aef3faa05ee601a
+     39  FireTexture       -                   revenge                     0x000f0004  196845+147        24     17064059934d70e7
+     40  FireTexture       -                   fishlightning               0x000f0004  196992+496        23     d2a0d4559a98cb7e
