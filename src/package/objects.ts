@@ -240,8 +240,14 @@ export class ExportTableObject extends UObject {
   }
 }
 
-/** A native parse, with the property block it followed. */
-export type ObjectData = { properties: PropertyListEntry[] } & NativeData;
+/**
+ * A native parse, with the property block it followed. The parameter names
+ * the native shape a caller expects, e.g. `ObjectData<UPalette>`; the default
+ * is the union of every native shape.
+ */
+export type ObjectData<T extends NativeData = NativeData> = {
+  properties: PropertyListEntry[];
+} & T;
 
 /** A reference to an object supplied by another package. */
 export class ImportTableObject extends UObject {

@@ -36,7 +36,7 @@ import {
   type UObject,
 } from "./package/index.ts";
 import type { ObjectRef, Polygon } from "./structs/index.ts";
-import type { UModel, USound } from "./natives/index.ts";
+import type { UModel, UPolys, USound } from "./natives/index.ts";
 import {
   getLevelScreenshots,
   getPaletteCanvas,
@@ -47,16 +47,15 @@ import {
 /** A brush export with its resolved model and polygon list. */
 export interface BrushData {
   brush: ExportTableObject;
-  model: { object?: ExportTableObject; properties?: ObjectData & UModel };
+  model: { object?: ExportTableObject; properties?: ObjectData<UModel> };
   polys: { object?: ExportTableObject; polygons?: Polygon[] };
 }
 
 /** One entry of `getSounds()`: the sound's parse plus display metadata. */
-export type SoundInfo = ObjectData &
-  USound & {
-    name: string;
-    package?: string;
-  };
+export type SoundInfo = ObjectData<USound> & {
+  name: string;
+  package?: string;
+};
 
 /** One entry of `getDependencies()`: a package this one needs alongside it. */
 export interface Dependency {
@@ -209,16 +208,14 @@ export class UnrealPackageReader {
 
     if (brushProp && "value" in brushProp) {
       const modelObject = brushProp.value as ExportTableObject;
-      const modelData = modelObject.readData() as ObjectData & UModel;
+      const modelData = modelObject.readData() as ObjectData<UModel>;
 
       data.model.object = modelObject;
       data.model.properties = modelData;
 
       if (modelData.polys?.isExportTableObject()) {
         const polyObject = modelData.polys;
-        const polysData = polyObject.readData() as ObjectData & {
-          polys: Polygon[];
-        };
+        const polysData = polyObject.readData() as ObjectData<UPolys>;
 
         data.polys.object = polyObject;
         data.polys.polygons = polysData.polys;

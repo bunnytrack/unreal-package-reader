@@ -8,7 +8,7 @@
  */
 
 import { TEXTURE_FORMAT } from "../constants/textures.ts";
-import type { ExportTableObject } from "../package/objects.ts";
+import type { ExportTableObject, ObjectData } from "../package/objects.ts";
 import type {
   ByteProperty,
   FloatProperty,
@@ -169,7 +169,7 @@ export function textureToCanvas(
   reader: UnrealPackageReader,
   textureObject: ExportTableObject,
 ): HTMLCanvasElement {
-  const textureData = textureObject.readData() as UTexture;
+  const textureData = textureObject.readData() as ObjectData<UTexture>;
   const formatProp = textureObject.getProp("format") as
     ByteProperty | undefined;
   const format = formatProp?.value ?? TEXTURE_FORMAT.P8;
@@ -179,7 +179,7 @@ export function textureToCanvas(
     case TEXTURE_FORMAT.P8: {
       const paletteProp = textureObject.getProp("palette") as ObjectProperty;
       const paletteObject = paletteProp.value as ExportTableObject;
-      const palette = paletteObject.readData() as UPalette;
+      const palette = paletteObject.readData() as ObjectData<UPalette>;
 
       return createCanvas({
         width: mipMap.width,
@@ -208,7 +208,7 @@ export function getPaletteCanvas(
   return createCanvas({
     width: 16,
     height: 16,
-    palette: paletteObject.readData() as UPalette,
+    palette: paletteObject.readData() as ObjectData<UPalette>,
   });
 }
 
