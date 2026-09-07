@@ -120,7 +120,7 @@ $(function () {
     .trigger("input");
 
   function isLevel() {
-    return utPackage.getExportObjectByName("LevelInfo0") !== null;
+    return utPackage.getLevelInfo() !== null;
   }
 
   function showLevelSummary() {

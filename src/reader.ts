@@ -10,6 +10,7 @@ import {
   CSG_OPER,
   DEFAULT_PACKAGES,
   EXTENSION_BY_PACKAGE_PATH,
+  FILE_EXTENSION,
   FILE_TYPE_BY_EXTENSION,
   MESH_CLASSES,
   MOVER_CLASSES,
@@ -36,7 +37,7 @@ import {
   type UObject,
 } from "./package/index.ts";
 import type { ObjectRef, Polygon } from "./structs/index.ts";
-import type { UModel, UPolys, USound } from "./natives/index.ts";
+import type { ULevel, UModel, UPolys, USound } from "./natives/index.ts";
 import {
   getLevelScreenshots,
   getPaletteCanvas,
@@ -339,12 +340,38 @@ export class UnrealPackageReader {
   }
 
   /**
-   * The `LevelInfo0` summary shown for maps: title, author, song, etc.
+   * A map's `LevelInfo` actor, or null for a package that is not a map.
+   *
+   * The engine defines it as the first entry of the level's actor list
+   * (`ULevel::GetLevelInfo` in `Engine/Inc/UnLevel.h` of the UT 436 source
+   * release), so that is what is returned. The actor is usually named
+   * `LevelInfo0`, but not always.
+   *
+   * Falls back to the first `LevelInfo` export if the level data cannot be
+   * read.
+   */
+  getLevelInfo(): ExportTableObject | null {
+    const [level] = this.getLevelObjects();
+
+    if (level) {
+      const levelData = level.readData() as ObjectData<ULevel>;
+      const [first] = levelData.actors;
+
+      if (first?.isExportTableObject() && first.className === "LevelInfo") {
+        return first;
+      }
+    }
+
+    return this.getObjectsByClass("LevelInfo")[0] ?? null;
+  }
+
+  /**
+   * The `LevelInfo` summary shown for maps: title, author, song, etc.
    * with the object-reference properties resolved to names.
    */
   getLevelSummary(allProperties = false): Record<string, unknown> {
     const levelSummary: Record<string, unknown> = {};
-    const levelInfo = this.getExportObjectByName("LevelInfo0");
+    const levelInfo = this.getLevelInfo();
 
     const mainProperties = [
       "Author",
@@ -410,7 +437,7 @@ export class UnrealPackageReader {
         if (isDefault) {
           dependency.ext = this.getPackageFileExtension(name);
         } else if (isMusic) {
-          dependency.ext = "umx";
+          dependency.ext = FILE_EXTENSION.MUSIC;
         }
 
         if (isDefault || isMusic) {

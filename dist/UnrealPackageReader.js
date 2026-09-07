@@ -179,6 +179,17 @@
   }
 
   // src/constants/packages.ts
+  var FILE_EXTENSION = {
+    SYSTEM: "u",
+    MAP: "unr",
+    TEXTURE: "utx",
+    SOUND: "uax",
+    MUSIC: "umx",
+    UMOD: "umod",
+    CACHE_UXX: "uxx",
+    ZIP: "uz",
+    TMP_ZIP: "tmp"
+  };
   var FILE_TYPE_BY_EXTENSION = {
     u: "System",
     uax: "Sound",
@@ -2056,7 +2067,7 @@
         current = next;
       }
     } else {
-      const levelInfo = reader.getExportObjectByName("LevelInfo0");
+      const levelInfo = reader.getLevelInfo();
       const screenshotProp = levelInfo?.getProp("Screenshot");
       if (screenshotProp && "value" in screenshotProp) {
         const texture = screenshotProp.value;
@@ -2266,12 +2277,34 @@
       return decodePolyFlags(flags);
     }
     /**
-     * The `LevelInfo0` summary shown for maps: title, author, song, etc.
+     * A map's `LevelInfo` actor, or null for a package that is not a map.
+     *
+     * The engine defines it as the first entry of the level's actor list
+     * (`ULevel::GetLevelInfo` in `Engine/Inc/UnLevel.h` of the UT 436 source
+     * release), so that is what is returned. The actor is usually named
+     * `LevelInfo0`, but not always.
+     *
+     * Falls back to the first `LevelInfo` export if the level data cannot be
+     * read.
+     */
+    getLevelInfo() {
+      const [level] = this.getLevelObjects();
+      if (level) {
+        const levelData = level.readData();
+        const [first] = levelData.actors;
+        if (first?.isExportTableObject() && first.className === "LevelInfo") {
+          return first;
+        }
+      }
+      return this.getObjectsByClass("LevelInfo")[0] ?? null;
+    }
+    /**
+     * The `LevelInfo` summary shown for maps: title, author, song, etc.
      * with the object-reference properties resolved to names.
      */
     getLevelSummary(allProperties = false) {
       const levelSummary = {};
-      const levelInfo = this.getExportObjectByName("LevelInfo0");
+      const levelInfo = this.getLevelInfo();
       const mainProperties = [
         "Author",
         "IdealPlayerCount",
@@ -2323,7 +2356,7 @@
           if (isDefault) {
             dependency.ext = this.getPackageFileExtension(name);
           } else if (isMusic) {
-            dependency.ext = "umx";
+            dependency.ext = FILE_EXTENSION.MUSIC;
           }
           if (isDefault || isMusic) {
             dependency.type = this.fileTypesByExt[dependency.ext];

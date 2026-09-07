@@ -237,7 +237,7 @@ export interface LevelScreenshots {
  * maps link the last frame back to the head.
  *
  * With no `Screenshot` texture the game shows nothing. As a convenience, this
- * reader falls back to `LevelInfo0.Screenshot`, when that lives in this package.
+ * reader falls back to `LevelInfo.Screenshot`, when that lives in this package.
  */
 export function getLevelScreenshots(
   reader: UnrealPackageReader,
@@ -277,7 +277,7 @@ export function getLevelScreenshots(
       current = next;
     }
   } else {
-    const levelInfo = reader.getExportObjectByName("LevelInfo0");
+    const levelInfo = reader.getLevelInfo();
     const screenshotProp = levelInfo?.getProp("Screenshot");
 
     if (screenshotProp && "value" in screenshotProp) {

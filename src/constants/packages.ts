@@ -387,15 +387,14 @@ export const DEFAULT_PACKAGES: ReadonlyMap<PackagePath, readonly string[]> =
  *
  * First group wins, which matters for exactly one name out of ~270: "credits"
  * ships both as Credits.utx and Credits.umx. Iterating in PACKAGE_PATH order
- * and keeping the first match answers "utx" - and that is not a coin toss, it
- * is what the engine itself resolves, because Textures is Paths[2] and Music is
- * Paths[4].
+ * and keeping the first match answers "utx"; this is what the engine itself
+ * resolves, because Textures is Paths[2] and Music is Paths[4].
  *
  * Sweeney's document is explicit that shipping such a pair is a mistake: "you
  * must not create two packages with the same base name, which only differ by
  * extension... the engine will always fail to load one of the packages and give
- * an error." UT shipped one anyway, so the reader has to resolve it the way the
- * engine does rather than pick.
+ * an error". UT shipped one anyway, so the reader has to resolve it the way the
+ * engine does.
  */
 const PACKAGE_PATH_BY_NAME: ReadonlyMap<string, PackagePath> = (() => {
   const index = new Map<string, PackagePath>();
