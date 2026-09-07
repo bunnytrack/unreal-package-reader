@@ -11,7 +11,12 @@
  * source release).
  */
 
-import { readStructArray, type ReadContext } from "./context.ts";
+import {
+  readObjectRef,
+  readStructArray,
+  type ObjectRef,
+  type ReadContext,
+} from "./context.ts";
 import { readPlane, readVector, type Plane, type Vector } from "./geometry.ts";
 
 /**
@@ -60,11 +65,11 @@ export function readBspNode(ctx: ReadContext): BspNode {
 /**
  * A textured surface (`FBspSurf`) shared by every node on the same plane.
  *
- * `texture` and `actor` are object references; the `v_*` fields index the
- * model's vertex pool.
+ * `texture` and `actor` are resolved object references; the `v_*` fields
+ * index the model's vertex pool.
  */
 export interface BspSurface {
-  texture: number;
+  texture: ObjectRef;
   poly_flags: number;
   p_base: number;
   v_normal: number;
@@ -74,12 +79,14 @@ export interface BspSurface {
   i_brush_poly: number;
   pan_u: number;
   pan_v: number;
-  actor: number;
+  actor: ObjectRef;
 }
 
-export function readBspSurface({ cursor }: ReadContext): BspSurface {
+export function readBspSurface(ctx: ReadContext): BspSurface {
+  const { cursor } = ctx;
+
   return {
-    texture: cursor.compactIndex(),
+    texture: readObjectRef(ctx),
     poly_flags: cursor.uint32(),
     p_base: cursor.compactIndex(),
     v_normal: cursor.compactIndex(),
@@ -89,7 +96,7 @@ export function readBspSurface({ cursor }: ReadContext): BspSurface {
     i_brush_poly: cursor.compactIndex(),
     pan_u: cursor.int16(),
     pan_v: cursor.int16(),
-    actor: cursor.compactIndex(),
+    actor: readObjectRef(ctx),
   };
 }
 
@@ -119,15 +126,17 @@ export function readModelVertex({ cursor }: ReadContext): ModelVertex {
  * `UModel`, so the field is reachable at version 62 exactly.
  */
 export interface Zone {
-  zone_actor: number;
+  zone_actor: ObjectRef;
   connectivity: bigint;
   visibility: bigint;
   last_render_time?: number;
 }
 
-export function readZone({ cursor, version }: ReadContext): Zone {
+export function readZone(ctx: ReadContext): Zone {
+  const { cursor, version } = ctx;
+
   return {
-    zone_actor: cursor.compactIndex(),
+    zone_actor: readObjectRef(ctx),
     connectivity: cursor.bigUint64(),
     visibility: cursor.bigUint64(),
     ...(version < 63 ? { last_render_time: cursor.float32() } : {}),
@@ -193,9 +202,9 @@ export interface Polygon {
   texture_v: Vector;
   vertices: Vector[];
   flags: number;
-  actor: number;
-  texture: number;
-  item_name: number;
+  actor: ObjectRef;
+  texture: ObjectRef;
+  item_name: string;
   link: number;
   brush_poly: number;
   pan_u: number;
@@ -214,9 +223,9 @@ export function readPolygon(ctx: ReadContext): Polygon {
     texture_v: readVector(ctx),
     vertices: readStructArray(ctx, readVector, vertex_count),
     flags: cursor.uint32(),
-    actor: cursor.compactIndex(),
-    texture: cursor.compactIndex(),
-    item_name: cursor.compactIndex(),
+    actor: readObjectRef(ctx),
+    texture: readObjectRef(ctx),
+    item_name: ctx.name(),
     link: cursor.compactIndex(),
     brush_poly: cursor.compactIndex(),
     pan_u: cursor.int16(),

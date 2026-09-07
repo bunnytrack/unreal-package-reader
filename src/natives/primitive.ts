@@ -4,7 +4,11 @@
  */
 
 import { readArray } from "../io/cursor.ts";
-import { readStructArray } from "../structs/context.ts";
+import {
+  readObjectRef,
+  readStructArray,
+  type ObjectRef,
+} from "../structs/context.ts";
 import {
   readBoundingBox,
   readBoundingSphere,
@@ -50,25 +54,25 @@ export function readUPrimitive(ctx: NativeContext): UPrimitive {
  *
  * Before version 62 the geometry arrays were separate objects and the model
  * held only a reference to each, so `vectors`, `points`, `nodes`, `surfaces`
- * and `vertices` are bare object indices on that side of the branch and arrays
+ * and `vertices` are object references on that side of the branch and arrays
  * on the other. `polys` is always a reference - the `UPolys` object.
  */
 export interface UModel extends UPrimitive {
-  vectors: number | Vector[];
-  points: number | Vector[];
-  nodes: number | BspNode[];
-  surfaces: number | BspSurface[];
-  vertices: number | ModelVertex[];
+  vectors: ObjectRef | Vector[];
+  points: ObjectRef | Vector[];
+  nodes: ObjectRef | BspNode[];
+  surfaces: ObjectRef | BspSurface[];
+  vertices: ObjectRef | ModelVertex[];
   num_shared_sides?: number;
   num_zones?: number;
   zones?: Zone[];
-  polys: number;
+  polys: ObjectRef;
   light_map: LightMap[];
   light_bits: number[];
   bounds: BoundingBox[];
   leaf_hulls: number[];
   leaves: BspLeaf[];
-  lights: number[];
+  lights: ObjectRef[];
   leaf_zone?: number;
   leaf_leaf?: number;
   root_outside: boolean;
@@ -83,24 +87,24 @@ export function readUModel(ctx: NativeContext): UModel {
 
   const geometry = bareIndices
     ? {
-        vectors: cursor.compactIndex(),
-        points: cursor.compactIndex(),
-        nodes: cursor.compactIndex(),
-        surfaces: cursor.compactIndex(),
-        vertices: cursor.compactIndex(),
+        vectors: readObjectRef(ctx),
+        points: readObjectRef(ctx),
+        nodes: readObjectRef(ctx),
+        surfaces: readObjectRef(ctx),
+        vertices: readObjectRef(ctx),
       }
     : readModernGeometry(ctx);
 
   return {
     ...primitive,
     ...geometry,
-    polys: cursor.compactIndex(),
+    polys: readObjectRef(ctx),
     light_map: readStructArray(ctx, readLightMap),
     light_bits: readArray(cursor, () => cursor.uint8()),
     bounds: readStructArray(ctx, readBoundingBox),
     leaf_hulls: readArray(cursor, () => cursor.int32()),
     leaves: readStructArray(ctx, readBspLeaf),
-    lights: readArray(cursor, () => cursor.compactIndex()),
+    lights: readArray(cursor, () => readObjectRef(ctx)),
     ...(bareIndices
       ? { leaf_zone: cursor.compactIndex(), leaf_leaf: cursor.compactIndex() }
       : {}),

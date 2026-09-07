@@ -6,7 +6,7 @@
  * and `FPointRegion` (`Engine/Inc/UnObj.h`), in the UT 436 source release.
  */
 
-import type { ReadContext } from "./context.ts";
+import { readObjectRef, type ObjectRef, type ReadContext } from "./context.ts";
 
 /** A point or direction in world space (`FVector`). */
 export interface Vector {
@@ -127,14 +127,16 @@ export function readScale({ cursor }: ReadContext): Scale {
 
 /** Where an actor sits in the BSP (`FPointRegion`): its zone, leaf and zone number. */
 export interface PointRegion {
-  zone: number;
+  zone: ObjectRef;
   i_leaf: number;
   zone_number: number;
 }
 
-export function readPointRegion({ cursor }: ReadContext): PointRegion {
+export function readPointRegion(ctx: ReadContext): PointRegion {
+  const { cursor } = ctx;
+
   return {
-    zone: cursor.compactIndex(),
+    zone: readObjectRef(ctx),
     i_leaf: cursor.int32(),
     zone_number: cursor.uint8(),
   };

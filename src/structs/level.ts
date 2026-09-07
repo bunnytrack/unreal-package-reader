@@ -8,7 +8,7 @@
 
 import { readSizedText } from "../io/text.ts";
 import { readArray } from "../io/cursor.ts";
-import { type ReadContext } from "./context.ts";
+import { readObjectRef, type ObjectRef, type ReadContext } from "./context.ts";
 
 /**
  * A parsed Unreal URL (`FURL`) - the addressing scheme used for both map travel
@@ -45,9 +45,9 @@ export function readLevelURL({ cursor }: ReadContext): LevelURL {
 export interface ReachSpec {
   distance: number;
   /** The path node the link starts from. */
-  start: number;
+  start: ObjectRef;
   /** The path node the link ends at - the next waypoint or the goal. */
-  end: number;
+  end: ObjectRef;
   /** The largest pawn radius that can use the link. */
   collision_radius: number;
   /** The largest pawn height that can use the link. */
@@ -58,11 +58,13 @@ export interface ReachSpec {
   pruned: boolean;
 }
 
-export function readReachSpec({ cursor }: ReadContext): ReachSpec {
+export function readReachSpec(ctx: ReadContext): ReachSpec {
+  const { cursor } = ctx;
+
   return {
     distance: cursor.uint32(),
-    start: cursor.compactIndex(),
-    end: cursor.compactIndex(),
+    start: readObjectRef(ctx),
+    end: readObjectRef(ctx),
     collision_radius: cursor.uint32(),
     collision_height: cursor.uint32(),
     reach_flags: cursor.uint32(),

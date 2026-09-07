@@ -636,193 +636,6 @@
     return nameTable;
   }
 
-  // src/structs/stateFrame.ts
-  function readStateFrame({ cursor }) {
-    const node = cursor.compactIndex();
-    return {
-      name: "StateFrame",
-      node,
-      state_node: cursor.compactIndex(),
-      probe_mask: cursor.bigInt64(),
-      latent_action: cursor.uint32(),
-      ...node !== 0 ? { offset: cursor.compactIndex() } : {}
-    };
-  }
-
-  // src/structs/geometry.ts
-  function readVector({ cursor }) {
-    return {
-      x: cursor.float32(),
-      y: cursor.float32(),
-      z: cursor.float32()
-    };
-  }
-  function readRotator({ cursor }) {
-    return {
-      pitch: cursor.int32(),
-      yaw: cursor.int32(),
-      roll: cursor.int32()
-    };
-  }
-  function readQuaternion({ cursor }) {
-    return {
-      x: cursor.float32(),
-      y: cursor.float32(),
-      z: cursor.float32(),
-      w: cursor.float32()
-    };
-  }
-  function readPlane({ cursor }) {
-    return {
-      x: cursor.float32(),
-      y: cursor.float32(),
-      z: cursor.float32(),
-      w: cursor.float32()
-    };
-  }
-  function readColour({ cursor }) {
-    return {
-      r: cursor.uint8(),
-      g: cursor.uint8(),
-      b: cursor.uint8(),
-      a: cursor.uint8()
-    };
-  }
-  function readScale({ cursor }) {
-    return {
-      x: cursor.float32(),
-      y: cursor.float32(),
-      z: cursor.float32(),
-      sheer_rate: cursor.float32(),
-      sheer_axis: cursor.uint8()
-    };
-  }
-  function readPointRegion({ cursor }) {
-    return {
-      zone: cursor.compactIndex(),
-      i_leaf: cursor.int32(),
-      zone_number: cursor.uint8()
-    };
-  }
-  function readBoundingBox(ctx) {
-    return {
-      min: readVector(ctx),
-      max: readVector(ctx),
-      valid: ctx.cursor.uint8() > 0
-    };
-  }
-  function readBoundingSphere(ctx) {
-    return {
-      centre: readVector(ctx),
-      ...ctx.version > 61 ? { radius: ctx.cursor.float32() } : {}
-    };
-  }
-
-  // src/package/properties.ts
-  var FIXED_SIZES = [1, 2, 4, 12, 16];
-  function readSize(ctx, sizeCode) {
-    const { cursor } = ctx;
-    switch (sizeCode) {
-      case 5:
-        return cursor.uint8();
-      case 6:
-        return cursor.uint16();
-      case 7:
-        return cursor.uint32();
-      default:
-        return FIXED_SIZES[sizeCode];
-    }
-  }
-  function readArrayIndex(ctx) {
-    const { cursor } = ctx;
-    const first = cursor.uint8();
-    if ((first & 128) === 0) {
-      return first;
-    }
-    if ((first & 192) === 128) {
-      return (first & 127) << 8 | cursor.uint8();
-    }
-    return (first & 63) << 24 | cursor.uint8() << 16 | cursor.uint8() << 8 | cursor.uint8();
-  }
-  var STRUCT_READERS = {
-    color: readColour,
-    vector: readVector,
-    rotator: readRotator,
-    scale: readScale,
-    pointregion: readPointRegion
-  };
-  function readFixedString(ctx, size) {
-    const bytes = ctx.cursor.bytes(size);
-    const terminator = bytes.indexOf(0);
-    return decodeText(terminator === -1 ? bytes : bytes.subarray(0, terminator));
-  }
-  function readProperty(ctx) {
-    const { cursor } = ctx;
-    const name = ctx.name();
-    if (name.toLowerCase() === "none") return null;
-    const info = cursor.uint8();
-    const type = PROPERTY_TYPES[info & 15];
-    const subtype = type === "Struct" ? ctx.name() : void 0;
-    const size = readSize(ctx, info >> 4 & 7);
-    const flag = Boolean(info & 128);
-    const index = flag && type !== "Boolean" ? readArrayIndex(ctx) : void 0;
-    const tag = {
-      name,
-      type,
-      ...subtype !== void 0 ? { subtype } : {},
-      ...index !== void 0 ? { index } : {}
-    };
-    switch (type) {
-      case "Byte":
-        return { ...tag, type, value: cursor.uint8() };
-      case "Integer":
-        return { ...tag, type, value: cursor.int32() };
-      case "Boolean":
-        return { ...tag, type, value: flag };
-      case "Float":
-        return { ...tag, type, value: cursor.float32() };
-      case "Object":
-        return { ...tag, type, value: cursor.compactIndex() };
-      case "Class":
-        return { ...tag, type, value: cursor.compactIndex() };
-      case "Name":
-        return { ...tag, type, value: ctx.name() };
-      case "Str":
-        return { ...tag, type, value: readStringProperty(cursor) };
-      case "String":
-        return { ...tag, type, value: readFixedString(ctx, size) };
-      case "Struct": {
-        const read = STRUCT_READERS[subtype.toLowerCase()];
-        return {
-          ...tag,
-          type,
-          subtype,
-          value: read ? read(ctx) : cursor.bytes(size)
-        };
-      }
-      default:
-        return { ...tag, type, value: cursor.bytes(size) };
-    }
-  }
-  function readPropertyList(ctx) {
-    const properties = [];
-    for (let property = readProperty(ctx); property; property = readProperty(ctx)) {
-      const previous = properties[properties.length - 1];
-      if (property.index !== void 0 && previous && previous.index === void 0 && previous.name === property.name) {
-        const { name, type, ...rest } = previous;
-        properties[properties.length - 1] = {
-          name,
-          type,
-          ..."subtype" in rest ? { subtype: rest.subtype } : {},
-          index: 0,
-          value: rest.value
-        };
-      }
-      properties.push(property);
-    }
-    return properties;
-  }
-
   // src/io/cursor.ts
   var MAX_COMPACT_INDEX_BYTES = 5;
   var BinaryCursor = class {
@@ -968,6 +781,195 @@
     return readArray(ctx.cursor, () => read(ctx), count);
   }
 
+  // src/structs/stateFrame.ts
+  function readStateFrame(ctx) {
+    const { cursor } = ctx;
+    const nodeIndex = cursor.compactIndex();
+    return {
+      name: "StateFrame",
+      node: ctx.object(nodeIndex),
+      state_node: readObjectRef(ctx),
+      probe_mask: cursor.bigInt64(),
+      latent_action: cursor.uint32(),
+      ...nodeIndex !== 0 ? { offset: cursor.compactIndex() } : {}
+    };
+  }
+
+  // src/structs/geometry.ts
+  function readVector({ cursor }) {
+    return {
+      x: cursor.float32(),
+      y: cursor.float32(),
+      z: cursor.float32()
+    };
+  }
+  function readRotator({ cursor }) {
+    return {
+      pitch: cursor.int32(),
+      yaw: cursor.int32(),
+      roll: cursor.int32()
+    };
+  }
+  function readQuaternion({ cursor }) {
+    return {
+      x: cursor.float32(),
+      y: cursor.float32(),
+      z: cursor.float32(),
+      w: cursor.float32()
+    };
+  }
+  function readPlane({ cursor }) {
+    return {
+      x: cursor.float32(),
+      y: cursor.float32(),
+      z: cursor.float32(),
+      w: cursor.float32()
+    };
+  }
+  function readColour({ cursor }) {
+    return {
+      r: cursor.uint8(),
+      g: cursor.uint8(),
+      b: cursor.uint8(),
+      a: cursor.uint8()
+    };
+  }
+  function readScale({ cursor }) {
+    return {
+      x: cursor.float32(),
+      y: cursor.float32(),
+      z: cursor.float32(),
+      sheer_rate: cursor.float32(),
+      sheer_axis: cursor.uint8()
+    };
+  }
+  function readPointRegion(ctx) {
+    const { cursor } = ctx;
+    return {
+      zone: readObjectRef(ctx),
+      i_leaf: cursor.int32(),
+      zone_number: cursor.uint8()
+    };
+  }
+  function readBoundingBox(ctx) {
+    return {
+      min: readVector(ctx),
+      max: readVector(ctx),
+      valid: ctx.cursor.uint8() > 0
+    };
+  }
+  function readBoundingSphere(ctx) {
+    return {
+      centre: readVector(ctx),
+      ...ctx.version > 61 ? { radius: ctx.cursor.float32() } : {}
+    };
+  }
+
+  // src/package/properties.ts
+  var FIXED_SIZES = [1, 2, 4, 12, 16];
+  function readSize(ctx, sizeCode) {
+    const { cursor } = ctx;
+    switch (sizeCode) {
+      case 5:
+        return cursor.uint8();
+      case 6:
+        return cursor.uint16();
+      case 7:
+        return cursor.uint32();
+      default:
+        return FIXED_SIZES[sizeCode];
+    }
+  }
+  function readArrayIndex(ctx) {
+    const { cursor } = ctx;
+    const first = cursor.uint8();
+    if ((first & 128) === 0) {
+      return first;
+    }
+    if ((first & 192) === 128) {
+      return (first & 127) << 8 | cursor.uint8();
+    }
+    return (first & 63) << 24 | cursor.uint8() << 16 | cursor.uint8() << 8 | cursor.uint8();
+  }
+  var STRUCT_READERS = {
+    color: readColour,
+    vector: readVector,
+    rotator: readRotator,
+    scale: readScale,
+    pointregion: readPointRegion
+  };
+  function readFixedString(ctx, size) {
+    const bytes = ctx.cursor.bytes(size);
+    const terminator = bytes.indexOf(0);
+    return decodeText(terminator === -1 ? bytes : bytes.subarray(0, terminator));
+  }
+  function readProperty(ctx) {
+    const { cursor } = ctx;
+    const name = ctx.name();
+    if (name.toLowerCase() === "none") return null;
+    const info = cursor.uint8();
+    const type = PROPERTY_TYPES[info & 15];
+    const subtype = type === "Struct" ? ctx.name() : void 0;
+    const size = readSize(ctx, info >> 4 & 7);
+    const flag = Boolean(info & 128);
+    const index = flag && type !== "Boolean" ? readArrayIndex(ctx) : void 0;
+    const tag = {
+      name,
+      type,
+      ...subtype !== void 0 ? { subtype } : {},
+      ...index !== void 0 ? { index } : {}
+    };
+    switch (type) {
+      case "Byte":
+        return { ...tag, type, value: cursor.uint8() };
+      case "Integer":
+        return { ...tag, type, value: cursor.int32() };
+      case "Boolean":
+        return { ...tag, type, value: flag };
+      case "Float":
+        return { ...tag, type, value: cursor.float32() };
+      case "Object":
+        return { ...tag, type, value: cursor.compactIndex() };
+      case "Class":
+        return { ...tag, type, value: cursor.compactIndex() };
+      case "Name":
+        return { ...tag, type, value: ctx.name() };
+      case "Str":
+        return { ...tag, type, value: readStringProperty(cursor) };
+      case "String":
+        return { ...tag, type, value: readFixedString(ctx, size) };
+      case "Struct": {
+        const read = STRUCT_READERS[subtype.toLowerCase()];
+        return {
+          ...tag,
+          type,
+          subtype,
+          value: read ? read(ctx) : cursor.bytes(size)
+        };
+      }
+      default:
+        return { ...tag, type, value: cursor.bytes(size) };
+    }
+  }
+  function readPropertyList(ctx) {
+    const properties = [];
+    for (let property = readProperty(ctx); property; property = readProperty(ctx)) {
+      const previous = properties[properties.length - 1];
+      if (property.index !== void 0 && previous && previous.index === void 0 && previous.name === property.name) {
+        const { name, type, ...rest } = previous;
+        properties[properties.length - 1] = {
+          name,
+          type,
+          ..."subtype" in rest ? { subtype: rest.subtype } : {},
+          index: 0,
+          value: rest.value
+        };
+      }
+      properties.push(property);
+    }
+    return properties;
+  }
+
   // src/structs/animation.ts
   function readBoneReference({
     cursor,
@@ -1020,9 +1022,10 @@
       i_leaf: readStructArray(ctx, ({ cursor: cursor2 }) => cursor2.int32(), 2)
     };
   }
-  function readBspSurface({ cursor }) {
+  function readBspSurface(ctx) {
+    const { cursor } = ctx;
     return {
-      texture: cursor.compactIndex(),
+      texture: readObjectRef(ctx),
       poly_flags: cursor.uint32(),
       p_base: cursor.compactIndex(),
       v_normal: cursor.compactIndex(),
@@ -1032,7 +1035,7 @@
       i_brush_poly: cursor.compactIndex(),
       pan_u: cursor.int16(),
       pan_v: cursor.int16(),
-      actor: cursor.compactIndex()
+      actor: readObjectRef(ctx)
     };
   }
   function readModelVertex({ cursor }) {
@@ -1041,9 +1044,10 @@
       i_side: cursor.compactIndex()
     };
   }
-  function readZone({ cursor, version }) {
+  function readZone(ctx) {
+    const { cursor, version } = ctx;
     return {
-      zone_actor: cursor.compactIndex(),
+      zone_actor: readObjectRef(ctx),
       connectivity: cursor.bigUint64(),
       visibility: cursor.bigUint64(),
       ...version < 63 ? { last_render_time: cursor.float32() } : {}
@@ -1080,9 +1084,9 @@
       texture_v: readVector(ctx),
       vertices: readStructArray(ctx, readVector, vertex_count),
       flags: cursor.uint32(),
-      actor: cursor.compactIndex(),
-      texture: cursor.compactIndex(),
-      item_name: cursor.compactIndex(),
+      actor: readObjectRef(ctx),
+      texture: readObjectRef(ctx),
+      item_name: ctx.name(),
       link: cursor.compactIndex(),
       brush_poly: cursor.compactIndex(),
       pan_u: cursor.int16(),
@@ -1124,11 +1128,12 @@
       valid: cursor.uint32() > 0
     };
   }
-  function readReachSpec({ cursor }) {
+  function readReachSpec(ctx) {
+    const { cursor } = ctx;
     return {
       distance: cursor.uint32(),
-      start: cursor.compactIndex(),
-      end: cursor.compactIndex(),
+      start: readObjectRef(ctx),
+      end: readObjectRef(ctx),
       collision_radius: cursor.uint32(),
       collision_height: cursor.uint32(),
       reach_flags: cursor.uint32(),
@@ -1414,22 +1419,22 @@
     const bareIndices = ctx.version <= 61;
     const primitive = readUPrimitive(ctx);
     const geometry = bareIndices ? {
-      vectors: cursor.compactIndex(),
-      points: cursor.compactIndex(),
-      nodes: cursor.compactIndex(),
-      surfaces: cursor.compactIndex(),
-      vertices: cursor.compactIndex()
+      vectors: readObjectRef(ctx),
+      points: readObjectRef(ctx),
+      nodes: readObjectRef(ctx),
+      surfaces: readObjectRef(ctx),
+      vertices: readObjectRef(ctx)
     } : readModernGeometry(ctx);
     return {
       ...primitive,
       ...geometry,
-      polys: cursor.compactIndex(),
+      polys: readObjectRef(ctx),
       light_map: readStructArray(ctx, readLightMap),
       light_bits: readArray(cursor, () => cursor.uint8()),
       bounds: readStructArray(ctx, readBoundingBox),
       leaf_hulls: readArray(cursor, () => cursor.int32()),
       leaves: readStructArray(ctx, readBspLeaf),
-      lights: readArray(cursor, () => cursor.compactIndex()),
+      lights: readArray(cursor, () => readObjectRef(ctx)),
       ...bareIndices ? { leaf_zone: cursor.compactIndex(), leaf_leaf: cursor.compactIndex() } : {},
       root_outside: cursor.uint32() > 0,
       linked: cursor.uint32() > 0
@@ -2179,8 +2184,8 @@
         const modelData = modelObject.readData();
         data.model.object = modelObject;
         data.model.properties = modelData;
-        if (modelData.polys !== 0) {
-          const polyObject = this.getObject(modelData.polys);
+        if (modelData.polys?.isExportTableObject()) {
+          const polyObject = modelData.polys;
           const polysData = polyObject.readData();
           data.polys.object = polyObject;
           data.polys.polygons = polysData.polys;

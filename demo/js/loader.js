@@ -1957,12 +1957,11 @@ $(function () {
             break;
 
           case "actor":
-          case "brush_poly":
           case "texture":
             polyEl.append(`
               <p class="property mono">
                 <span class="name">${propLabels[propName] || propName}</span>
-                <span class="value">${utPackage.getObjectNameFromIndex(propValue)}</span>
+                <span class="value">${propValue?.objectName ?? "None"}</span>
               </p>
             `);
             break;
@@ -2020,7 +2019,7 @@ $(function () {
 
       switch (propName) {
         case "polys":
-          propValue = utPackage.getObjectNameFromIndex(propValue);
+          propValue = propValue?.objectName ?? "None";
           break;
 
         case "name":
@@ -2210,7 +2209,7 @@ $(function () {
               break;
 
             case "zone":
-              subPropValue = utPackage.getObjectNameFromIndex(subPropValue);
+              subPropValue = subPropValue?.objectName ?? "None";
               break;
 
             default:

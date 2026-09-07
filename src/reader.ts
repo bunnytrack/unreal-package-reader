@@ -216,8 +216,8 @@ export class UnrealPackageReader {
       data.model.object = modelObject;
       data.model.properties = modelData;
 
-      if (modelData.polys !== 0) {
-        const polyObject = this.getObject(modelData.polys) as ExportTableObject;
+      if (modelData.polys?.isExportTableObject()) {
+        const polyObject = modelData.polys;
         const polysData = polyObject.readData() as ObjectData & {
           polys: Polygon[];
         };

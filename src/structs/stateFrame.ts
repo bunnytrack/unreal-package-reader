@@ -2,7 +2,7 @@
  * The UnrealScript execution state saved with an object.
  */
 
-import { type ReadContext } from "./context.ts";
+import { readObjectRef, type ObjectRef, type ReadContext } from "./context.ts";
 
 /**
  * A saved script execution state, present when an object carries the
@@ -24,22 +24,23 @@ import { type ReadContext } from "./context.ts";
  */
 export interface StateFrame {
   name: "StateFrame";
-  node: number;
-  state_node: number;
+  node: ObjectRef;
+  state_node: ObjectRef;
   probe_mask: bigint;
   latent_action: number;
   offset?: number;
 }
 
-export function readStateFrame({ cursor }: ReadContext): StateFrame {
-  const node = cursor.compactIndex();
+export function readStateFrame(ctx: ReadContext): StateFrame {
+  const { cursor } = ctx;
+  const nodeIndex = cursor.compactIndex();
 
   return {
     name: "StateFrame",
-    node,
-    state_node: cursor.compactIndex(),
+    node: ctx.object(nodeIndex),
+    state_node: readObjectRef(ctx),
     probe_mask: cursor.bigInt64(),
     latent_action: cursor.uint32(),
-    ...(node !== 0 ? { offset: cursor.compactIndex() } : {}),
+    ...(nodeIndex !== 0 ? { offset: cursor.compactIndex() } : {}),
   };
 }
