@@ -958,6 +958,12 @@
   }
 
   // src/structs/context.ts
+  function readObjectRef(ctx) {
+    return ctx.object(ctx.cursor.compactIndex());
+  }
+  function readObjectRefs(ctx, count) {
+    return Array.from({ length: count }, () => readObjectRef(ctx));
+  }
   function readStructArray(ctx, read, count) {
     return readArray(ctx.cursor, () => read(ctx), count);
   }
@@ -1095,7 +1101,7 @@
   }
   function readFontTexture(ctx) {
     return {
-      texture: ctx.object(ctx.cursor.compactIndex()),
+      texture: readObjectRef(ctx),
       characters: readStructArray(ctx, readFontCharacter)
     };
   }
@@ -1370,17 +1376,6 @@
       movements: readStructArray(ctx, readBoneMovement),
       animation_sequences: readStructArray(ctx, readMeshAnimationSequence)
     };
-  }
-
-  // src/natives/context.ts
-  function readObjectRefs(ctx, count) {
-    return Array.from(
-      { length: count },
-      () => ctx.object(ctx.cursor.compactIndex())
-    );
-  }
-  function readObjectRef(ctx) {
-    return ctx.object(ctx.cursor.compactIndex());
   }
 
   // src/natives/level.ts

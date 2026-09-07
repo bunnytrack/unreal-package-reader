@@ -22,14 +22,13 @@
 
 import { readArray } from "../io/cursor.ts";
 import type { BinaryCursor } from "../io/cursor.ts";
+import type { UObject } from "../package/objects.ts";
 
 /**
- * An entry in the export or import table.
- *
- * Opaque: structs only ever store a reference and hand it straight back, so
- * nothing here needs to know its shape.
+ * A resolved object reference: the export or import table entry, or null
+ * where the file stored index 0.
  */
-export type TableObject = object;
+export type ObjectRef = UObject | null;
 
 export interface ReadContext {
   readonly cursor: BinaryCursor;
@@ -50,7 +49,17 @@ export interface ReadContext {
    * Resolve an object reference: positive is a 1-based export index, negative
    * is a bitwise-complemented import index, and zero is no object.
    */
-  readonly object: (index: number) => TableObject | null;
+  readonly object: (index: number) => ObjectRef;
+}
+
+/** One object reference, stored inline as a compact index. */
+export function readObjectRef(ctx: ReadContext): ObjectRef {
+  return ctx.object(ctx.cursor.compactIndex());
+}
+
+/** `count` object references, each a compact index resolved against the tables. */
+export function readObjectRefs(ctx: ReadContext, count: number): ObjectRef[] {
+  return Array.from({ length: count }, () => readObjectRef(ctx));
 }
 
 /**

@@ -1,29 +1,17 @@
 /**
- * What a native class reader needs: everything a struct reader does, plus
- * object references that resolve to real table entries rather than the opaque
- * `TableObject` of the struct layer.
+ * What a native class reader needs: a struct reader's `ReadContext`, whose
+ * `object` resolves to real table entries, plus the package's name resolver.
+ * The object-reference helpers are the struct layer's, re-exported for the
+ * native readers that use them.
  */
 
 import type { ReadContext } from "../structs/context.ts";
-import type { TableResolver, UObject } from "../package/objects.ts";
+import type { TableResolver } from "../package/objects.ts";
 
-/**
- * `object` comes from the resolver, so it returns the real table entry rather
- * than the struct layer's opaque `TableObject`.
- */
-export type NativeContext = Omit<ReadContext, "object"> & TableResolver;
+export {
+  readObjectRef,
+  readObjectRefs,
+  type ObjectRef,
+} from "../structs/context.ts";
 
-/** A resolved object reference; null where the file stored index 0. */
-export type ObjectRef = UObject | null;
-
-/** `count` object references, each a compact index resolved against the tables. */
-export function readObjectRefs(ctx: NativeContext, count: number): ObjectRef[] {
-  return Array.from({ length: count }, () =>
-    ctx.object(ctx.cursor.compactIndex()),
-  );
-}
-
-/** One object reference. */
-export function readObjectRef(ctx: NativeContext): ObjectRef {
-  return ctx.object(ctx.cursor.compactIndex());
-}
+export type NativeContext = ReadContext & TableResolver;

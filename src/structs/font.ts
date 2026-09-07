@@ -6,9 +6,10 @@
  */
 
 import {
+  readObjectRef,
   readStructArray,
+  type ObjectRef,
   type ReadContext,
-  type TableObject,
 } from "./context.ts";
 
 /** One character's rectangle within its font texture. */
@@ -28,18 +29,15 @@ export function readFontCharacter({ cursor }: ReadContext): FontCharacter {
   };
 }
 
-/**
- * A texture page plus the characters laid out on it. `texture` is resolved to
- * the table object rather than left as an index.
- */
+/** A texture page plus the characters laid out on it. */
 export interface FontTexture {
-  texture: TableObject | null;
+  texture: ObjectRef;
   characters: FontCharacter[];
 }
 
 export function readFontTexture(ctx: ReadContext): FontTexture {
   return {
-    texture: ctx.object(ctx.cursor.compactIndex()),
+    texture: readObjectRef(ctx),
     characters: readStructArray(ctx, readFontCharacter),
   };
 }
