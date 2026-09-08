@@ -557,6 +557,9 @@ $(function () {
     for (const prop of textureObject.properties) {
       let propHtml;
 
+      // Handled below
+      if (prop.name === "InternalTime") continue;
+
       switch (prop.type) {
         case "Object":
           continue; // only "Object" prop should be palette, which is already shown
@@ -581,6 +584,17 @@ $(function () {
         <tr>
           <td class="prop-name">${prop.name}</td>
           ${propHtml}
+        </tr>
+      `);
+    }
+
+    const internalTime = utPackage.getTextureInternalTime(textureObject);
+
+    if (internalTime !== null) {
+      table.append(`
+        <tr>
+          <td class="prop-name">InternalTime</td>
+          <td class="prop-val">${readableDuration(internalTime)}</td>
         </tr>
       `);
     }
@@ -2781,6 +2795,20 @@ $(function () {
 
   function getSortedKeys(object) {
     return Object.keys(object).naturalSort();
+  }
+
+  function readableDuration(seconds) {
+    const total = Math.floor(seconds);
+    const parts = [
+      [Math.floor(total / 86400), "d"],
+      [Math.floor((total % 86400) / 3600), "h"],
+      [Math.floor((total % 3600) / 60), "m"],
+      [total % 60, "s"],
+    ];
+
+    while (parts.length > 1 && parts[0][0] === 0) parts.shift();
+
+    return parts.map(([n, unit]) => `${n}${unit}`).join(" ");
   }
 
   // Slightly modified from https://stackoverflow.com/a/14919494/7290573

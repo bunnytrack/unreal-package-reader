@@ -113,3 +113,25 @@ export function readUFont(ctx: NativeContext): UFont {
       : {}),
   };
 }
+
+/**
+ * A texture's `InternalTime` pair as seconds of uptime when it was saved.
+ *
+ * The property is UnrealScript's view of the engine's `LastUpdateTime` on
+ * `UBitmap` (`Engine/Inc/UnTex.h` in the UT 436 source release): eight bytes
+ * declared as `int InternalTime[2]`, serialised as two static-array elements.
+ */
+export function decodeInternalTime(low: number, high: number): number {
+  const view = new DataView(new ArrayBuffer(8));
+
+  view.setInt32(0, low, true);
+  view.setInt32(4, high, true);
+
+  const asDouble = view.getFloat64(0, true);
+
+  if (Number.isFinite(asDouble) && asDouble >= 1 && asDouble < 2 ** 31) {
+    return asDouble;
+  }
+
+  return high + (low >>> 0) / 2 ** 32;
+}

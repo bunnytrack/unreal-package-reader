@@ -1668,6 +1668,16 @@
       } : {}
     };
   }
+  function decodeInternalTime(low, high) {
+    const view = new DataView(new ArrayBuffer(8));
+    view.setInt32(0, low, true);
+    view.setInt32(4, high, true);
+    const asDouble = view.getFloat64(0, true);
+    if (Number.isFinite(asDouble) && asDouble >= 1 && asDouble < 2 ** 31) {
+      return asDouble;
+    }
+    return high + (low >>> 0) / 2 ** 32;
+  }
 
   // src/natives/index.ts
   var NATIVE_READERS = {
@@ -2208,6 +2218,15 @@
         name: textureObject.objectName,
         group: textureObject.packageName
       };
+    }
+    getTextureInternalTime(textureObject) {
+      const parts = textureObject.properties.filter(
+        (prop) => prop.name === "InternalTime" && "value" in prop
+      );
+      if (parts.length === 0) return null;
+      const low = parts.find((prop) => (prop.index ?? 0) === 0)?.value ?? 0;
+      const high = parts.find((prop) => prop.index === 1)?.value ?? 0;
+      return decodeInternalTime(low, high);
     }
     getTextureGroups() {
       const grouped = {};

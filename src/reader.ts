@@ -33,11 +33,18 @@ import {
   UnrealPackage,
   type ExportTableObject,
   type ImportTableObject,
+  type IntegerProperty,
   type ObjectData,
   type UObject,
 } from "./package/index.ts";
 import type { ObjectRef, Polygon } from "./structs/index.ts";
-import type { ULevel, UModel, UPolys, USound } from "./natives/index.ts";
+import {
+  decodeInternalTime,
+  type ULevel,
+  type UModel,
+  type UPolys,
+  type USound,
+} from "./natives/index.ts";
 import {
   getLevelScreenshots,
   getPaletteCanvas,
@@ -240,6 +247,19 @@ export class UnrealPackageReader {
       name: textureObject.objectName,
       group: textureObject.packageName,
     };
+  }
+
+  getTextureInternalTime(textureObject: ExportTableObject): number | null {
+    const parts = textureObject.properties.filter(
+      (prop) => prop.name === "InternalTime" && "value" in prop,
+    ) as IntegerProperty[];
+
+    if (parts.length === 0) return null;
+
+    const low = parts.find((prop) => (prop.index ?? 0) === 0)?.value ?? 0;
+    const high = parts.find((prop) => prop.index === 1)?.value ?? 0;
+
+    return decodeInternalTime(low, high);
   }
 
   getTextureGroups(): {
