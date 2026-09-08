@@ -145,7 +145,8 @@ $(function () {
 
       // Emulate "slideshow" if multiple found
       if (frames.length > 1) {
-        const speed = interval * 1000 || 1300;
+        // Capping to 2s, as some maps have slow frame rates nobody will wait for
+        const speed = Math.min(interval * 1000 || 1300, 2000);
         const showScreenshot = (i) => {
           screenshotSlideshowId = setTimeout(function () {
             $(".screenshot canvas").replaceWith(frames[i]);
