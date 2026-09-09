@@ -2220,12 +2220,11 @@
       };
     }
     getTextureInternalTime(textureObject) {
-      const parts = textureObject.properties.filter(
-        (prop) => prop.name === "InternalTime" && "value" in prop
-      );
-      if (parts.length === 0) return null;
-      const low = parts.find((prop) => (prop.index ?? 0) === 0)?.value ?? 0;
-      const high = parts.find((prop) => prop.index === 1)?.value ?? 0;
+      const values = textureObject.properties.filter(
+        (prop) => prop.name === "InternalTime" && prop.type === "Integer"
+      ).map(({ value }) => value);
+      if (values.length !== 2) return null;
+      const [low, high] = values;
       return decodeInternalTime(low, high);
     }
     getTextureGroups() {

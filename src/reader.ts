@@ -250,14 +250,16 @@ export class UnrealPackageReader {
   }
 
   getTextureInternalTime(textureObject: ExportTableObject): number | null {
-    const parts = textureObject.properties.filter(
-      (prop) => prop.name === "InternalTime" && "value" in prop,
-    ) as IntegerProperty[];
+    const values = textureObject.properties
+      .filter(
+        (prop): prop is IntegerProperty =>
+          prop.name === "InternalTime" && prop.type === "Integer",
+      )
+      .map(({ value }) => value);
 
-    if (parts.length === 0) return null;
+    if (values.length !== 2) return null;
 
-    const low = parts.find((prop) => (prop.index ?? 0) === 0)?.value ?? 0;
-    const high = parts.find((prop) => prop.index === 1)?.value ?? 0;
+    const [low, high] = values;
 
     return decodeInternalTime(low, high);
   }
