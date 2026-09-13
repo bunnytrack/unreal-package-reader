@@ -2317,6 +2317,37 @@
       return this.getObjectsByClass("LevelInfo")[0] ?? null;
     }
     /**
+     * A map's event links: each actor whose `Event` is set, paired with every
+     * actor whose `Tag` matches it.
+     */
+    getEventLinks() {
+      const [level] = this.getLevelObjects();
+      if (!level) return [];
+      const actors = level.readData().actors.filter(
+        (actor) => actor?.isExportTableObject() ?? false
+      );
+      const byTag = /* @__PURE__ */ new Map();
+      for (const actor of actors) {
+        const tagProp = actor.getProp("Tag");
+        const tag = (tagProp?.value ?? actor.className ?? "").toLowerCase();
+        if (!tag) continue;
+        if (!byTag.has(tag)) {
+          byTag.set(tag, []);
+        }
+        byTag.get(tag).push(actor);
+      }
+      const links = [];
+      for (const source of actors) {
+        const eventProp = source.getProp("Event");
+        const event = eventProp?.value;
+        if (!event || event === "None") continue;
+        for (const target of byTag.get(event.toLowerCase()) ?? []) {
+          links.push({ source, target });
+        }
+      }
+      return links;
+    }
+    /**
      * The `LevelInfo` summary shown for maps: title, author, song, etc.
      * with the object-reference properties resolved to names.
      */

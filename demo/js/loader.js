@@ -1109,6 +1109,34 @@ $(function () {
         }
       }
 
+      // Event -> Tag links: one red line per pair.
+      const eventLinks = utPackage.getEventLinks();
+
+      if (eventLinks.length > 0) {
+        const positions = new Float32Array(eventLinks.length * 6);
+        const origin = { x: 0, y: 0, z: 0 };
+
+        eventLinks.forEach(({ source, target }, i) => {
+          const from = source.getProp("location")?.value ?? origin;
+          const to = target.getProp("location")?.value ?? origin;
+
+          positions.set([from.x, from.z, from.y, to.x, to.z, to.y], i * 6);
+        });
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(positions, 3),
+        );
+
+        scene.add(
+          new THREE.LineSegments(
+            geometry,
+            new THREE.LineBasicMaterial({ color: 0xa30000 }),
+          ),
+        );
+      }
+
       camera.position.x = 0;
       camera.position.y = 1024;
       camera.position.z = 1024;

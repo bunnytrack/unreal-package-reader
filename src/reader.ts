@@ -34,6 +34,7 @@ import {
   type ExportTableObject,
   type ImportTableObject,
   type IntegerProperty,
+  type NameProperty,
   type ObjectData,
   type UObject,
 } from "./package/index.ts";
@@ -72,6 +73,12 @@ export interface Dependency {
   type?: string;
   /** Whether or not this is a stock game package. */
   default: boolean;
+}
+
+/** One entry of `getEventLinks()`: an actor's `Event` matched to another's `Tag`. */
+export interface EventLink {
+  source: ExportTableObject;
+  target: ExportTableObject;
 }
 
 export interface DependenciesFiltered {
@@ -385,6 +392,51 @@ export class UnrealPackageReader {
     }
 
     return this.getObjectsByClass("LevelInfo")[0] ?? null;
+  }
+
+  /**
+   * A map's event links: each actor whose `Event` is set, paired with every
+   * actor whose `Tag` matches it.
+   */
+  getEventLinks(): EventLink[] {
+    const [level] = this.getLevelObjects();
+
+    if (!level) return [];
+
+    const actors = (level.readData() as ObjectData<ULevel>).actors.filter(
+      (actor): actor is ExportTableObject =>
+        actor?.isExportTableObject() ?? false,
+    );
+
+    const byTag = new Map<string, ExportTableObject[]>();
+
+    for (const actor of actors) {
+      const tagProp = actor.getProp("Tag") as NameProperty | undefined;
+      const tag = (tagProp?.value ?? actor.className ?? "").toLowerCase();
+
+      if (!tag) continue;
+
+      if (!byTag.has(tag)) {
+        byTag.set(tag, []);
+      }
+
+      byTag.get(tag)!.push(actor);
+    }
+
+    const links: EventLink[] = [];
+
+    for (const source of actors) {
+      const eventProp = source.getProp("Event") as NameProperty | undefined;
+      const event = eventProp?.value;
+
+      if (!event || event === "None") continue;
+
+      for (const target of byTag.get(event.toLowerCase()) ?? []) {
+        links.push({ source, target });
+      }
+    }
+
+    return links;
   }
 
   /**
