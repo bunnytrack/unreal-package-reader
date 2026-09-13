@@ -1,0 +1,112 @@
+package  undying/sounds/SubVoiceover.uax
+bytes    805284
+sha256   fff2d2d4684010ecb0b9182f0196652e26510c001c9e979c82cb932c0675b9c9
+
+[header]
+  signature           0x9e2a83c1
+  version             85
+  licensee_version    0
+  package_flags       0x00000001
+  name_count          43
+  name_offset         64
+  export_count        35
+  export_offset       804701
+  import_count        4
+  import_offset       804673
+  guid                A163DA0C4D69868783F5CA93D1D401F0
+  generation_count    1
+  generation[0]       exports=35 names=43
+
+[classes] 2
+  package                 5
+  sound                   30
+
+[names] 43
+      0  0x04070410  None
+      1  0x00070010  WAV
+      2  0x04070410  Package
+      3  0x04070410  Class
+      4  0x04070010  Sound
+      5  0x04070010  Engine
+      6  0x04070010  Core
+      7  0x00070010  Bethany
+      8  0x00070010  Kiesinger
+      9  0x00070010  Lizbeth
+     10  0x00070010  Ambrose
+     11  0x00070010  Liz_021
+     12  0x00070010  Kie_021
+     13  0x00070010  Amb_017
+     14  0x00070010  Kie_018
+     15  0x00070010  Kie_020
+     16  0x00070010  Amb_022
+     17  0x00070010  Aar_024
+     18  0x00070010  Kie_016
+     19  0x00070010  Liz_022
+     20  0x00070010  Liz_019
+     21  0x00070010  Beth_015
+     22  0x00070010  Aar_025
+     23  0x00070010  Aar_023
+     24  0x00070010  Beth_016
+     25  0x00070010  Amb_021
+     26  0x00070010  Amb_023
+     27  0x00070010  Beth_013
+     28  0x00070010  Kie_019
+     29  0x00070010  Liz_018
+     30  0x00070010  Beth_014
+     31  0x00070010  Beth_017
+     32  0x00070010  Amb_016
+     33  0x00070010  Beth_012
+     34  0x00070010  Kie_017
+     35  0x00070010  Liz_017
+     36  0x00070010  Amb_020
+     37  0x00070010  Liz_020
+     38  0x00070010  Amb_019
+     39  0x00070010  Aaron
+     40  0x00070010  AMB_021A
+     41  0x00070010  AMB_024
+     42  0x00070010  SubVoiceover
+
+[imports] 4
+    idx  class             classpkg      package             name
+     -1  Package           Core          -                   Engine
+     -2  Class             Core          Engine              Sound
+     -3  Class             Core          Core                Package
+     -4  Package           Core          -                   Core
+
+[exports] 35
+    idx  class             package             name                        flags       serial            props  parse
+      1  Package           -                   Aaron                       0x00070004  620+1             0      3bca49ce518b0f13
+      2  Sound             Aaron               Aar_023                     0x000f0004  621+33469         0      736448b3ee30cf7e
+      3  Sound             Aaron               Aar_024                     0x000f0004  34090+25776       0      6abc1734a184a055
+      4  Sound             Aaron               Aar_025                     0x000f0004  59866+24750       0      d96e0f0aedae99d9
+      5  Package           -                   Ambrose                     0x00070004  84616+1           0      3bca49ce518b0f13
+      6  Sound             Ambrose             AMB_024                     0x000f0004  84617+35522       0      6b4cfd1994cfdfbb
+      7  Sound             Ambrose             Amb_016                     0x000f0004  120139+30905      0      f29c1a6151fcd7e0
+      8  Sound             Ambrose             Amb_017                     0x000f0004  151044+22698      0      ee342aa0497e845f
+      9  Sound             Ambrose             Amb_019                     0x000f0004  173742+21159      0      2e5c9552b60984f6
+     10  Sound             Ambrose             Amb_020                     0x000f0004  194901+22698      0      b5f2a1d0b9c03139
+     11  Sound             Ambrose             Amb_021                     0x000f0004  217599+25263      0      7194dea2e969f909
+     12  Sound             Ambrose             AMB_021A                    0x000f0004  242862+28853      0      12bdcb4ef7a9f2c7
+     13  Sound             Ambrose             Amb_022                     0x000f0004  271715+11927      0      25667a2f31f67dcc
+     14  Sound             Ambrose             Amb_023                     0x000f0004  283642+34495      0      ffe8a955d2f0af9d
+     15  Package           -                   Bethany                     0x00070004  318137+1          0      3bca49ce518b0f13
+     16  Sound             Bethany             Beth_017                    0x000f0004  318138+24237      0      7de8bf9824e752d8
+     17  Sound             Bethany             Beth_012                    0x000f0004  342375+32957      0      2b60d479b0af9314
+     18  Sound             Bethany             Beth_013                    0x000f0004  375332+24750      0      8b31981ad5fbb579
+     19  Sound             Bethany             Beth_014                    0x000f0004  400082+30905      0      507c9c538904aeda
+     20  Sound             Bethany             Beth_015                    0x000f0004  430987+32957      0      db7d79835add8e38
+     21  Sound             Bethany             Beth_016                    0x000f0004  463944+32957      0      d4e10479992cd6cd
+     22  Package           -                   Kiesinger                   0x00070004  496901+1          0      3bca49ce518b0f13
+     23  Sound             Kiesinger           Kie_021                     0x000f0004  496902+17569      0      c7a57f30c49efd6e
+     24  Sound             Kiesinger           Kie_016                     0x000f0004  514471+25263      0      a45131df6fbef6d7
+     25  Sound             Kiesinger           Kie_017                     0x000f0004  539734+31418      0      346a6b156ba4458d
+     26  Sound             Kiesinger           Kie_018                     0x000f0004  571152+43216      0      9729ff6eed23f2c0
+     27  Sound             Kiesinger           Kie_019                     0x000f0004  614368+13978      0      cdc685f4cde49380
+     28  Sound             Kiesinger           Kie_020                     0x000f0004  628346+25776      0      9bb3f864f97d1603
+     29  Package           -                   Lizbeth                     0x00070004  654122+1          0      3bca49ce518b0f13
+     30  Sound             Lizbeth             Liz_022                     0x000f0004  654123+33982      0      155129cadc92fbc4
+     31  Sound             Lizbeth             Liz_017                     0x000f0004  688105+18595      0      f324f63d88138552
+     32  Sound             Lizbeth             Liz_018                     0x000f0004  706700+22698      0      da53fb4cbdb005ca
+     33  Sound             Lizbeth             Liz_019                     0x000f0004  729398+18595      0      0a857da4c93d2d21
+     34  Sound             Lizbeth             Liz_020                     0x000f0004  747993+29366      0      311dd96809b2f890
+     35  Sound             Lizbeth             Liz_021                     0x000f0004  777359+27314      0      4802915338035d70

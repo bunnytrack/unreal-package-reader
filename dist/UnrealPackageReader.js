@@ -1583,9 +1583,57 @@
       audio_data: cursor.bytes(size)
     };
   }
+  function fitsSoundLayout(cursor, dwordCount) {
+    const start = cursor.offset;
+    try {
+      cursor.skip(dwordCount * 4);
+      const endOfAudio = cursor.uint32();
+      const size = cursor.compactIndex();
+      return endOfAudio === cursor.offset + size;
+    } catch {
+      return false;
+    } finally {
+      cursor.seek(start);
+    }
+  }
+  function undyingHeaderDwords(version) {
+    return version >= 83 ? 7 : version >= 80 ? 6 : 5;
+  }
+  function readUndyingSound(ctx, format) {
+    const { cursor, version } = ctx;
+    const header = Array.from(
+      { length: undyingHeaderDwords(version) },
+      (_, i) => i === 2 ? cursor.float32() : cursor.uint32()
+    );
+    const [, , duration, , data_size] = header;
+    const unknown = header.filter((_, i) => i !== 2 && i !== 4);
+    const skip_offset = cursor.uint32();
+    const size = cursor.compactIndex();
+    const audio_offset = cursor.offset;
+    cursor.skip(size);
+    const envelope_rate = cursor.uint32();
+    const envelope = cursor.bytes(cursor.compactIndex());
+    if (version >= 85) unknown.push(cursor.uint32());
+    return {
+      format,
+      duration,
+      data_size,
+      unknown,
+      skip_offset,
+      size,
+      audio_offset,
+      byte_rate: duration === 0 ? null : size / duration,
+      envelope_rate,
+      envelope
+    };
+  }
   function readUSound(ctx) {
     const { cursor, version, licenseeVersion } = ctx;
     const format = ctx.name();
+    const isUndying = licenseeVersion === 0 && version >= 79 && version <= 85 && !(version === 79 && fitsSoundLayout(cursor, 6));
+    if (isUndying) {
+      return readUndyingSound(ctx, format);
+    }
     if (version === 79 && licenseeVersion === 0) {
       const core_flags = cursor.uint32();
       const duration = cursor.float32();
@@ -2093,8 +2141,38 @@
   }
 
   // src/reader.ts
-  var WAVE_FORMAT_PCM = 1;
-  var SUBCHUNK_SIZE_PCM = 16;
+  function readWavHeader(view, offset, size) {
+    const fourCC = (at) => String.fromCharCode(
+      view.getUint8(at),
+      view.getUint8(at + 1),
+      view.getUint8(at + 2),
+      view.getUint8(at + 3)
+    );
+    const header = {};
+    const end = offset + size;
+    if (size < 12 || fourCC(offset) !== "RIFF" || fourCC(offset + 8) !== "WAVE") {
+      return header;
+    }
+    for (let at = offset + 12; at + 8 <= end; ) {
+      const id = fourCC(at);
+      const length = view.getUint32(at + 4, true);
+      if (id === "fmt " && length >= 16) {
+        header.wav_format = view.getUint16(at + 8, true);
+        header.channels = view.getUint16(at + 10, true);
+        header.sample_rate = view.getUint32(at + 12, true);
+        header.byte_rate = view.getUint32(at + 16, true);
+        header.block_align = view.getUint16(at + 20, true);
+        header.bit_depth = view.getUint16(at + 22, true);
+      } else if (id === "data") {
+        header.wav_data_offset = at + 8;
+        header.wav_data_size = Math.min(length, end - (at + 8));
+      } else if (id === "fact" && length >= 4) {
+        header.wav_sample_frames = view.getUint32(at + 8, true);
+      }
+      at += 8 + length + (length & 1);
+    }
+    return header;
+  }
   var UnrealPackageReader = class {
     #package;
     propertyTypes = PROPERTY_TYPES;
@@ -2259,11 +2337,11 @@
         if (soundObject.isInPackage) {
           sound.package = soundObject.packageName;
         }
-        if (sound.format.toUpperCase() === "WAV" && view.getUint16(sound.audio_offset + 16, true) === SUBCHUNK_SIZE_PCM && view.getUint16(sound.audio_offset + 20, true) === WAVE_FORMAT_PCM) {
-          sound.channels = view.getUint16(sound.audio_offset + 22, true);
-          sound.sample_rate = view.getUint32(sound.audio_offset + 24, true);
-          sound.byte_rate = view.getUint32(sound.audio_offset + 28, true);
-          sound.bit_depth = view.getUint16(sound.audio_offset + 34, true);
+        if (sound.format.toUpperCase() === "WAV") {
+          Object.assign(
+            sound,
+            readWavHeader(view, sound.audio_offset, sound.size)
+          );
         }
         sounds.push(sound);
       }

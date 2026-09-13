@@ -60,11 +60,15 @@ export interface BrushData {
   polys: { object?: ExportTableObject; polygons?: Polygon[] };
 }
 
-/** One entry of `getSounds()`: the sound's parse plus display metadata. */
-export type SoundInfo = ObjectData<USound> & {
-  name: string;
-  package?: string;
-};
+/**
+ * One entry of `getSounds()`: the sound's parse, the WAV header fields where
+ * the payload is a WAV, and display metadata.
+ */
+export type SoundInfo = ObjectData<USound> &
+  WavHeader & {
+    name: string;
+    package?: string;
+  };
 
 /** One entry of `getDependencies()`: a package this one needs alongside it. */
 export interface Dependency {
@@ -86,9 +90,68 @@ export interface DependenciesFiltered {
   packages: { default: Dependency[]; custom: Dependency[] };
 }
 
-/** The WAVE fields `getSounds` reads when the data looks like plain PCM. */
-const WAVE_FORMAT_PCM = 0x01;
-const SUBCHUNK_SIZE_PCM = 0x10;
+/**
+ * What `getSounds` reads out of a WAV payload's `fmt ` and `data` chunks.
+ * Every field is absent when the payload is not a RIFF WAVE or has no `fmt `
+ * chunk.
+ */
+export interface WavHeader {
+  wav_format?: number;
+  channels?: number;
+  sample_rate?: number;
+  byte_rate?: number;
+  block_align?: number;
+  bit_depth?: number;
+  wav_data_offset?: number;
+  wav_data_size?: number;
+  wav_sample_frames?: number;
+}
+
+/** Walk a RIFF WAVE's chunk list at `offset`, of `size` bytes in total. */
+function readWavHeader(
+  view: DataView,
+  offset: number,
+  size: number,
+): WavHeader {
+  const fourCC = (at: number) =>
+    String.fromCharCode(
+      view.getUint8(at),
+      view.getUint8(at + 1),
+      view.getUint8(at + 2),
+      view.getUint8(at + 3),
+    );
+
+  const header: WavHeader = {};
+  const end = offset + size;
+
+  if (size < 12 || fourCC(offset) !== "RIFF" || fourCC(offset + 8) !== "WAVE") {
+    return header;
+  }
+
+  for (let at = offset + 12; at + 8 <= end;) {
+    const id = fourCC(at);
+    const length = view.getUint32(at + 4, true);
+
+    if (id === "fmt " && length >= 16) {
+      header.wav_format = view.getUint16(at + 8, true);
+      header.channels = view.getUint16(at + 10, true);
+      header.sample_rate = view.getUint32(at + 12, true);
+      header.byte_rate = view.getUint32(at + 16, true);
+      header.block_align = view.getUint16(at + 20, true);
+      header.bit_depth = view.getUint16(at + 22, true);
+    } else if (id === "data") {
+      header.wav_data_offset = at + 8;
+      header.wav_data_size = Math.min(length, end - (at + 8));
+    } else if (id === "fact" && length >= 4) {
+      header.wav_sample_frames = view.getUint32(at + 8, true);
+    }
+
+    // Chunks are word-aligned; an odd length carries a pad byte.
+    at += 8 + length + (length & 1);
+  }
+
+  return header;
+}
 
 /**
  * The public entry class.
@@ -317,15 +380,11 @@ export class UnrealPackageReader {
         sound.package = soundObject.packageName!;
       }
 
-      if (
-        sound.format.toUpperCase() === "WAV" &&
-        view.getUint16(sound.audio_offset + 16, true) === SUBCHUNK_SIZE_PCM &&
-        view.getUint16(sound.audio_offset + 20, true) === WAVE_FORMAT_PCM
-      ) {
-        sound.channels = view.getUint16(sound.audio_offset + 22, true);
-        sound.sample_rate = view.getUint32(sound.audio_offset + 24, true);
-        sound.byte_rate = view.getUint32(sound.audio_offset + 28, true);
-        sound.bit_depth = view.getUint16(sound.audio_offset + 34, true);
+      if (sound.format.toUpperCase() === "WAV") {
+        Object.assign(
+          sound,
+          readWavHeader(view, sound.audio_offset, sound.size),
+        );
       }
 
       sounds.push(sound);

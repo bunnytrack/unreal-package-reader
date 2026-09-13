@@ -1,0 +1,46 @@
+package  undying/sounds/Events.uax
+bytes    168278
+sha256   4afd68e9447602f95464b01c44f4bece9baa210ac0b2b3df43d9192d7f069de4
+
+[header]
+  signature           0x9e2a83c1
+  version             79
+  licensee_version    0
+  package_flags       0x00000001
+  name_count          10
+  name_offset         64
+  export_count        2
+  export_offset       168247
+  import_count        4
+  import_offset       168219
+  guid                2D7938C111D4A684A000C6BEDE3A2AC9
+  generation_count    1
+  generation[0]       exports=2 names=10
+
+[classes] 2
+  package                 1
+  sound                   1
+
+[names] 10
+      0  0x04070410  None
+      1  0x00070010  WAV
+      2  0x04070410  Package
+      3  0x04070410  Class
+      4  0x04070010  Engine
+      5  0x00070010  Events
+      6  0x04070010  Core
+      7  0x04070010  Sound
+      8  0x00070010  Doors&Locks
+      9  0x00070010  07HvyRockDoor01
+
+[imports] 4
+    idx  class             classpkg      package             name
+     -1  Package           Core          -                   Engine
+     -2  Class             Core          Engine              Sound
+     -3  Class             Core          Core                Package
+     -4  Package           Core          -                   Core
+
+[exports] 2
+    idx  class             package             name                        flags       serial            props  parse
+      1  Sound             Doors&Locks         07HvyRockDoor01             0x000f0004  190+168028        0      f244d44881bf46d9
+      2  Package           -                   Doors&Locks                 0x00070004  168218+1          0      3bca49ce518b0f13

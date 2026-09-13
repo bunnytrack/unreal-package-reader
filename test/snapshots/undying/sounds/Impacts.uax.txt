@@ -1,0 +1,226 @@
+package  undying/sounds/Impacts.uax
+bytes    1799699
+sha256   951467a86339a10a3294cf0c9f886784a48b5d8ae5c58b94b9b244f483788c05
+
+[header]
+  signature           0x9e2a83c1
+  version             83
+  licensee_version    0
+  package_flags       0x00000001
+  name_count          100
+  name_offset         64
+  export_count        92
+  export_offset       1798082
+  import_count        4
+  import_offset       1798054
+  guid                0901C80011D4E25BC000F1A0B361A14F
+  generation_count    1
+  generation[0]       exports=92 names=100
+
+[classes] 2
+  package                 3
+  sound                   89
+
+[names] 100
+      0  0x04070410  None
+      1  0x00070010  WAV
+      2  0x00070010  E_Imp_Water01
+      3  0x04070410  Package
+      4  0x04070410  Class
+      5  0x04070010  Sound
+      6  0x04070010  Core
+      7  0x04070010  Engine
+      8  0x00070010  E_Wpn_ShotHitGen01
+      9  0x00070010  E_Imp_WoodS01
+     10  0x00070010  E_Imp_Earth03
+     11  0x00070010  E_Wpn_ScyHitHard02
+     12  0x00070010  E_Imp_FleshBullet01
+     13  0x00070010  E_Imp_FleshStab01
+     14  0x00070010  E_Wpn_ScyHitSoft03
+     15  0x00070010  E_Wpn_RevHitRico02
+     16  0x00070010  E_Wpn_MoltBounceSoft01
+     17  0x00070010  E_Imp_Snow02
+     18  0x00070010  C_Plant_SeedImp01
+     19  0x00070010  E_Imp_Headshot
+     20  0x00070010  WpnSplSpecific
+     21  0x00070010  E_Wpn_GenericWhooshby
+     22  0x00070010  E_Wpn_DaggerHit01
+     23  0x00070010  E_Imp_Carpet03
+     24  0x00070010  E_Wpn_RevHitRico03
+     25  0x00070010  E_Imp_Leaves01
+     26  0x00070010  E_Imp_Stone03
+     27  0x00070010  E_Imp_Water02
+     28  0x00070010  GoreSpecific
+     29  0x00070010  C_DSaint_ClawHit01
+     30  0x00070010  C_DSaint_StaffHit01
+     31  0x00070010  E_Wpn_ScyHitHard01
+     32  0x00070010  E_Imp_FleshBite01
+     33  0x00070010  E_Wpn_DynaBounceGen03
+     34  0x00070010  E_Wpn_ScyHitHard03
+     35  0x00070010  E_Wpn_DynaBounceGen02
+     36  0x00070010  SurfaceSpecific
+     37  0x00070010  E_Wpn_MoltBounceHard01
+     38  0x00070010  E_Imp_Carpet01
+     39  0x00070010  E_Imp_Leaves02
+     40  0x00070010  E_Imp_Earth02
+     41  0x00070010  E_Wpn_MoltBounceHard03
+     42  0x00070010  E_Imp_Metal02
+     43  0x00070010  E_Imp_Snow03
+     44  0x00070010  E_Imp_Stone01
+     45  0x00070010  E_Imp_Stone02
+     46  0x00070010  E_Imp_Metal03
+     47  0x00070010  E_Imp_WoodH02
+     48  0x00070010  E_Wpn_RevHitGen01
+     49  0x00070010  E_Wpn_RevHitGen02
+     50  0x00070010  E_Wpn_ScyHit01
+     51  0x00070010  E_Wpn_SpearHit01
+     52  0x00070010  E_Imp_FleshSlice01
+     53  0x00070010  E_Wpn_RevHit01
+     54  0x00070010  E_Imp_Carpet02
+     55  0x00070010  E_Imp_FleshStab02
+     56  0x00070010  E_Imp_FleshBullet02
+     57  0x00070010  E_Imp_FleshSlice02
+     58  0x00070010  E_Imp_Earth01
+     59  0x00070010  E_Imp_WoodS02
+     60  0x00070010  E_Wpn_MoltBounceSoft03
+     61  0x00070010  E_Imp_WoodH01
+     62  0x00070010  E_Wpn_ShotHitGen03
+     63  0x00070010  E_Imp_Leaves03
+     64  0x00070010  E_Imp_WoodH03
+     65  0x00070010  E_Imp_WoodS03
+     66  0x00070010  E_Wpn_ShotHitGen02
+     67  0x00070010  E_Wpn_RevHitRico01
+     68  0x00070010  E_Wpn_ScyHitSoft02
+     69  0x00070010  E_Wpn_DynaBounceGen01
+     70  0x00070010  E_Imp_Snow01
+     71  0x00070010  E_Imp_Metal01
+     72  0x00070010  E_Wpn_ShotHit01
+     73  0x00070010  E_Wpn_ScyHitSoft01
+     74  0x00070010  E_Wpn_MoltBounceSoft02
+     75  0x00070010  E_Imp_FleshBlunt02
+     76  0x00070010  E_Imp_FleshBite02
+     77  0x00070010  E_Wpn_MoltBounceHard02
+     78  0x00070010  E_Imp_FleshBlunt01
+     79  0x00070010  E_Imp_Water03
+     80  0x00070010  E_Wpn_RevHitGen03
+     81  0x00070010  Impacts
+     82  0x00070010  C_DSaint_SkullHit01
+     83  0x00070010  C_Howl_ClawHit01
+     84  0x00070010  E_Wpn_SpearHitGen03
+     85  0x00070010  E_Wpn_SpearHitGen01
+     86  0x00070010  E_Wpn_SpearHitGen02
+     87  0x00070010  E_Wpn_ShotHitRico03
+     88  0x00070010  E_Wpn_ShotHitRico01
+     89  0x00070010  E_Wpn_ShotHitRico02
+     90  0x00070010  E_Wpn_SpearHitRico03
+     91  0x00070010  E_Wpn_SpearHitRico01
+     92  0x00070010  E_Wpn_SpearHitRico02
+     93  0x00070010  E_Wpn_ClawHit01
+     94  0x00070010  E_Wpn_HookHit01
+     95  0x00070010  E_Wpn_SwordHit01
+     96  0x00070010  E_Wpn_AxeHit01
+     97  0x00070010  E_Imp_Glass01
+     98  0x00070010  E_Imp_Glass02
+     99  0x00070010  E_Imp_Glass03
+
+[imports] 4
+    idx  class             classpkg      package             name
+     -1  Package           Core          -                   Engine
+     -2  Class             Core          Engine              Sound
+     -3  Class             Core          Core                Package
+     -4  Package           Core          -                   Core
+
+[exports] 92
+    idx  class             package             name                        flags       serial            props  parse
+      1  Package           -                   GoreSpecific                0x00070004  2213+1            0      3bca49ce518b0f13
+      2  Sound             GoreSpecific        E_Imp_FleshStab01           0x000f0004  2214+32214        0      796c915d83abb624
+      3  Sound             GoreSpecific        E_Imp_FleshStab02           0x000f0004  34428+36822       0      d781e8535f38db6d
+      4  Sound             GoreSpecific        E_Imp_FleshBite01           0x000f0004  71250+33942       0      7e5f291ac5ff5988
+      5  Sound             GoreSpecific        E_Imp_FleshBite02           0x000f0004  105192+35158      0      fe65c91e97381409
+      6  Sound             GoreSpecific        E_Imp_FleshBlunt01          0x000f0004  140350+23702      0      af111489af9e46bf
+      7  Sound             GoreSpecific        E_Imp_FleshBlunt02          0x000f0004  164052+25430      0      751bc7639081d07b
+      8  Sound             GoreSpecific        E_Imp_FleshBullet01         0x000f0004  189482+41302      0      d4a189a117839ee5
+      9  Sound             GoreSpecific        E_Imp_FleshBullet02         0x000f0004  230784+28566      0      8e4003dabb4ba5ba
+     10  Sound             GoreSpecific        E_Imp_FleshSlice01          0x000f0004  259350+51670      0      7cb7f71366f1fb45
+     11  Sound             GoreSpecific        E_Imp_FleshSlice02          0x000f0004  311020+35158      0      b237f37072055d88
+     12  Package           -                   SurfaceSpecific             0x00070004  346178+1          0      3bca49ce518b0f13
+     13  Sound             SurfaceSpecific     E_Wpn_ScyHitHard01          0x000f0004  346179+24918      0      f315c16cc270e7ba
+     14  Sound             SurfaceSpecific     E_Wpn_ScyHitHard02          0x000f0004  371097+21206      0      c02222d6bdf31875
+     15  Sound             SurfaceSpecific     E_Wpn_ScyHitHard03          0x000f0004  392303+41296      0      92f9e8876b33b54d
+     16  Sound             SurfaceSpecific     E_Wpn_ScyHitSoft01          0x000f0004  433599+9782       0      2c320c45547c8f2c
+     17  Sound             SurfaceSpecific     E_Wpn_ScyHitSoft02          0x000f0004  443381+13678      0      7bd275d93e3cdd46
+     18  Sound             SurfaceSpecific     E_Wpn_ScyHitSoft03          0x000f0004  457059+15820      0      4aa1c103981c2a1e
+     19  Package           -                   WpnSplSpecific              0x00070004  472879+1          0      3bca49ce518b0f13
+     20  Sound             WpnSplSpecific      E_Wpn_ScyHit01              0x000f0004  472880+42578      0      12fc5b9905c7bcbd
+     21  Sound             SurfaceSpecific     E_Imp_Water01               0x000f0004  515458+14230      0      3254d69a9064ce3a
+     22  Sound             SurfaceSpecific     E_Imp_Water02               0x000f0004  529688+24214      0      3418b095efaa902f
+     23  Sound             SurfaceSpecific     E_Imp_Water03               0x000f0004  553902+27260      0      6326efb8cf8b6cdb
+     24  Sound             SurfaceSpecific     E_Wpn_MoltBounceHard01      0x000f0004  581162+8342       0      1ae3c6bd5a5b375a
+     25  Sound             SurfaceSpecific     E_Wpn_MoltBounceHard02      0x000f0004  589504+8181       0      f7940d2cd65cd904
+     26  Sound             SurfaceSpecific     E_Wpn_MoltBounceHard03      0x000f0004  597685+18420      0      b2f1608a838279d1
+     27  Sound             SurfaceSpecific     E_Wpn_MoltBounceSoft01      0x000f0004  616105+19094      0      3c976d2a020db6b8
+     28  Sound             SurfaceSpecific     E_Wpn_MoltBounceSoft02      0x000f0004  635199+17494      0      73e980f608128917
+     29  Sound             SurfaceSpecific     E_Wpn_MoltBounceSoft03      0x000f0004  652693+11734      0      b49486a914cf8260
+     30  Sound             SurfaceSpecific     E_Wpn_DynaBounceGen01       0x000f0004  664427+6451       0      859e35bd4e2d1b7e
+     31  Sound             SurfaceSpecific     E_Wpn_DynaBounceGen02       0x000f0004  670878+6759       0      23328b5daa331f14
+     32  Sound             SurfaceSpecific     E_Wpn_DynaBounceGen03       0x000f0004  677637+5975       0      a326e2ab3a7af20e
+     33  Sound             WpnSplSpecific      E_Wpn_RevHit01              0x000f0004  683612+6661       0      fd4da80c9c83fcb7
+     34  Sound             SurfaceSpecific     E_Wpn_RevHitRico01          0x000f0004  690273+34518      0      37a1710c12c707dc
+     35  Sound             SurfaceSpecific     E_Wpn_RevHitRico02          0x000f0004  724791+25430      0      bfa14f4025752251
+     36  Sound             SurfaceSpecific     E_Wpn_RevHitRico03          0x000f0004  750221+33878      0      ca010c50905defcb
+     37  Sound             SurfaceSpecific     E_Wpn_RevHitGen01           0x000f0004  784099+33850      0      040c9fd3b86f5ad7
+     38  Sound             SurfaceSpecific     E_Wpn_RevHitGen02           0x000f0004  817949+26134      0      b939585e3bcfb7ca
+     39  Sound             SurfaceSpecific     E_Wpn_RevHitGen03           0x000f0004  844083+32726      0      faa2af7a2e20ed6e
+     40  Sound             WpnSplSpecific      E_Wpn_ShotHit01             0x000f0004  876809+1965       0      f162900d414419aa
+     41  Sound             SurfaceSpecific     E_Wpn_ShotHitGen01          0x000f0004  878774+16854      0      18edc8899fe23852
+     42  Sound             SurfaceSpecific     E_Wpn_ShotHitGen02          0x000f0004  895628+24086      0      32a5cd26a9af2027
+     43  Sound             SurfaceSpecific     E_Wpn_ShotHitGen03          0x000f0004  919714+31138      0      da6b0910d75cfbcc
+     44  Sound             SurfaceSpecific     E_Imp_Stone01               0x000f0004  950852+3493       0      242079e72671c8f2
+     45  Sound             SurfaceSpecific     E_Imp_Stone02               0x000f0004  954345+4773       0      011cad7e8605c57f
+     46  Sound             SurfaceSpecific     E_Imp_Stone03               0x000f0004  959118+9142       0      a155346b85be627f
+     47  Sound             SurfaceSpecific     E_Imp_Leaves01              0x000f0004  968260+23318      0      dc449b53e83671c6
+     48  Sound             SurfaceSpecific     E_Imp_Leaves02              0x000f0004  991578+25558      0      487aa84d47f8a59d
+     49  Sound             SurfaceSpecific     E_Imp_Leaves03              0x000f0004  1017136+25750     0      53d24c95e0005a60
+     50  Sound             SurfaceSpecific     E_Imp_Snow01                0x000f0004  1042886+18902     0      573bbd5a14e64773
+     51  Sound             SurfaceSpecific     E_Imp_Snow02                0x000f0004  1061788+27030     0      be45c462fd9a5ade
+     52  Sound             SurfaceSpecific     E_Imp_Snow03                0x000f0004  1088818+20246     0      350066bd20baadcb
+     53  Sound             SurfaceSpecific     E_Imp_Earth01               0x000f0004  1109064+26838     0      94e9fddbc69aece9
+     54  Sound             SurfaceSpecific     E_Imp_Earth02               0x000f0004  1135902+22170     0      fdf3118023f0ca3e
+     55  Sound             SurfaceSpecific     E_Imp_Earth03               0x000f0004  1158072+22230     0      5f02f8ad96b5d14c
+     56  Sound             SurfaceSpecific     E_Imp_Carpet01              0x000f0004  1180302+10388     0      c13348b767bef5c7
+     57  Sound             SurfaceSpecific     E_Imp_Carpet02              0x000f0004  1190690+9516      0      fd2640cca85af110
+     58  Sound             SurfaceSpecific     E_Imp_Carpet03              0x000f0004  1200206+12748     0      a1ec118b51fc663d
+     59  Sound             SurfaceSpecific     E_Imp_WoodH01               0x000f0004  1212954+10262     0      17528a0de144b341
+     60  Sound             SurfaceSpecific     E_Imp_WoodH02               0x000f0004  1223216+7349      0      3274ddfc952b3613
+     61  Sound             SurfaceSpecific     E_Imp_WoodH03               0x000f0004  1230565+8053      0      226d7144c9e82152
+     62  Sound             SurfaceSpecific     E_Imp_WoodS01               0x000f0004  1238618+4821      0      8b1cde414aff22a1
+     63  Sound             SurfaceSpecific     E_Imp_WoodS02               0x000f0004  1243439+6165      0      d10ba0e7157c0865
+     64  Sound             SurfaceSpecific     E_Imp_WoodS03               0x000f0004  1249604+4597      0      d8b23c3288285af8
+     65  Sound             SurfaceSpecific     E_Imp_Metal01               0x000f0004  1254201+16102     0      e94879bc0274a9ed
+     66  Sound             SurfaceSpecific     E_Imp_Metal02               0x000f0004  1270303+26714     0      6bc78ebe8d0966c0
+     67  Sound             SurfaceSpecific     E_Imp_Metal03               0x000f0004  1297017+32024     0      4bff4c27848a448d
+     68  Sound             WpnSplSpecific      E_Wpn_GenericWhooshby       0x000f0004  1329041+10840     0      c69be954e7cec24f
+     69  Sound             WpnSplSpecific      E_Wpn_SpearHit01            0x000f0004  1339881+15318     0      b0d68794943e5bd2
+     70  Sound             WpnSplSpecific      C_DSaint_SkullHit01         0x000f0004  1355199+16470     0      2ce39a6d08d057d8
+     71  Sound             GoreSpecific        E_Imp_Headshot              0x000f0004  1371669+29782     0      a09d5586af29c6b3
+     72  Sound             WpnSplSpecific      C_Plant_SeedImp01           0x000f0004  1401451+10342     0      c2958f7bb43e543a
+     73  Sound             WpnSplSpecific      E_Wpn_DaggerHit01           0x000f0004  1411793+12502     0      05a31991b3bbc220
+     74  Sound             WpnSplSpecific      C_Howl_ClawHit01            0x000f0004  1424295+7445      0      4b4816916dede339
+     75  Sound             SurfaceSpecific     E_Wpn_ShotHitRico03         0x000f0004  1431740+29526     0      e4ecf0ff3708b9c1
+     76  Sound             SurfaceSpecific     E_Wpn_ShotHitRico01         0x000f0004  1461266+26838     0      7aa65ba504a2d23e
+     77  Sound             SurfaceSpecific     E_Wpn_ShotHitRico02         0x000f0004  1488104+27542     0      a1c2ee3fbac83572
+     78  Sound             SurfaceSpecific     E_Wpn_SpearHitRico03        0x000f0004  1515646+16790     0      4d62829a5919af01
+     79  Sound             SurfaceSpecific     E_Wpn_SpearHitGen02         0x000f0004  1532436+7765      0      ae089ad59fb67d9f
+     80  Sound             SurfaceSpecific     E_Wpn_SpearHitGen03         0x000f0004  1540201+12630     0      4b2b97402e599208
+     81  Sound             SurfaceSpecific     E_Wpn_SpearHitRico01        0x000f0004  1552831+16854     0      3d1c3f786dc6dd1d
+     82  Sound             SurfaceSpecific     E_Wpn_SpearHitRico02        0x000f0004  1569685+11766     0      ccc13b15cea2401e
+     83  Sound             SurfaceSpecific     E_Wpn_SpearHitGen01         0x000f0004  1581451+8021      0      59afa93caa392bef
+     84  Sound             WpnSplSpecific      C_DSaint_StaffHit01         0x000f0004  1589472+9238      0      d572e85721aee769
+     85  Sound             WpnSplSpecific      C_DSaint_ClawHit01          0x000f0004  1598710+13334     0      612fa39c425d7aa0
+     86  Sound             WpnSplSpecific      E_Wpn_ClawHit01             0x000f0004  1612044+22422     0      193ca8c27c238344
+     87  Sound             WpnSplSpecific      E_Wpn_HookHit01             0x000f0004  1634466+26710     0      859f40b305c208e9
+     88  Sound             WpnSplSpecific      E_Wpn_SwordHit01            0x000f0004  1661176+31062     0      19220bb6715db1e4
+     89  Sound             WpnSplSpecific      E_Wpn_AxeHit01              0x000f0004  1692238+41686     0      7bea8d219b834df9
+     90  Sound             SurfaceSpecific     E_Imp_Glass01               0x000f0004  1733924+22550     0      39761192ea9a262d
+     91  Sound             SurfaceSpecific     E_Imp_Glass02               0x000f0004  1756474+22358     0      ff45703302cb13b9
+     92  Sound             SurfaceSpecific     E_Imp_Glass03               0x000f0004  1778832+19222     0      fbba17051be58388

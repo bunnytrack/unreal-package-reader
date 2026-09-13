@@ -81,8 +81,8 @@ Rules that a plausible-looking change can silently break:
 ## Coverage
 
 The reader takes 23 distinct sides of `header.version` branches. The corpus -
-16 packages spanning versions 60, 61, 63, 64, 66, 69 and 79 - exercises 20 of
-them. The three unreached branches are single-field reads needing package
+20 packages spanning versions 60, 61, 63, 64, 66, 69, 79, 80, 83 and 85 -
+exercises 20 of them. The three unreached branches are single-field reads needing package
 kinds that may not exist: `.u` script packages only ever carry the engine
 version of the build that shipped them, so a v61 or v65 `.u` with meshes, or
 a v62 `.unr`, would have to come from a specific interim build. Unreached

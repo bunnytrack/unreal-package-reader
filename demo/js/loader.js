@@ -19,6 +19,8 @@ $(function () {
 
   const SUPPORTED_SOUND_FORMATS = Object.values(SOUND_FORMATS);
 
+  const WAV_FORMAT_IMA_ADPCM = 0x11;
+
   const isSupportedSoundFormat = (format) =>
     typeof format === "string" &&
     SUPPORTED_SOUND_FORMATS.includes(format.toUpperCase());
@@ -2580,6 +2582,27 @@ $(function () {
             const rawXaBytes = new Uint8Array(audioData);
             const samples = decodeEAXAMono(rawXaBytes);
             audioData = buildWavFile(samples, sound);
+          } else if (sound.wav_format === WAV_FORMAT_IMA_ADPCM) {
+            const adpcm = new Uint8Array(
+              packageArrayBuffer,
+              sound.wav_data_offset,
+              sound.wav_data_size,
+            );
+
+            let samples = decodeImaAdpcm(
+              adpcm,
+              sound.channels,
+              sound.block_align,
+            );
+
+            if (sound.wav_sample_frames !== undefined) {
+              samples = samples.subarray(
+                0,
+                sound.wav_sample_frames * sound.channels,
+              );
+            }
+
+            audioData = buildWavFile(samples, { ...sound, bit_depth: 16 });
           }
 
           const audioBlob = new Blob([audioData], {
@@ -2925,6 +2948,84 @@ $(function () {
         hist2 = hist1;
         hist1 = sample;
         out.push(sample);
+      }
+    }
+
+    return out;
+  }
+
+  // IMA ADPCM step table and index deltas, from the IMA/DVI specification.
+  const IMA_STEP_TABLE = [
+    7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 19, 21, 23, 25, 28, 31, 34, 37, 41, 45,
+    50, 55, 60, 66, 73, 80, 88, 97, 107, 118, 130, 143, 157, 173, 190, 209, 230,
+    253, 279, 307, 337, 371, 408, 449, 494, 544, 598, 658, 724, 796, 876, 963,
+    1060, 1166, 1282, 1411, 1552, 1707, 1878, 2066, 2272, 2499, 2749, 3024,
+    3327, 3660, 4026, 4428, 4871, 5358, 5894, 6484, 7132, 7845, 8630, 9493,
+    10442, 11487, 12635, 13899, 15289, 16818, 18500, 20350, 22385, 24623, 27086,
+    29794, 32767,
+  ];
+  const IMA_INDEX_TABLE = [
+    -1, -1, -1, -1, 2, 4, 6, 8, -1, -1, -1, -1, 2, 4, 6, 8,
+  ];
+
+  function decodeImaAdpcm(bytes, channels, blockAlign) {
+    const samplesPerBlock = ((blockAlign - 4 * channels) * 2) / channels + 1;
+    const blocks = Math.floor(bytes.length / blockAlign);
+    const out = new Int16Array(blocks * samplesPerBlock * channels);
+
+    const predictor = new Int32Array(channels);
+    const stepIndex = new Int32Array(channels);
+
+    const decodeNibble = (channel, nibble) => {
+      const step = IMA_STEP_TABLE[stepIndex[channel]];
+      let diff = step >> 3;
+
+      if (nibble & 1) diff += step >> 2;
+      if (nibble & 2) diff += step >> 1;
+      if (nibble & 4) diff += step;
+      if (nibble & 8) diff = -diff;
+
+      predictor[channel] = Math.max(
+        -32768,
+        Math.min(32767, predictor[channel] + diff),
+      );
+
+      stepIndex[channel] = Math.max(
+        0,
+        Math.min(88, stepIndex[channel] + IMA_INDEX_TABLE[nibble]),
+      );
+
+      return predictor[channel];
+    };
+
+    let outIndex = 0;
+
+    for (let block = 0; block < blocks; block++) {
+      let at = block * blockAlign;
+
+      for (let channel = 0; channel < channels; channel++, at += 4) {
+        predictor[channel] = ((bytes[at] | (bytes[at + 1] << 8)) << 16) >> 16;
+        stepIndex[channel] = Math.min(88, bytes[at + 2]);
+        out[outIndex + channel] = predictor[channel];
+      }
+
+      outIndex += channels;
+
+      const blockEnd = (block + 1) * blockAlign;
+
+      while (at + 4 * channels <= blockEnd) {
+        for (let channel = 0; channel < channels; channel++) {
+          for (let byte = 0; byte < 4; byte++) {
+            const value = bytes[at + channel * 4 + byte];
+            const base = outIndex + byte * 2 * channels + channel;
+
+            out[base] = decodeNibble(channel, value & 0x0f);
+            out[base + channels] = decodeNibble(channel, value >> 4);
+          }
+        }
+
+        at += 4 * channels;
+        outIndex += 8 * channels;
       }
     }
 
