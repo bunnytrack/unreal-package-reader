@@ -983,6 +983,7 @@ $(function () {
       const previewWidth = 1920;
       const previewHeight = 1080;
 
+      const loader = new THREE.TextureLoader();
       const { scene, camera, renderer } = getThreeSetup(
         previewWidth,
         previewHeight,
@@ -1051,31 +1052,73 @@ $(function () {
         }
       }
 
-      const lights = utPackage.getObjectsByClass("Light");
+      const extras = [
+        {
+          className: "Light",
+          texturePath: "icons/s_light.png",
+        },
+        {
+          className: "PathNode",
+          texturePath: "icons/s_pickup.png",
+        },
+        {
+          className: "PlayerStart",
+          texturePath: "icons/s_player.png",
+        },
+        {
+          className: "AmbientSound",
+          texturePath: "icons/s_ambient.png",
+        },
+        {
+          className: "SpecialEvent",
+          texturePath: "icons/s_specialevent.png",
+        },
+        {
+          className: ["Teleporter", "FavoritesTeleporter", "VisibleTeleporter"],
+          texturePath: "icons/s_teleport.png",
+        },
+        {
+          className: ["Trigger", "TimedTrigger"],
+          texturePath: "icons/s_trigger.png",
+        },
+        {
+          className: "ZoneInfo",
+          texturePath: "icons/s_zoneinfo.png",
+        },
+        {
+          className: "Kicker",
+          texturePath: "icons/s_actor.png",
+        },
+      ];
 
-      if (lights.length > 0) {
-        const spriteMap = new THREE.TextureLoader().load("icons/s_light.png");
-        const spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap });
+      for (const { className, texturePath } of extras) {
+        const objects = (
+          typeof className === "string" ? [className] : className
+        ).flatMap((item) => utPackage.getObjectsByClass(item));
 
-        for (const light of lights) {
-          const props = light.properties;
+        if (objects.length > 0) {
+          const spriteMap = loader.load(texturePath);
+          const spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap });
 
-          const propObj = {};
-          props.forEach((p) => (propObj[p.name.toLowerCase()] = p.value));
+          for (const object of objects) {
+            const sprite = new THREE.Sprite(spriteMaterial);
+            const drawScale = Math.max(
+              object.getProp("drawscale")?.value ?? 1,
+              1,
+            );
+            const location = object.getProp("location")?.value ?? {
+              x: 0,
+              y: 0,
+              z: 0,
+            };
 
-          const sprite = new THREE.Sprite(spriteMaterial);
+            sprite.scale.set(32 * drawScale, 32 * drawScale, 32 * drawScale);
+            sprite.position.x = location.x;
+            sprite.position.y = location.z;
+            sprite.position.z = location.y;
 
-          const drawScale = propObj.drawscale || 1;
-
-          sprite.scale.set(32 * drawScale, 32 * drawScale, 32 * drawScale);
-
-          const location = propObj.location || { x: 0, y: 0, z: 0 };
-
-          sprite.position.x = location.x;
-          sprite.position.y = location.z;
-          sprite.position.z = location.y;
-
-          scene.add(sprite);
+            scene.add(sprite);
+          }
         }
       }
 
@@ -2015,15 +2058,15 @@ $(function () {
     };
 
     parentEl.html("").append(`
-            <h3>Model</h3>
+      <h3>Model</h3>
 
-            <section>
-                <p class="property mono">
-                    <span class="name">Name</span>
-                    <span class="value">${objectName}</span>
-                </p>
-            </section>
-        `);
+      <section>
+        <p class="property mono">
+          <span class="name">Name</span>
+          <span class="value">${objectName}</span>
+        </p>
+      </section>
+    `);
 
     for (const propName in properties) {
       let propValue = properties[propName];
@@ -2057,69 +2100,69 @@ $(function () {
 
             if (propName === "bounding_box") {
               propEl.append(`
-                                <section class="struct" data-type="vector">
-                                    <p class="struct-name mono">Min</p>
+                <section class="struct" data-type="vector">
+                  <p class="struct-name mono">Min</p>
 
-                                    <p class="property mono">
-                                        <span class="name">X</span>
-                                        <span class="value">${propValue.min.x}</span>
-                                    </p>
-                                    <p class="property mono">
-                                        <span class="name">Y</span>
-                                        <span class="value">${propValue.min.y}</span>
-                                    </p>
-                                    <p class="property mono">
-                                        <span class="name">Z</span>
-                                        <span class="value">${propValue.min.z}</span>
-                                    </p>
-                                </section>
+                  <p class="property mono">
+                    <span class="name">X</span>
+                    <span class="value">${propValue.min.x}</span>
+                  </p>
+                  <p class="property mono">
+                    <span class="name">Y</span>
+                    <span class="value">${propValue.min.y}</span>
+                  </p>
+                  <p class="property mono">
+                    <span class="name">Z</span>
+                    <span class="value">${propValue.min.z}</span>
+                  </p>
+                </section>
 
-                                <section class="struct" data-type="vector">
-                                    <p class="struct-name mono">Max</p>
+                <section class="struct" data-type="vector">
+                  <p class="struct-name mono">Max</p>
 
-                                    <p class="property mono">
-                                        <span class="name">X</span>
-                                        <span class="value">${propValue.max.x}</span>
-                                    </p>
-                                    <p class="property mono">
-                                        <span class="name">Y</span>
-                                        <span class="value">${propValue.max.y}</span>
-                                    </p>
-                                    <p class="property mono">
-                                        <span class="name">Z</span>
-                                        <span class="value">${propValue.max.z}</span>
-                                    </p>
-                                </section>
+                  <p class="property mono">
+                    <span class="name">X</span>
+                    <span class="value">${propValue.max.x}</span>
+                  </p>
+                  <p class="property mono">
+                    <span class="name">Y</span>
+                    <span class="value">${propValue.max.y}</span>
+                  </p>
+                  <p class="property mono">
+                    <span class="name">Z</span>
+                    <span class="value">${propValue.max.z}</span>
+                  </p>
+                </section>
 
-                                <p class="property mono">
-                                    <span class="name">Valid</span>
-                                    <span class="value">${propValue.valid}</span>
-                                </p>
-                            `);
+                <p class="property mono">
+                  <span class="name">Valid</span>
+                  <span class="value">${propValue.valid}</span>
+                </p>
+              `);
             } else {
               propEl.append(`
-                                <section class="struct" data-type="vector">
-                                    <p class="struct-name mono">Centre</p>
+                <section class="struct" data-type="vector">
+                  <p class="struct-name mono">Centre</p>
 
-                                    <p class="property mono">
-                                        <span class="name">X</span>
-                                        <span class="value">${propValue.centre.x}</span>
-                                    </p>
-                                    <p class="property mono">
-                                        <span class="name">Y</span>
-                                        <span class="value">${propValue.centre.y}</span>
-                                    </p>
-                                    <p class="property mono">
-                                        <span class="name">Z</span>
-                                        <span class="value">${propValue.centre.z}</span>
-                                    </p>
-                                </section>
+                  <p class="property mono">
+                    <span class="name">X</span>
+                    <span class="value">${propValue.centre.x}</span>
+                  </p>
+                  <p class="property mono">
+                    <span class="name">Y</span>
+                    <span class="value">${propValue.centre.y}</span>
+                  </p>
+                  <p class="property mono">
+                    <span class="name">Z</span>
+                    <span class="value">${propValue.centre.z}</span>
+                  </p>
+                </section>
 
-                                <p class="property mono">
-                                    <span class="name">Radius</span>
-                                    <span class="value">${propValue.radius}</span>
-                                </p>
-                            `);
+                <p class="property mono">
+                  <span class="name">Radius</span>
+                  <span class="value">${propValue.radius}</span>
+                </p>
+              `);
             }
             break;
 
@@ -2128,11 +2171,11 @@ $(function () {
         }
       } else {
         propEl.append(`
-                    <p class="property mono">
-                        <span class="name">${propLabels[propName] || propName}</span>
-                        <span class="value">${propValue}</span>
-                    </p>
-                `);
+          <p class="property mono">
+            <span class="name">${propLabels[propName] || propName}</span>
+            <span class="value">${propValue}</span>
+          </p>
+        `);
       }
 
       parentEl.append(propEl);
