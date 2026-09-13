@@ -621,8 +621,15 @@ $(function () {
           textBufferObject.packageName || "—",
           textBufferObject.packageObject?.parentObjectName || "—",
           data.size,
-          data.size > 0 ? data.contents.trim() : "",
         ];
+
+        if (data.compressed_data) {
+          rowData.push({ compressed_data: data.compressed_data });
+        } else if (data.size > 0) {
+          rowData.push(data.contents.trim());
+        } else {
+          rowData.push("");
+        }
 
         tableData.push(rowData);
       }
@@ -2688,17 +2695,26 @@ $(function () {
     });
 
     // Scripts tab - show text buffer contents/add syntax highlighting.
-    $("#tab-scripts").on("click", "tbody tr", function () {
+    $("#tab-scripts").on("click", "tbody tr", async function () {
       const tableRow = $(this);
 
       $("#tab-scripts tr.selected").removeClass("selected");
       tableRow.addClass("selected");
 
       const codeBlock = $("#tab-scripts").find("code");
+      const row = tables.scripts.row(this);
+      const rowData = row.data();
 
-      const scriptContents = tables.scripts.row(this).data()[4];
+      // A compressed buffer is inflated on first view and cached in the row.
+      if (typeof rowData[4] !== "string") {
+        codeBlock.text("Decompressing…");
+        rowData[4] = (await inflateZlib(rowData[4].compressed_data)).trim();
+        row.data(rowData);
 
-      codeBlock.text(scriptContents);
+        if (!tableRow.hasClass("selected")) return;
+      }
+
+      codeBlock.text(rowData[4]);
 
       hljs.highlightBlock(codeBlock[0]);
     });
@@ -3030,6 +3046,15 @@ $(function () {
     }
 
     return out;
+  }
+
+  async function inflateZlib(bytes) {
+    const stream = new Blob([bytes])
+      .stream()
+      .pipeThrough(new DecompressionStream("deflate"));
+    const inflated = await new Response(stream).arrayBuffer();
+
+    return new TextDecoder("windows-1252").decode(inflated);
   }
 
   function buildWavFile(samples, sound) {

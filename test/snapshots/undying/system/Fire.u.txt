@@ -1,0 +1,333 @@
+package  undying/system/Fire.u
+bytes    9574
+sha256   154434ea72141a2c5e1ae584311514a7666020631b4559dc1925c32a0626d8e9
+
+[header]
+  signature           0x9e2a83c1
+  version             85
+  licensee_version    0
+  package_flags       0x00000001
+  name_count          172
+  name_offset         64
+  export_count        108
+  export_offset       7950
+  import_count        15
+  import_offset       7817
+  guid                D4F8185A429B1739D375DCA84F3C4FEF
+  generation_count    1
+  generation[0]       exports=108 names=172
+
+[classes] 10
+  arrayproperty           1
+  boolproperty            2
+  byteproperty            56
+  enum                    5
+  floatproperty           6
+  intproperty             16
+  objectproperty          6
+  struct                  2
+  structproperty          2
+  textbuffer              6
+
+[names] 172
+      0  0x04070410  None
+      1  0x00070010  WaterPaint
+      2  0x00070010  FirePaint
+      3  0x00070010  IceLayer
+      4  0x00070010  Fire
+      5  0x04070010  System
+      6  0x04070010  Engine
+      7  0x04070010  Core
+      8  0x00070010  DROP_RainDrops
+      9  0x00070010  ADrop
+     10  0x00070010  DROP_HorizontalOsc
+     11  0x00070010  Spark
+     12  0x00070010  DROP_VerticalOsc
+     13  0x00070010  DRAW_Lathe_3
+     14  0x00070010  DRAW_Lathe_2
+     15  0x00070010  DRAW_Lathe_4
+     16  0x00070010  DROP_DiagonalLine2
+     17  0x00070010  DRAW_Normal
+     18  0x04070010  FireTexture
+     19  0x04070010  IceTexture
+     20  0x04070010  WaterTexture
+     21  0x04070010  WaveTexture
+     22  0x04070010  WetTexture
+     23  0x00070010  DROP_DiagonalOsc2
+     24  0x00070010  DROP_DiagonalOsc1
+     25  0x00070010  SPARK_Gametes
+     26  0x00070010  SPARK_Wheel
+     27  0x00070010  SPARK_SphereLightning
+     28  0x00070010  SPARK_RampLightning
+     29  0x00070010  SPARK_LineLightning
+     30  0x00070010  SPARK_Stars
+     31  0x00070010  SPARK_LocalCloud
+     32  0x00070010  FractalTexture
+     33  0x00070010  SPARK_RandomCloud
+     34  0x00070010  SPARK_WanderOrganic
+     35  0x00070010  SPARK_Organic
+     36  0x00070010  SPARK_Eels
+     37  0x00070010  SPARK_Flocks
+     38  0x00070010  SPARK_Fountain
+     39  0x00070010  SPARK_Emit
+     40  0x00070010  SPARK_Jugglers
+     41  0x00070010  SLIDE_Linear
+     42  0x00070010  SLIDE_Circular
+     43  0x00070010  SLIDE_Gestation
+     44  0x00070010  SLIDE_WavyX
+     45  0x00070010  SLIDE_WavyY
+     46  0x00070010  DROP_LeakyTap
+     47  0x00070010  TIME_FrameRateSync
+     48  0x00070010  TIME_RealTimeScroll
+     49  0x00070010  DROP_DrippyTap
+     50  0x00070010  SPARK_Lissajous
+     51  0x00070010  SPARK_Cylinder3D
+     52  0x00070010  SPARK_Cylinder
+     53  0x00070010  SPARK_BlazeLeft
+     54  0x00070010  SPARK_BlazeRight
+     55  0x00070010  SPARK_Cone
+     56  0x00070010  SPARK_OzHasSpoken
+     57  0x00070010  SPARK_Blaze
+     58  0x00070010  SPARK_Signal
+     59  0x00070010  SPARK_Pulse
+     60  0x00070010  SPARK_Sparkle
+     61  0x00070010  DROP_FixedRandomSpot
+     62  0x00070010  SPARK_Burn
+     63  0x00070010  DROP_WhirlyThing
+     64  0x00070010  DROP_RandomMover
+     65  0x00070010  SPARK_CustomCloud
+     66  0x00070010  DROP_AreaClamp
+     67  0x00070010  DROP_HalfAmpl
+     68  0x00070010  SPARK_Sprinkler
+     69  0x00070010  DROP_DiagonalLine1
+     70  0x00070010  DROP_FixedDepth
+     71  0x00070010  DROP_PhaseSpot
+     72  0x00070010  DROP_ShallowSpot
+     73  0x00070010  DROP_HorizontalLine
+     74  0x00070010  DROP_VerticalLine
+     75  0x00070010  DRAW_Lathe
+     76  0x00070010  DROP_BigWhirly
+     77  0x00070010  OldVDisplace
+     78  0x00070010  WDrop
+     79  0x00070010  ForceRefresh
+     80  0x00070010  OldGlassTex
+     81  0x00070010  LocalSource
+     82  0x04070010  Texture
+     83  0x00070010  OldSourceTex
+     84  0x00070010  TickAccu
+     85  0x00070010  PanningType
+     86  0x00070010  AuxPhase
+     87  0x00070010  OldUDisplace
+     88  0x00070010  TimingType
+     89  0x00070010  UPosition
+     90  0x00070010  VPosition
+     91  0x04070410  Struct
+     92  0x00070010  ByteB
+     93  0x00070010  ByteC
+     94  0x00070010  ByteD
+     95  0x04070010  IntProperty
+     96  0x00070010  DropType
+     97  0x00070010  WaveAmp
+     98  0x00070010  FX_Frequency
+     99  0x00070010  FX_Phase
+    100  0x00070010  FX_Amplitude
+    101  0x00070010  FX_Speed
+    102  0x00070010  FX_Radius
+    103  0x00070010  FX_Size
+    104  0x00070010  FX_Depth
+    105  0x00070010  FX_Time
+    106  0x00070010  NumDrops
+    107  0x00070010  Drops
+    108  0x00070010  SourceFields
+    109  0x00070010  RenderTable
+    110  0x00070010  WaterTable
+    111  0x00070010  WaterParity
+    112  0x00070010  OldWaveAmp
+    113  0x00070010  LocalSourceBitmap
+    114  0x00070010  BumpMapLight
+    115  0x00070010  BumpMapAngle
+    116  0x00070010  PhongRange
+    117  0x00070010  PhongSize
+    118  0x00070010  ESpark
+    119  0x00070010  VDisplace
+    120  0x00070010  UDisplace
+    121  0x00070010  MasterCount
+    122  0x00070010  MoveIce
+    123  0x00070010  Frequency
+    124  0x00070010  VertPanSpeed
+    125  0x00070010  HorizPanSpeed
+    126  0x00070010  TimeMethod
+    127  0x00070010  PanningStyle
+    128  0x00070010  GlassTexture
+    129  0x04070010  FloatProperty
+    130  0x04070010  StructProperty
+    131  0x00070010  DrawPhase
+    132  0x00070010  GlobalPhase
+    133  0x00070010  SoundOutput
+    134  0x00070010  LightOutput
+    135  0x00070010  VMask
+    136  0x00070010  UMask
+    137  0x00070010  SourceTexture
+    138  0x04070010  BoolProperty
+    139  0x04070010  ObjectProperty
+    140  0x00070010  bRising
+    141  0x00070010  depth
+    142  0x00070010  Type
+    143  0x00070010  Amplitude
+    144  0x00070010  Y
+    145  0x00070010  X
+    146  0x00070010  ScriptText
+    147  0x04070410  Package
+    148  0x00070010  DMode
+    149  0x04070010  ArrayProperty
+    150  0x04070410  Class
+    151  0x04070410  Enum
+    152  0x04070010  TextBuffer
+    153  0x04070010  Object
+    154  0x00070010  ByteA
+    155  0x00070010  Heat
+    156  0x04070010  ByteProperty
+    157  0x00070010  SparkType
+    158  0x00070010  RenderHeat
+    159  0x00070010  FX_Heat
+    160  0x00070010  FX_AuxSize
+    161  0x00070010  FX_Area
+    162  0x00070010  FX_HorizSpeed
+    163  0x00070010  FX_VertSpeed
+    164  0x00070010  DrawMode
+    165  0x00070010  SparksLimit
+    166  0x00070010  NumSparks
+    167  0x00070010  Sparks
+    168  0x00070010  OldRenderHeat
+    169  0x00070010  StarStatus
+    170  0x00070010  PenDownX
+    171  0x00070010  PenDownY
+
+[imports] 15
+    idx  class             classpkg      package             name
+     -1  Package           Core          -                   Core
+     -2  Class             Core          Core                ByteProperty
+     -3  Class             Core          Core                IntProperty
+     -4  Class             Core          Engine              Texture
+     -5  Package           Core          -                   Engine
+     -6  Class             Core          Core                FloatProperty
+     -7  Class             Core          Core                ObjectProperty
+     -8  Class             Core          Core                Object
+     -9  Class             Core          Core                Class
+    -10  Class             Core          Core                TextBuffer
+    -11  Class             Core          Core                Enum
+    -12  Class             Core          Core                BoolProperty
+    -13  Class             Core          Core                StructProperty
+    -14  Class             Core          Core                Struct
+    -15  Class             Core          Core                ArrayProperty
+
+[exports] 108
+    idx  class             package             name                        flags       serial            props  parse
+      1  -                 -                   IceTexture                  0x040f0004  2971+89           0      3bca49ce518b0f13
+      2  -                 -                   FractalTexture              0x040f0004  3060+89           0      3bca49ce518b0f13
+      3  IntProperty       FractalTexture      UMask                       0x00070004  3149+12           0      3bca49ce518b0f13
+      4  IntProperty       FractalTexture      VMask                       0x00070004  3161+12           0      3bca49ce518b0f13
+      5  IntProperty       FractalTexture      LightOutput                 0x00070004  3173+12           0      3bca49ce518b0f13
+      6  IntProperty       FractalTexture      SoundOutput                 0x00070004  3185+12           0      3bca49ce518b0f13
+      7  IntProperty       FractalTexture      GlobalPhase                 0x00070004  3197+12           0      3bca49ce518b0f13
+      8  ByteProperty      FractalTexture      DrawPhase                   0x00070004  3209+13           0      3bca49ce518b0f13
+      9  ByteProperty      FractalTexture      AuxPhase                    0x00070004  3222+13           0      3bca49ce518b0f13
+     10  ObjectProperty    IceTexture          GlassTexture                0x00070004  3235+13           0      3bca49ce518b0f13
+     11  ObjectProperty    IceTexture          SourceTexture               0x00070004  3248+13           0      3bca49ce518b0f13
+     12  ByteProperty      IceTexture          PanningStyle                0x00070004  3261+13           0      3bca49ce518b0f13
+     13  ByteProperty      IceTexture          TimeMethod                  0x00070004  3274+13           0      3bca49ce518b0f13
+     14  ByteProperty      IceTexture          HorizPanSpeed               0x00070004  3287+13           0      3bca49ce518b0f13
+     15  ByteProperty      IceTexture          VertPanSpeed                0x00070004  3300+13           0      3bca49ce518b0f13
+     16  ByteProperty      IceTexture          Frequency                   0x00070004  3313+13           0      3bca49ce518b0f13
+     17  ByteProperty      IceTexture          Amplitude                   0x00070004  3326+13           0      3bca49ce518b0f13
+     18  BoolProperty      IceTexture          MoveIce                     0x00070004  3339+12           0      3bca49ce518b0f13
+     19  FloatProperty     IceTexture          MasterCount                 0x00070004  3351+12           0      3bca49ce518b0f13
+     20  FloatProperty     IceTexture          UDisplace                   0x00070004  3363+12           0      3bca49ce518b0f13
+     21  FloatProperty     IceTexture          VDisplace                   0x00070004  3375+12           0      3bca49ce518b0f13
+     22  FloatProperty     IceTexture          UPosition                   0x00070004  3387+12           0      3bca49ce518b0f13
+     23  FloatProperty     IceTexture          VPosition                   0x00070004  3399+12           0      3bca49ce518b0f13
+     24  FloatProperty     IceTexture          TickAccu                    0x00070004  3411+12           0      3bca49ce518b0f13
+     25  IntProperty       IceTexture          OldUDisplace                0x00070004  3423+12           0      3bca49ce518b0f13
+     26  IntProperty       IceTexture          OldVDisplace                0x00070004  3435+12           0      3bca49ce518b0f13
+     27  ObjectProperty    IceTexture          OldGlassTex                 0x00070004  3447+13           0      3bca49ce518b0f13
+     28  ObjectProperty    IceTexture          OldSourceTex                0x00070004  3460+13           0      3bca49ce518b0f13
+     29  IntProperty       IceTexture          LocalSource                 0x00070004  3473+12           0      3bca49ce518b0f13
+     30  IntProperty       IceTexture          ForceRefresh                0x00070004  3485+12           0      3bca49ce518b0f13
+     31  Enum              IceTexture          TimingType                  0x00070004  3497+6            0      3bca49ce518b0f13
+     32  Enum              IceTexture          PanningType                 0x00070004  3503+9            0      3bca49ce518b0f13
+     33  TextBuffer        IceTexture          ScriptText                  0x00340000  3512+536          0      0bdd8e57ccbeb87d
+     34  TextBuffer        FractalTexture      ScriptText                  0x00340000  4048+261          0      b0ac31b7a978c1dd
+     35  -                 -                   WetTexture                  0x040f0004  4309+91           0      3bca49ce518b0f13
+     36  -                 -                   WaterTexture                0x040f0004  4400+90           0      3bca49ce518b0f13
+     37  ByteProperty      WaterTexture        DropType                    0x00070004  4490+13           0      3bca49ce518b0f13
+     38  ByteProperty      WaterTexture        WaveAmp                     0x00070004  4503+13           0      3bca49ce518b0f13
+     39  ByteProperty      WaterTexture        FX_Frequency                0x00070004  4516+13           0      3bca49ce518b0f13
+     40  ByteProperty      WaterTexture        FX_Phase                    0x00070004  4529+13           0      3bca49ce518b0f13
+     41  ByteProperty      WaterTexture        FX_Amplitude                0x00070004  4542+13           0      3bca49ce518b0f13
+     42  ByteProperty      WaterTexture        FX_Speed                    0x00070004  4555+13           0      3bca49ce518b0f13
+     43  ByteProperty      WaterTexture        FX_Radius                   0x00070004  4568+13           0      3bca49ce518b0f13
+     44  ByteProperty      WaterTexture        FX_Size                     0x00070004  4581+13           0      3bca49ce518b0f13
+     45  ByteProperty      WaterTexture        FX_Depth                    0x00070004  4594+13           0      3bca49ce518b0f13
+     46  ByteProperty      WaterTexture        FX_Time                     0x00070004  4607+13           0      3bca49ce518b0f13
+     47  IntProperty       WaterTexture        NumDrops                    0x00070004  4620+12           0      3bca49ce518b0f13
+     48  StructProperty    WaterTexture        Drops                       0x00070004  4632+13           0      3bca49ce518b0f13
+     49  Struct            WaterTexture        ADrop                       0x00070004  4645+18           0      3bca49ce518b0f13
+     50  ByteProperty      ADrop               Type                        0x00070004  4663+13           0      3bca49ce518b0f13
+     51  ByteProperty      ADrop               depth                       0x00070004  4676+13           0      3bca49ce518b0f13
+     52  ByteProperty      ADrop               X                           0x00070004  4689+13           0      3bca49ce518b0f13
+     53  ByteProperty      ADrop               Y                           0x00070004  4702+13           0      3bca49ce518b0f13
+     54  ByteProperty      ADrop               ByteA                       0x00070004  4715+13           0      3bca49ce518b0f13
+     55  ByteProperty      ADrop               ByteB                       0x00070004  4728+13           0      3bca49ce518b0f13
+     56  ByteProperty      ADrop               ByteC                       0x00070004  4741+13           0      3bca49ce518b0f13
+     57  ByteProperty      ADrop               ByteD                       0x00070004  4754+13           0      3bca49ce518b0f13
+     58  IntProperty       WaterTexture        SourceFields                0x00070004  4767+12           0      3bca49ce518b0f13
+     59  ByteProperty      WaterTexture        RenderTable                 0x00070004  4779+13           0      3bca49ce518b0f13
+     60  ByteProperty      WaterTexture        WaterTable                  0x00070004  4792+13           0      3bca49ce518b0f13
+     61  ByteProperty      WaterTexture        WaterParity                 0x00070004  4805+13           0      3bca49ce518b0f13
+     62  IntProperty       WaterTexture        OldWaveAmp                  0x00070004  4818+12           0      3bca49ce518b0f13
+     63  Enum              WaterTexture        WDrop                       0x00070004  4830+34           0      3bca49ce518b0f13
+     64  ObjectProperty    WetTexture          SourceTexture               0x00070004  4864+14           0      3bca49ce518b0f13
+     65  ObjectProperty    WetTexture          OldSourceTex                0x00070004  4878+14           0      3bca49ce518b0f13
+     66  IntProperty       WetTexture          LocalSourceBitmap           0x00070004  4892+12           0      3bca49ce518b0f13
+     67  TextBuffer        WetTexture          ScriptText                  0x00340000  4904+224          0      ffc95831bdbefc50
+     68  TextBuffer        WaterTexture        ScriptText                  0x00340000  5128+944          0      68a0c475aa4bd2d2
+     69  -                 -                   WaveTexture                 0x040f0004  6072+92           0      3bca49ce518b0f13
+     70  ByteProperty      WaveTexture         BumpMapLight                0x00070004  6164+14           0      3bca49ce518b0f13
+     71  ByteProperty      WaveTexture         BumpMapAngle                0x00070004  6178+14           0      3bca49ce518b0f13
+     72  ByteProperty      WaveTexture         PhongRange                  0x00070004  6192+14           0      3bca49ce518b0f13
+     73  ByteProperty      WaveTexture         PhongSize                   0x00070004  6206+13           0      3bca49ce518b0f13
+     74  TextBuffer        WaveTexture         ScriptText                  0x00340000  6219+217          0      2ab7965fd56f2cd2
+     75  -                 -                   FireTexture                 0x040f0004  6436+92           0      3bca49ce518b0f13
+     76  ByteProperty      FireTexture         SparkType                   0x00070004  6528+15           0      3bca49ce518b0f13
+     77  ByteProperty      FireTexture         RenderHeat                  0x00070004  6543+14           0      3bca49ce518b0f13
+     78  BoolProperty      FireTexture         bRising                     0x00070004  6557+13           0      3bca49ce518b0f13
+     79  ByteProperty      FireTexture         FX_Heat                     0x00070004  6570+14           0      3bca49ce518b0f13
+     80  ByteProperty      FireTexture         FX_Size                     0x00070004  6584+14           0      3bca49ce518b0f13
+     81  ByteProperty      FireTexture         FX_AuxSize                  0x00070004  6598+14           0      3bca49ce518b0f13
+     82  ByteProperty      FireTexture         FX_Area                     0x00070004  6612+14           0      3bca49ce518b0f13
+     83  ByteProperty      FireTexture         FX_Frequency                0x00070004  6626+14           0      3bca49ce518b0f13
+     84  ByteProperty      FireTexture         FX_Phase                    0x00070004  6640+14           0      3bca49ce518b0f13
+     85  ByteProperty      FireTexture         FX_HorizSpeed               0x00070004  6654+14           0      3bca49ce518b0f13
+     86  ByteProperty      FireTexture         FX_VertSpeed                0x00070004  6668+14           0      3bca49ce518b0f13
+     87  ByteProperty      FireTexture         DrawMode                    0x00070004  6682+15           0      3bca49ce518b0f13
+     88  IntProperty       FireTexture         SparksLimit                 0x00070004  6697+13           0      3bca49ce518b0f13
+     89  IntProperty       FireTexture         NumSparks                   0x00070004  6710+13           0      3bca49ce518b0f13
+     90  ArrayProperty     FireTexture         Sparks                      0x00070004  6723+15           0      3bca49ce518b0f13
+     91  StructProperty    Sparks              Sparks                      0x00070004  6738+14           0      3bca49ce518b0f13
+     92  Struct            FireTexture         Spark                       0x00070004  6752+20           0      3bca49ce518b0f13
+     93  ByteProperty      Spark               Type                        0x00070004  6772+15           0      3bca49ce518b0f13
+     94  ByteProperty      Spark               Heat                        0x00070004  6787+14           0      3bca49ce518b0f13
+     95  ByteProperty      Spark               X                           0x00070004  6801+14           0      3bca49ce518b0f13
+     96  ByteProperty      Spark               Y                           0x00070004  6815+14           0      3bca49ce518b0f13
+     97  ByteProperty      Spark               ByteA                       0x00070004  6829+14           0      3bca49ce518b0f13
+     98  ByteProperty      Spark               ByteB                       0x00070004  6843+14           0      3bca49ce518b0f13
+     99  ByteProperty      Spark               ByteC                       0x00070004  6857+14           0      3bca49ce518b0f13
+    100  ByteProperty      Spark               ByteD                       0x00070004  6871+13           0      3bca49ce518b0f13
+    101  IntProperty       FireTexture         OldRenderHeat               0x00070004  6884+13           0      3bca49ce518b0f13
+    102  ByteProperty      FireTexture         RenderTable                 0x00070004  6897+14           0      3bca49ce518b0f13
+    103  ByteProperty      FireTexture         StarStatus                  0x00070004  6911+14           0      3bca49ce518b0f13
+    104  ByteProperty      FireTexture         PenDownX                    0x00070004  6925+14           0      3bca49ce518b0f13
+    105  ByteProperty      FireTexture         PenDownY                    0x00070004  6939+14           0      3bca49ce518b0f13
+    106  Enum              FireTexture         DMode                       0x00070004  6953+11           0      3bca49ce518b0f13
+    107  Enum              FireTexture         ESpark                      0x00070004  6964+35           0      3bca49ce518b0f13
+    108  TextBuffer        FireTexture         ScriptText                  0x00340000  6999+818          0      8c8691ccd14f5d12

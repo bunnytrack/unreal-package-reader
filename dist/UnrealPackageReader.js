@@ -1674,10 +1674,37 @@
   }
 
   // src/natives/text.ts
+  function isZlibHeader(cursor) {
+    const start = cursor.offset;
+    try {
+      const cmf = cursor.uint8();
+      const flg = cursor.uint8();
+      return cmf === 120 && (cmf << 8 | flg) % 31 === 0;
+    } catch {
+      return false;
+    } finally {
+      cursor.seek(start);
+    }
+  }
   function readUTextBuffer(ctx) {
-    const { cursor } = ctx;
+    const { cursor, version, licenseeVersion } = ctx;
     const pos = cursor.uint32();
     const top = cursor.uint32();
+    if (version >= 85 && licenseeVersion === 0) {
+      const start = cursor.offset;
+      const uncompressedSize = cursor.compactIndex();
+      const compressedSize = cursor.compactIndex();
+      if (isZlibHeader(cursor)) {
+        return {
+          pos,
+          top,
+          size: uncompressedSize,
+          compressed_size: compressedSize,
+          compressed_data: cursor.bytes(compressedSize)
+        };
+      }
+      cursor.seek(start);
+    }
     const size = cursor.compactIndex();
     if (size <= 0) {
       return { pos, top, size };
