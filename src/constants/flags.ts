@@ -8,6 +8,10 @@ export const PACKAGE_FLAGS = {
   PKG_ServerSideOnly: 0x0004,
   PKG_BrokenLinks: 0x0008,
   PKG_Unsecure: 0x0010,
+  /**
+   * Observed only in Clive Barker's Undying maps.
+   */
+  PKG_Compressed: 0x0020,
   PKG_Need: 0x8000,
 } as const;
 

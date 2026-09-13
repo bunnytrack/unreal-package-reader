@@ -29,10 +29,10 @@ and drag/drop a UT package (map, texture, sound, etc.) to see what the reader is
 ## Usage
 
 Load `dist/UnrealPackageReader.js` with a `<script>` tag; it defines a single
-global class, `UnrealPackageReader`. Construct it with an `ArrayBuffer`:
+global class, `UnrealPackageReader`. Load an `ArrayBuffer` with it:
 
 ```js
-const utPackage = new UnrealPackageReader(arrayBuffer);
+const utPackage = await UnrealPackageReader.load(arrayBuffer);
 
 utPackage.version; // 69
 utPackage.getLevelSummary(); // { Title: "Facing Worlds", ... }
@@ -51,7 +51,7 @@ utPackage.getTextureObjects(); // one export table entry per texture
     .addEventListener("input", async function () {
       for (const file of this.files) {
         const buffer = await file.arrayBuffer();
-        const utPackage = new UnrealPackageReader(buffer);
+        const utPackage = await UnrealPackageReader.load(buffer);
 
         // Get package version
         console.log(utPackage.version); // 69

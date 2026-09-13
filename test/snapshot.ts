@@ -13,7 +13,15 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 import { buildRefIndex, canonical, hash, type RefIndex } from "./serialise.ts";
 
-const PACKAGE_EXTENSIONS = ["u", "unr", "utx", "uax", "umx", "uxx"];
+const PACKAGE_EXTENSIONS = [
+  "u",
+  "unr",
+  "utx",
+  "uax",
+  "umx",
+  "uxx",
+  "sac", //Undying's map extension
+];
 
 /**
  * Read a file as a standalone ArrayBuffer. Node pools Buffer allocations, so

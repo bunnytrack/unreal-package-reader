@@ -1,0 +1,143 @@
+package  undying/maps/start.sac
+bytes    2199
+sha256   f1f39d3f9464c0c89e0e7e52e3195128695249525ea17e1e6fe09f7b3879a7cc
+
+[header]
+  signature           0x9e2a83c1
+  version             83
+  licensee_version    0
+  package_flags       0x00000021
+  name_count          72
+  name_offset         64
+  export_count        19
+  export_offset       7593
+  import_count        14
+  import_offset       7495
+  guid                BDBD75B64A2E5CA8284A9CA6DDA46018
+  generation_count    1
+  generation[0]       exports=19 names=72
+
+[classes] 10
+  brush                   2
+  camera                  5
+  level                   1
+  levelinfo               1
+  levelsummary            1
+  light                   1
+  model                   3
+  playerstart             1
+  polys                   3
+  textbuffer              1
+
+[names] 72
+      0  0x00070010  PointRegion
+      1  0x04070410  None
+      2  0x04070410  Outer
+      3  0x00070010  Level
+      4  0x00070010  BasePlace
+      5  0x00070010  Region
+      6  0x00070010  Place
+      7  0x04070010  Tag
+      8  0x04070410  Vector
+      9  0x00070010  OldLocation
+     10  0x00070010  BaseJoint
+     11  0x00040010  Player
+     12  0x00040010  RendMap
+     13  0x00040010  HeadRegion
+     14  0x00040010  bAdmin
+     15  0x00040010  ShowFlags
+     16  0x00040010  FootRegion
+     17  0x00040010  Scale
+     18  0x00070010  Brush
+     19  0x00040010  bHiddenEd
+     20  0x00040010  PostScale
+     21  0x00070010  Base
+     22  0x00070010  Top
+     23  0x00040010  MainScale
+     24  0x00070010  Location
+     25  0x00070010  Light
+     26  0x00040010  bHidden
+     27  0x00070010  LevelInfo
+     28  0x04070010  Title
+     29  0x00070010  PlayerStart
+     30  0x00070010  bLoadBootShellPSX2
+     31  0x00070010  bHighDetailMode
+     32  0x00040010  CsgOper
+     33  0x00040010  BrowserCam
+     34  0x00040010  Standard4V
+     35  0x00070010  Summary
+     36  0x00040010  Standard3V
+     37  0x00070010  AIProfile
+     38  0x00040010  Standard2V
+     39  0x00040010  Misc1
+     40  0x00070010  TimeSeconds
+     41  0x00070010  NavigationPointList
+     42  0x00040010  Standard1V
+     43  0x04070010  Engine
+     44  0x04070010  TextBuffer
+     45  0x04070010  Camera
+     46  0x00070010  UWindow
+     47  0x04070410  Class
+     48  0x04070410  Package
+     49  0x00070010  BlackTexture
+     50  0x00070010  MyLevel
+     51  0x00070010  Model1
+     52  0x00070010  LevelSummary
+     53  0x00070010  Brush0
+     54  0x00070010  Polys2
+     55  0x04070010  Texture
+     56  0x00070010  Polys
+     57  0x00070010  Model
+     58  0x00070010  Camera10
+     59  0x04070010  Core
+     60  0x00070010  LevelInfo0
+     61  0x00070010  Camera8
+     62  0x00070010  Light0
+     63  0x00070010  Brush1
+     64  0x00070010  Model2
+     65  0x00070010  Polys5
+     66  0x00070010  PlayerStart0
+     67  0x00070010  Polys11
+     68  0x00070010  TextBuffer0
+     69  0x00070010  Camera5
+     70  0x00070010  Camera6
+     71  0x00070010  Camera7
+
+[imports] 14
+    idx  class             classpkg      package             name
+     -1  Package           Core          -                   Engine
+     -2  Texture           Engine        UWindow             BlackTexture
+     -3  Package           Core          -                   UWindow
+     -4  Class             Core          Engine              Camera
+     -5  Class             Core          Engine              Brush
+     -6  Class             Core          Engine              Polys
+     -7  Class             Core          Engine              Model
+     -8  Class             Core          Engine              PlayerStart
+     -9  Class             Core          Engine              LevelInfo
+    -10  Class             Core          Engine              Light
+    -11  Class             Core          Core                TextBuffer
+    -12  Class             Core          Engine              LevelSummary
+    -13  Class             Core          Engine              Level
+    -14  Package           Core          -                   Core
+
+[exports] 19
+    idx  class             package             name                        flags       serial            props  parse
+      1  Level             -                   MyLevel                     0x00070001  1059+87           0      77dfc783be3dc766
+      2  Model             -                   Model1                      0x00070001  1146+2571         0      ae0fd27e149a65b2
+      3  Polys             -                   Polys11                     0x00070001  3717+9            0      b6294486088517bb
+      4  LevelInfo         -                   LevelInfo0                  0x02070001  3726+94           12     d942c1d765cb3c52
+      5  Brush             -                   Brush0                      0x02340001  3820+115          9      fc9b7b5f767a4e9a
+      6  Light             -                   Light0                      0x02070001  3935+100          8      3b1823c0d5f21616
+      7  Brush             -                   Brush1                      0x02340001  4035+118          10     1ab719aedfdea880
+      8  PlayerStart       -                   PlayerStart0                0x02070001  4153+100          8      4c5b8e0a26dc22ef
+      9  Camera            -                   Camera5                     0x02340000  4253+120          13     0509a7a38df4c7f9
+     10  Camera            -                   Camera6                     0x02340000  4373+120          13     6c95cbf8d22b6fb6
+     11  Camera            -                   Camera7                     0x02340000  4493+123          13     c8129f1a689ca6bf
+     12  Camera            -                   Camera8                     0x02340000  4616+120          13     4cd5fe17ecdff158
+     13  Camera            -                   Camera10                    0x02340000  4736+129          15     921f59b2e505212c
+     14  TextBuffer        -                   TextBuffer0                 0x00340000  4865+66           0      6fa88df7e5b46694
+     15  LevelSummary      -                   LevelSummary                0x00070004  4931+14           1      cbefef5c2dc6512c
+     16  Model             -                   Brush                       0x00340001  4945+70           0      0ba373e924b361a6
+     17  Polys             -                   Polys2                      0x00070001  5015+1205         0      c7bb0d5d096ae1e5
+     18  Model             -                   Model2                      0x00340001  6220+70           0      a190df72522ec877
+     19  Polys             -                   Polys5                      0x00340001  6290+1205         0      e979f82a1aa8009d

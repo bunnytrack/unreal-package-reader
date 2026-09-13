@@ -31,8 +31,10 @@ import type { PackageHeader } from "./package/header.ts";
 import type { NameTableEntry } from "./package/nameTable.ts";
 import {
   UnrealPackage,
+  inflatePackage,
   type ExportTableObject,
   type ImportTableObject,
+  type Inflate,
   type IntegerProperty,
   type NameProperty,
   type ObjectData,
@@ -160,6 +162,13 @@ function readWavHeader(
  * everything: header, tables, queries, and lookup tables.
  */
 export class UnrealPackageReader {
+  static async load(
+    buffer: ArrayBuffer,
+    inflate?: Inflate,
+  ): Promise<UnrealPackageReader> {
+    return new UnrealPackageReader(await inflatePackage(buffer, inflate));
+  }
+
   readonly #package: UnrealPackage;
   readonly propertyTypes = PROPERTY_TYPES;
   readonly objectFlags = OBJECT_FLAGS;

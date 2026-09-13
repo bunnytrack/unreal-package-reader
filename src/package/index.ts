@@ -5,6 +5,7 @@
  * @module package
  */
 
+export * from "./compressed.ts";
 export * from "./header.ts";
 export * from "./nameTable.ts";
 export * from "./objects.ts";

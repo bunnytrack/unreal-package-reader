@@ -60,6 +60,7 @@ export const FILE_TYPE_BY_EXTENSION = {
   umod: "UMOD",
   umx: "Music",
   unr: "Map",
+  sac: "Map", // Clive Barker's Undying
   utx: "Texture",
   uxx: "Cache",
   uz: "Zip",

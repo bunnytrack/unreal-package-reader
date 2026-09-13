@@ -14,7 +14,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
-import { UnrealPackageReader } from "../src/index.ts";
+import { UnrealPackageReader, inflatePackage } from "../src/index.ts";
 import { buildSnapshot, discoverCorpus, readArrayBuffer } from "./snapshot.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -46,7 +46,7 @@ if (packages.length === 0) {
 
 for (const name of packages) {
   const source = readArrayBuffer(join(corpusDir, name));
-  const pkg = new UnrealPackageReader(source);
+  const pkg = new UnrealPackageReader(await inflatePackage(source));
   const { deep } = buildSnapshot(pkg, name, source);
 
   const target = join(outDir, `${name}.json`);

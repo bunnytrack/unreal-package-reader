@@ -15,7 +15,11 @@
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { UnrealPackage, UnrealPackageReader } from "../src/index.ts";
+import {
+  UnrealPackage,
+  UnrealPackageReader,
+  inflatePackage,
+} from "../src/index.ts";
 import { buildSnapshot, discoverCorpus, readArrayBuffer } from "./snapshot.ts";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -27,7 +31,8 @@ describe.skipIf(packages.length === 0)("corpus", () => {
   for (const name of packages) {
     it(name, async () => {
       const source = readArrayBuffer(join(CORPUS_DIR, name));
-      const pkg = new UnrealPackageReader(source);
+      // Undying maps are body-compressed; the snapshot hashes the file as stored.
+      const pkg = new UnrealPackageReader(await inflatePackage(source));
       const { text } = buildSnapshot(pkg, name, source);
 
       await expect(text).toMatchFileSnapshot(
@@ -44,8 +49,10 @@ describe.skipIf(packages.length === 0)("corpus", () => {
      * Snapshots cannot catch this on their own, because they read each export's
      * properties exactly once.
      */
-    it(`${name} - repeated property access keeps the cursor intact`, () => {
-      const source = readArrayBuffer(join(CORPUS_DIR, name));
+    it(`${name} - repeated property access keeps the cursor intact`, async () => {
+      const source = await inflatePackage(
+        readArrayBuffer(join(CORPUS_DIR, name)),
+      );
       const pkg = new UnrealPackage(source);
 
       for (const obj of pkg.exportTable) {

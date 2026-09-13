@@ -43,7 +43,7 @@ $(function () {
 
         // Assign globals for functions below.
         try {
-          utPackage = new UnrealPackageReader(packageArrayBuffer);
+          utPackage = await UnrealPackageReader.load(packageArrayBuffer);
         } catch (e) {
           alert("Unable to load package due to invalid signature");
           return;
@@ -56,7 +56,7 @@ $(function () {
         // Populate file info
         $(".file-summary .file-name").text(filename);
         $(".file-summary .file-type").text(
-          `${utPackage.fileTypesByExt[fileExt]} (.${fileExt})`,
+          `${utPackage.fileTypesByExt[fileExt] || "Unknown"} (.${fileExt})`,
         );
         $(".file-summary .file-size").text(readableFileSize(file.size));
         $(".file-summary .file-guid").text(

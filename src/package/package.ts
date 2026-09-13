@@ -8,6 +8,7 @@
 
 import { BinaryCursor } from "../io/cursor.ts";
 import type { ReadContext } from "../structs/context.ts";
+import { isCompressedPackage } from "./compressed.ts";
 import { readPackageHeader, type PackageHeader } from "./header.ts";
 import { readNameTable, type NameTableEntry } from "./nameTable.ts";
 import {
@@ -30,6 +31,14 @@ export class UnrealPackage implements ReadContext, TableResolver {
     // Strictly ordered: the header locates the name table, the name table gives
     // every later index its meaning, and both tables are seeked to explicitly.
     this.header = readPackageHeader(this.cursor);
+
+    if (isCompressedPackage(buffer, this.header)) {
+      throw new Error(
+        "Package body is compressed (Clive Barker's Undying); inflate it " +
+          "first, e.g. with UnrealPackageReader.load()",
+      );
+    }
+
     this.nameTable = readNameTable(this.cursor, this.header);
 
     this.cursor.seek(this.header.export_offset);

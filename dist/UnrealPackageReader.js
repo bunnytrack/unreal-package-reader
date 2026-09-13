@@ -77,6 +77,18 @@
   ];
 
   // src/constants/flags.ts
+  var PACKAGE_FLAGS = {
+    PKG_AllowDownload: 1,
+    PKG_ClientOptional: 2,
+    PKG_ServerSideOnly: 4,
+    PKG_BrokenLinks: 8,
+    PKG_Unsecure: 16,
+    /**
+     * Observed only in Clive Barker's Undying maps.
+     */
+    PKG_Compressed: 32,
+    PKG_Need: 32768
+  };
   var OBJECT_FLAGS = {
     RF_Transactional: 1,
     RF_Unreachable: 2,
@@ -196,6 +208,8 @@
     umod: "UMOD",
     umx: "Music",
     unr: "Map",
+    sac: "Map",
+    // Clive Barker's Undying
     utx: "Texture",
     uxx: "Cache",
     uz: "Zip",
@@ -542,111 +556,6 @@
     "Fixed Array"
   ];
 
-  // src/package/header.ts
-  var PACKAGE_SIGNATURE = 2653586369;
-  function readPackageHeader(cursor) {
-    cursor.seek(0);
-    const signature = cursor.uint32();
-    if (signature !== PACKAGE_SIGNATURE) {
-      throw new Error(
-        `Invalid package signature: 0x${signature.toString(16).padStart(8, "0")}`
-      );
-    }
-    const version = cursor.uint16();
-    return {
-      signature,
-      version,
-      licensee_version: cursor.uint16(),
-      package_flags: cursor.uint32(),
-      name_count: cursor.uint32(),
-      name_offset: cursor.uint32(),
-      export_count: cursor.uint32(),
-      export_offset: cursor.uint32(),
-      import_count: cursor.uint32(),
-      import_offset: cursor.uint32(),
-      ...version < 68 ? readHeritage(cursor) : readGuidAndGenerations(cursor)
-    };
-  }
-  function readHeritage(cursor) {
-    return {
-      heritage_count: cursor.uint32(),
-      heritage_offset: cursor.uint32()
-    };
-  }
-  function readGuidAndGenerations(cursor) {
-    const guid = [
-      cursor.uint32(),
-      cursor.uint32(),
-      cursor.uint32(),
-      cursor.uint32()
-    ].map((word) => word.toString(16).padStart(8, "0")).join("").toUpperCase();
-    const generation_count = cursor.uint32();
-    const generations = [];
-    for (let i = 0; i < generation_count; i++) {
-      generations.push({
-        export_count: cursor.uint32(),
-        name_count: cursor.uint32()
-      });
-    }
-    return { guid, generation_count, generations };
-  }
-
-  // src/io/text.ts
-  var DEFAULT_ENCODING = "windows-1252";
-  var UTF16_ENCODING = "utf-16le";
-  function decodeText(bytes, encoding = DEFAULT_ENCODING) {
-    return new TextDecoder(encoding).decode(bytes);
-  }
-  function readSizedText(cursor) {
-    const size = cursor.uint8();
-    const raw = cursor.bytes(size);
-    return decodeText(raw.subarray(0, Math.max(0, size - 1)));
-  }
-  function readNullTerminatedText(cursor) {
-    const start = cursor.offset;
-    const bytes = [];
-    while (true) {
-      if (cursor.remaining === 0) {
-        throw new Error(
-          `Unterminated string starting at offset ${start}: reached the end of the buffer`
-        );
-      }
-      const byte = cursor.uint8();
-      if (byte === 0) break;
-      bytes.push(byte);
-    }
-    return decodeText(new Uint8Array(bytes));
-  }
-  function readStringProperty(cursor) {
-    const size = cursor.compactIndex();
-    const isUtf16 = size < 0;
-    const charWidth = isUtf16 ? 2 : 1;
-    const byteLength = Math.abs(size) * charWidth;
-    const raw = cursor.bytes(byteLength);
-    const withoutTerminator = raw.subarray(
-      0,
-      Math.max(0, byteLength - charWidth)
-    );
-    return decodeText(
-      withoutTerminator,
-      isUtf16 ? UTF16_ENCODING : DEFAULT_ENCODING
-    );
-  }
-
-  // src/package/nameTable.ts
-  function readNameTable(cursor, header) {
-    cursor.seek(header.name_offset);
-    const readName = header.version < 64 ? () => readNullTerminatedText(cursor) : () => readSizedText(cursor);
-    const nameTable = new Array(header.name_count);
-    for (let i = 0; i < header.name_count; i++) {
-      nameTable[i] = {
-        name: readName(),
-        flags: cursor.uint32()
-      };
-    }
-    return nameTable;
-  }
-
   // src/io/cursor.ts
   var MAX_COMPACT_INDEX_BYTES = 5;
   var BinaryCursor = class {
@@ -779,6 +688,167 @@
     const items = new Array(length);
     for (let i = 0; i < length; i++) items[i] = read();
     return items;
+  }
+
+  // src/package/header.ts
+  var PACKAGE_SIGNATURE = 2653586369;
+  function readPackageHeader(cursor) {
+    cursor.seek(0);
+    const signature = cursor.uint32();
+    if (signature !== PACKAGE_SIGNATURE) {
+      throw new Error(
+        `Invalid package signature: 0x${signature.toString(16).padStart(8, "0")}`
+      );
+    }
+    const version = cursor.uint16();
+    return {
+      signature,
+      version,
+      licensee_version: cursor.uint16(),
+      package_flags: cursor.uint32(),
+      name_count: cursor.uint32(),
+      name_offset: cursor.uint32(),
+      export_count: cursor.uint32(),
+      export_offset: cursor.uint32(),
+      import_count: cursor.uint32(),
+      import_offset: cursor.uint32(),
+      ...version < 68 ? readHeritage(cursor) : readGuidAndGenerations(cursor)
+    };
+  }
+  function readHeritage(cursor) {
+    return {
+      heritage_count: cursor.uint32(),
+      heritage_offset: cursor.uint32()
+    };
+  }
+  function readGuidAndGenerations(cursor) {
+    const guid = [
+      cursor.uint32(),
+      cursor.uint32(),
+      cursor.uint32(),
+      cursor.uint32()
+    ].map((word) => word.toString(16).padStart(8, "0")).join("").toUpperCase();
+    const generation_count = cursor.uint32();
+    const generations = [];
+    for (let i = 0; i < generation_count; i++) {
+      generations.push({
+        export_count: cursor.uint32(),
+        name_count: cursor.uint32()
+      });
+    }
+    return { guid, generation_count, generations };
+  }
+
+  // src/package/compressed.ts
+  var CHUNK_MAGIC = 19088743;
+  var CHUNK_HEADER_SIZE = 12;
+  function isCompressedPackage(buffer, header) {
+    const view = new DataView(buffer);
+    const at = header.name_offset;
+    return (header.package_flags & PACKAGE_FLAGS.PKG_Compressed) !== 0 && at + 4 <= buffer.byteLength && view.getUint32(at, true) === CHUNK_MAGIC;
+  }
+  function readCompressedChunks(buffer, header) {
+    const view = new DataView(buffer);
+    const chunks = [];
+    for (let at = header.name_offset; at + CHUNK_HEADER_SIZE <= buffer.byteLength; ) {
+      const magic = view.getUint32(at, true);
+      if (magic !== CHUNK_MAGIC) {
+        throw new Error(
+          `Expected chunk magic at offset ${at}, found 0x${magic.toString(16)}`
+        );
+      }
+      const compressedSize = view.getUint32(at + 4, true);
+      const uncompressed_size = view.getUint32(at + 8, true);
+      const start = at + CHUNK_HEADER_SIZE;
+      chunks.push({
+        data: new Uint8Array(buffer, start, compressedSize),
+        uncompressed_size
+      });
+      at = start + compressedSize;
+    }
+    return chunks;
+  }
+  var inflateWithDecompressionStream = async (zlibStream) => {
+    const stream = new Blob([zlibStream]).stream().pipeThrough(new DecompressionStream("deflate"));
+    return new Uint8Array(await new Response(stream).arrayBuffer());
+  };
+  async function inflatePackage(buffer, inflate = inflateWithDecompressionStream) {
+    const header = readPackageHeader(new BinaryCursor(buffer));
+    if (!isCompressedPackage(buffer, header)) return buffer;
+    const chunks = readCompressedChunks(buffer, header);
+    const inflated = await Promise.all(
+      chunks.map((chunk) => inflate(chunk.data))
+    );
+    const bodySize = chunks.reduce((sum, c) => sum + c.uncompressed_size, 0);
+    const out = new Uint8Array(header.name_offset + bodySize);
+    out.set(new Uint8Array(buffer, 0, header.name_offset), 0);
+    let at = header.name_offset;
+    inflated.forEach((bytes, i) => {
+      if (bytes.length !== chunks[i].uncompressed_size) {
+        throw new Error(
+          `Chunk ${i} inflated to ${bytes.length} bytes, expected ${chunks[i].uncompressed_size}`
+        );
+      }
+      out.set(bytes, at);
+      at += bytes.length;
+    });
+    return out.buffer;
+  }
+
+  // src/io/text.ts
+  var DEFAULT_ENCODING = "windows-1252";
+  var UTF16_ENCODING = "utf-16le";
+  function decodeText(bytes, encoding = DEFAULT_ENCODING) {
+    return new TextDecoder(encoding).decode(bytes);
+  }
+  function readSizedText(cursor) {
+    const size = cursor.uint8();
+    const raw = cursor.bytes(size);
+    return decodeText(raw.subarray(0, Math.max(0, size - 1)));
+  }
+  function readNullTerminatedText(cursor) {
+    const start = cursor.offset;
+    const bytes = [];
+    while (true) {
+      if (cursor.remaining === 0) {
+        throw new Error(
+          `Unterminated string starting at offset ${start}: reached the end of the buffer`
+        );
+      }
+      const byte = cursor.uint8();
+      if (byte === 0) break;
+      bytes.push(byte);
+    }
+    return decodeText(new Uint8Array(bytes));
+  }
+  function readStringProperty(cursor) {
+    const size = cursor.compactIndex();
+    const isUtf16 = size < 0;
+    const charWidth = isUtf16 ? 2 : 1;
+    const byteLength = Math.abs(size) * charWidth;
+    const raw = cursor.bytes(byteLength);
+    const withoutTerminator = raw.subarray(
+      0,
+      Math.max(0, byteLength - charWidth)
+    );
+    return decodeText(
+      withoutTerminator,
+      isUtf16 ? UTF16_ENCODING : DEFAULT_ENCODING
+    );
+  }
+
+  // src/package/nameTable.ts
+  function readNameTable(cursor, header) {
+    cursor.seek(header.name_offset);
+    const readName = header.version < 64 ? () => readNullTerminatedText(cursor) : () => readSizedText(cursor);
+    const nameTable = new Array(header.name_count);
+    for (let i = 0; i < header.name_count; i++) {
+      nameTable[i] = {
+        name: readName(),
+        flags: cursor.uint32()
+      };
+    }
+    return nameTable;
   }
 
   // src/structs/context.ts
@@ -1960,6 +2030,11 @@
     constructor(buffer) {
       this.cursor = new BinaryCursor(buffer);
       this.header = readPackageHeader(this.cursor);
+      if (isCompressedPackage(buffer, this.header)) {
+        throw new Error(
+          "Package body is compressed (Clive Barker's Undying); inflate it first, e.g. with UnrealPackageReader.load()"
+        );
+      }
       this.nameTable = readNameTable(this.cursor, this.header);
       this.cursor.seek(this.header.export_offset);
       this.exportTable = Array.from(
@@ -2200,7 +2275,10 @@
     }
     return header;
   }
-  var UnrealPackageReader = class {
+  var UnrealPackageReader = class _UnrealPackageReader {
+    static async load(buffer, inflate) {
+      return new _UnrealPackageReader(await inflatePackage(buffer, inflate));
+    }
     #package;
     propertyTypes = PROPERTY_TYPES;
     objectFlags = OBJECT_FLAGS;

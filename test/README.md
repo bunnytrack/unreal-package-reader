@@ -36,7 +36,9 @@ test/corpus/
 ```
 
 Snapshots are keyed on the path relative to `test/corpus`, so the same
-filename can appear under several releases.
+filename can appear under several releases. A body-compressed package
+(Undying's `.sac` maps) is inflated by the harness before parsing; its snapshot
+still hashes and sizes the file as stored.
 
 `test/corpus` is gitignored as stock assets are copyrighted and cannot be
 committed. The snapshots derived from them _are_ committed, because every
@@ -81,7 +83,7 @@ Rules that a plausible-looking change can silently break:
 ## Coverage
 
 The reader takes 23 distinct sides of `header.version` branches. The corpus -
-21 packages spanning versions 60, 61, 63, 64, 66, 69, 79, 80, 83 and 85 -
+22 packages spanning versions 60, 61, 63, 64, 66, 69, 79, 80, 83 and 85 -
 exercises 20 of them. The three unreached branches are single-field reads needing package
 kinds that may not exist: `.u` script packages only ever carry the engine
 version of the build that shipped them, so a v61 or v65 `.u` with meshes, or
