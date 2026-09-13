@@ -2195,6 +2195,7 @@ $(function () {
 
         // Ignore these properties
         case "level":
+        case "stateframe":
           continue;
 
         default:
