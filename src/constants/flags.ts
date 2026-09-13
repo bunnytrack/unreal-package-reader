@@ -2,6 +2,17 @@
  * Bitfield flags and their decoders.
  */
 
+export const PACKAGE_FLAGS = {
+  PKG_AllowDownload: 0x0001,
+  PKG_ClientOptional: 0x0002,
+  PKG_ServerSideOnly: 0x0004,
+  PKG_BrokenLinks: 0x0008,
+  PKG_Unsecure: 0x0010,
+  PKG_Need: 0x8000,
+} as const;
+
+export type PackageFlagName = keyof typeof PACKAGE_FLAGS;
+
 /**
  * Object flags, stored per export table entry.
  *
