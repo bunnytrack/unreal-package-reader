@@ -992,60 +992,47 @@ $(function () {
       for (const brush of allBrushData) {
         if (brush.polys.polygons !== undefined) {
           const geometry = new THREE.BufferGeometry();
-
-          addBrushToGeometry(geometry, brush.polys.polygons);
-
-          // Convert properties array to object for convenience
-          const brushProps = {};
-          brush.brush.properties.forEach(
-            (p) => (brushProps[p.name.toLowerCase()] = p.value),
-          );
-
-          if (brushProps.prepivot) {
-            geometry.translate(
-              -brushProps.prepivot.x,
-              -brushProps.prepivot.z,
-              -brushProps.prepivot.y,
-            );
-          }
-
-          // Set scaling
-          if (brushProps.mainscale) {
-            geometry.scale(
-              brushProps.mainscale.x,
-              brushProps.mainscale.z,
-              brushProps.mainscale.y,
-            );
-          }
-
           const material = new THREE.MeshBasicMaterial({
             wireframe: true,
             transparent: true,
             opacity: 0.5,
             color: getLineColour(brush.brush.className, brush.brush.properties),
           });
-
           const mesh = new THREE.Mesh(geometry, material);
 
-          // Set rotation
-          if (brushProps.rotation) {
+          addBrushToGeometry(geometry, brush.polys.polygons);
+
+          const prepivot = brush.brush.getProp("prepivot")?.value;
+          const mainscale = brush.brush.getProp("mainscale")?.value;
+          const rotation = brush.brush.getProp("rotation")?.value;
+          const location = brush.brush.getProp("location")?.value;
+          const postscale = brush.brush.getProp("postscale")?.value;
+
+          if (prepivot) {
+            geometry.translate(-prepivot.x, -prepivot.z, -prepivot.y);
+          }
+
+          if (mainscale) {
+            geometry.scale(mainscale.x, mainscale.z, mainscale.y);
+          }
+
+          if (rotation) {
             mesh.rotation.order = "YZX";
-
-            mesh.rotation.x = utRotationToRadians(brushProps.rotation.roll);
-            mesh.rotation.y = -utRotationToRadians(brushProps.rotation.yaw);
-            mesh.rotation.z = utRotationToRadians(brushProps.rotation.pitch);
+            mesh.rotation.x = utRotationToRadians(rotation.roll);
+            mesh.rotation.y = -utRotationToRadians(rotation.yaw);
+            mesh.rotation.z = utRotationToRadians(rotation.pitch);
           }
 
-          if (brushProps.location) {
-            mesh.position.x = brushProps.location.x;
-            mesh.position.y = brushProps.location.z;
-            mesh.position.z = brushProps.location.y;
+          if (location) {
+            mesh.position.x = location.x;
+            mesh.position.y = location.z;
+            mesh.position.z = location.y;
           }
 
-          if (brushProps.postscale) {
-            mesh.scale.x = brushProps.postscale.x;
-            mesh.scale.y = brushProps.postscale.z;
-            mesh.scale.z = brushProps.postscale.y;
+          if (postscale) {
+            mesh.scale.x = postscale.x;
+            mesh.scale.y = postscale.z;
+            mesh.scale.z = postscale.y;
           }
 
           scene.add(mesh);
