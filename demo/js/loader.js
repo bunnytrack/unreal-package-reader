@@ -19,15 +19,52 @@ $(function () {
 
   const SUPPORTED_SOUND_FORMATS = Object.values(SOUND_FORMATS);
 
-  const WAV_FORMAT_IMA_ADPCM = 0x11;
-
   const isSupportedSoundFormat = (format) =>
     typeof format === "string" &&
     SUPPORTED_SOUND_FORMATS.includes(format.toUpperCase());
 
+  const WAV_FORMAT_IMA_ADPCM = 0x11;
+
+  /**
+   * Libraries loaded on demand, as they are large and most packages are viewed
+   * without ever opening the Models or Music tabs.
+   */
+  const SCRIPT_BUNDLES = {
+    three: {
+      sources: ["js/three.min.js", "js/three-orbit-controls.js"],
+      ready: false,
+      waiting: [],
+    },
+    audio: {
+      sources: [
+        "js/jsmpeg.js",
+        "js/mod-player/scriptprocessor_player.js",
+        "js/mod-player/backend_xmp.js",
+      ],
+      ready: false,
+      waiting: [],
+
+      // ScriptNodePlayer must be initialised before anything can be played.
+      init: function (onReady) {
+        ScriptNodePlayer.createInstance(
+          new XMPBackendAdapter(),
+          "",
+          [],
+          true,
+          onReady,
+          function () {},
+          onTrackEnd,
+        );
+      },
+    },
+  };
+
   // Globals used across various functions in this file
   const utLoadedScripts = [];
   const musicConfigStore = {};
+
+  // Running three.js render loops
+  const renderLoops = {};
 
   /** @type {UnrealPackageReader | null} */
   let utPackage = null;
@@ -80,16 +117,15 @@ $(function () {
             break;
 
           case "uax":
-            $("[href='#tab-sounds']").click();
+            showTab("#tab-sounds");
             break;
 
           case "umx":
-            $("[href='#tab-music']").click();
+            showTab("#tab-music");
             break;
 
           case "utx":
-            $("[href='#tab-textures']").click();
-            populateTexturesTab();
+            showTab("#tab-textures");
             break;
 
           case "uxx":
@@ -97,7 +133,7 @@ $(function () {
             break;
 
           default:
-            $("[href='#tab-dependencies']").click();
+            showTab("#tab-dependencies");
             break;
         }
 
@@ -120,6 +156,56 @@ $(function () {
       }
     })
     .trigger("input");
+
+  function closePackage() {
+    clearTimeout(screenshotSlideshowId);
+    stopAllPlayback();
+
+    for (const viewer of Object.keys(renderLoops)) {
+      stopRenderLoop(viewer);
+    }
+
+    $("[id^='tab-']").removeData("current-package");
+
+    utPackage = null;
+    packageArrayBuffer = null;
+    packageHash = null;
+    currentMesh = null;
+
+    $("main").hide(0);
+    $("body").removeClass("file-loaded");
+    $(".file-input-wrapper p").text("Drag file anywhere to begin");
+
+    fileInput.val("");
+
+    window.scrollTo(0, 0);
+  }
+
+  function stopAllPlayback() {
+    $("#sounds-table audio").each(function () {
+      this.pause();
+
+      if (this.src.startsWith("blob:")) {
+        URL.revokeObjectURL(this.src);
+      }
+
+      this.removeAttribute("src");
+    });
+
+    for (const id of Object.keys(musicConfigStore)) {
+      const { player, playerType } = musicConfigStore[id];
+
+      player?.pause();
+
+      if (playerType === PLAYERS.JSMPEG) {
+        player?.destroy();
+      }
+
+      delete musicConfigStore[id];
+    }
+
+    $(".toggle-playback").attr("data-status", "paused");
+  }
 
   function isLevel() {
     return utPackage.getLevelInfo() !== null;
@@ -163,7 +249,7 @@ $(function () {
     }
 
     $(".screenshot, .level-summary").show(0);
-    $("[href='#tab-dependencies']").click();
+    showTab("#tab-dependencies");
   }
 
   // Check if this tab has loaded contents for the current package.
@@ -750,71 +836,69 @@ $(function () {
     }
   }
 
-  function loadThreeJs(callback) {
-    $("body").addClass("loading-three-js");
+  // Runs the callback once the named bundle has loaded and initialised
+  function withScripts(name, callback) {
+    const bundle = SCRIPT_BUNDLES[name];
 
-    loadScriptsSync(
-      ["js/three.min.js", "js/three-orbit-controls.js"],
-      function () {
-        $("body").removeClass("loading-three-js");
-        callback();
-      },
-    );
+    if (bundle.ready) {
+      callback();
+      return;
+    }
+
+    bundle.waiting.push(callback);
+
+    // A load is already in progress - this callback will run along with it
+    if (bundle.waiting.length > 1) {
+      return;
+    }
+
+    // Note: loadScriptsSync empties the array it is given
+    loadScriptsSync(bundle.sources.slice(), function () {
+      const onReady = function () {
+        bundle.ready = true;
+
+        for (const waitingCallback of bundle.waiting) {
+          waitingCallback();
+        }
+
+        bundle.waiting = [];
+      };
+
+      if (bundle.init) {
+        bundle.init(onReady);
+      } else {
+        onReady();
+      }
+    });
+  }
+
+  // Mod player callback - reset the button when a track finishes
+  function onTrackEnd() {
+    $(".toggle-playback[data-status='playing']").each(function (i, el) {
+      const $el = $(el);
+      const musicConfig = musicConfigStore[$el.attr("data-id")];
+
+      if (musicConfig.type === PLAYERS.MOD_PLAYER) {
+        $el.attr("data-status", "paused");
+        musicConfig.player.seekPlaybackPosition(0);
+      }
+    });
   }
 
   function populateMusicTab() {
+    // Can be reached asynchronously (script loading, deferred tab
+    // population), by which point the package may have been closed.
+    if (utPackage === null) return;
+
     const musicTab = $("#tab-music .inner");
     const embeddedMusic = utPackage.getMusicObjects();
 
-    // "Lazy load" audio-related JavaScript libraries first
-    if (embeddedMusic.length > 0 && !musicTab.hasClass("loaded-script-xmp")) {
-      if (!musicTab.hasClass("loading")) {
-        musicTab.addClass("loading");
-
-        loadScriptsSync(
-          [
-            "js/jsmpeg.js",
-            "js/mod-player/scriptprocessor_player.js",
-            "js/mod-player/backend_xmp.js",
-          ],
-          function () {
-            // All scripts loaded - initialise ScriptNodePlayer then call function again
-            musicTab.addClass("loaded-script-xmp");
-
-            const onPlayerReady = populateMusicTab;
-
-            // Callbacks for mod-player (jsmpeg handled separately)
-            const doOnTrackReadyToPlay = function () {};
-            const doOnTrackEnd = function () {
-              $(".toggle-playback[data-status='playing']").each(
-                function (i, el) {
-                  const $el = $(el);
-                  const musicConfig = musicConfigStore[$el.attr("data-id")];
-
-                  if (musicConfig.type === PLAYERS.MOD_PLAYER) {
-                    $el.attr("data-status", "paused");
-                    musicConfig.player.seekPlaybackPosition(0);
-                  }
-                },
-              );
-            };
-
-            ScriptNodePlayer.createInstance(
-              new XMPBackendAdapter(),
-              "",
-              [],
-              true,
-              onPlayerReady,
-              doOnTrackReadyToPlay,
-              doOnTrackEnd,
-            );
-          },
-        );
-      }
+    if (embeddedMusic.length > 0 && !SCRIPT_BUNDLES.audio.ready) {
+      withScripts("audio", populateMusicTab);
+      return;
     }
 
-    // Scripts already loaded - populate tab if new package
-    else if (tabUnpopulated("music")) {
+    if (tabUnpopulated("music")) {
       // Reset
       musicTab.html("");
 
@@ -908,6 +992,32 @@ $(function () {
 
       $("[href='#tab-music'] .count").text(`(${embeddedMusic.length})`);
     }
+  }
+
+  function startRenderLoop(viewer, renderer, controls, onFrame) {
+    stopRenderLoop(viewer);
+
+    const loop = (renderLoops[viewer] = { renderer, controls, frameId: null });
+
+    const animate = () => {
+      loop.frameId = requestAnimationFrame(animate);
+      onFrame();
+    };
+
+    animate();
+  }
+
+  function stopRenderLoop(viewer) {
+    const loop = renderLoops[viewer];
+
+    if (loop === undefined) return;
+
+    cancelAnimationFrame(loop.frameId);
+    loop.controls.dispose();
+    loop.renderer.dispose();
+    loop.renderer.forceContextLoss?.();
+
+    delete renderLoops[viewer];
   }
 
   function getThreeSetup(cameraWidth, cameraHeight) {
@@ -1163,26 +1273,27 @@ $(function () {
 
       mapViewTab.html(renderer.domElement);
 
-      const animate = () => {
-        requestAnimationFrame(animate);
-
+      startRenderLoop("map-view", renderer, controls, () => {
         controls.update();
-
         renderer.render(scene, camera);
-      };
-
-      animate();
+      });
     }
   }
 
   function populateBrushesTab() {
+    // Can be reached asynchronously (script loading, deferred tab
+    // population), by which point the package may have been closed.
+    if (utPackage === null) return;
+
+    if (!SCRIPT_BUNDLES.three.ready) {
+      withScripts("three", populateBrushesTab);
+      return;
+    }
+
     const brushes = utPackage.getAllBrushObjects();
     const brushesTab = $("#tab-brushes .inner");
 
-    if (!$("body").hasClass("loaded-script-three")) {
-      // Three.js is loading - try again
-      setTimeout(populateBrushesTab, 100);
-    } else if (tabUnpopulated("brushes")) {
+    if (tabUnpopulated("brushes")) {
       if (tables.brushes) {
         tables.brushes.destroy();
       }
@@ -1373,15 +1484,10 @@ $(function () {
 
     previewArea.html(renderer.domElement);
 
-    const animate = () => {
-      requestAnimationFrame(animate);
-
+    startRenderLoop("brush-viewer", renderer, controls, () => {
       controls.update();
-
       renderer.render(scene, camera);
-    };
-
-    animate();
+    });
   }
 
   function getFrameData(meshObject, meshData, animationSequence, frameNumber) {
@@ -1638,17 +1744,11 @@ $(function () {
 
     const clock = new THREE.Clock();
 
-    const animate = () => {
-      requestAnimationFrame(animate);
-
+    startRenderLoop("mesh-viewer", renderer, controls, () => {
       controls.update();
-
       mixer.update(clock.getDelta());
-
       renderer.render(scene, camera);
-    };
-
-    animate();
+    });
   }
 
   function showAnimSequenceFrame(
@@ -1773,15 +1873,10 @@ $(function () {
 
     $("#mesh-viewer .canvas-wrapper").html(renderer.domElement);
 
-    const animate = () => {
-      requestAnimationFrame(animate);
-
+    startRenderLoop("mesh-viewer", renderer, controls, () => {
       controls.update();
-
       renderer.render(scene, camera);
-    };
-
-    animate();
+    });
   }
 
   function drawSkeletalMesh(meshObject, meshData) {
@@ -1857,15 +1952,10 @@ $(function () {
 
     $("#mesh-viewer .canvas-wrapper").html(renderer.domElement);
 
-    const animate = () => {
-      requestAnimationFrame(animate);
-
+    startRenderLoop("mesh-viewer", renderer, controls, () => {
       controls.update();
-
       renderer.render(scene, camera);
-    };
-
-    animate();
+    });
   }
 
   function populateAnimSequencesTable(meshObject) {
@@ -2435,14 +2525,9 @@ $(function () {
         break;
 
       case "models":
-        if (!$("body").hasClass("loaded-script-three")) {
-          loadThreeJs(function () {
-            $("body").addClass("loaded-script-three");
-            $("[href='#tab-brushes']").click();
-          });
-        } else {
-          $("[href='#tab-brushes']").click();
-        }
+        withScripts("three", function () {
+          showTab("#tab-brushes");
+        });
         break;
 
       case "brushes":
@@ -2464,14 +2549,20 @@ $(function () {
   }
 
   function populateMeshesTab() {
+    // Can be reached asynchronously (script loading, deferred tab
+    // population), by which point the package may have been closed.
+    if (utPackage === null) return;
+
+    if (!SCRIPT_BUNDLES.three.ready) {
+      withScripts("three", populateMeshesTab);
+      return;
+    }
+
     const meshObjects = utPackage.getAllMeshObjects();
 
     $("[href='#tab-meshes'] .count").text(`(${meshObjects.length})`);
 
-    if (!$("body").hasClass("loaded-script-three")) {
-      // Three.js is loading - try again
-      setTimeout(populateMeshesTab, 100);
-    } else if (tabUnpopulated("meshes")) {
+    if (tabUnpopulated("meshes")) {
       if (tables.meshes) {
         tables.meshes.destroy();
       }
@@ -2536,6 +2627,16 @@ $(function () {
     };
   }
 
+  function showTab(href) {
+    const tabLink = $(`[href='${href}']`);
+
+    if (tabLink.parent().hasClass("ui-tabs-active")) {
+      processTabAction(tabLink.attr("data-action"));
+    } else {
+      tabLink.click();
+    }
+  }
+
   // Create tabs for package contents
   function loadTabs() {
     $(".tabs").tabs({
@@ -2552,6 +2653,9 @@ $(function () {
 
   // Called once on page load to add event listeners, etc.
   function initialisePage() {
+    // Header - close the current package and return to the file picker
+    $("#close-file").on("click", closePackage);
+
     // Dependencies tab - toggle tree view
     $("#tab-dependencies").on("click", "[name='dependency-view']", function () {
       createDependenciesTable(this.value === "tree");

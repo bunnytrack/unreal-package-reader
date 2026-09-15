@@ -42,6 +42,17 @@ th {
 body.file-loaded .file-input-wrapper {
   display: none;
 }
+.close-file {
+  align-items: center;
+  display: none;
+  height: 100%;
+  left: 15px;
+  position: absolute;
+  top: 0;
+}
+body.file-loaded .close-file {
+  display: flex;
+}
 body.dragging-file .file-input-wrapper {
   display: block;
 }
@@ -56,6 +67,7 @@ header {
   background: #d9d9d9;
   color: black;
   border-bottom: 1px solid #ff7900;
+  position: relative;
 
   ul,
   a {
@@ -82,6 +94,20 @@ header {
   a {
     color: black;
     text-decoration: none;
+  }
+
+  button {
+    background: none;
+    border: 1px solid #888;
+    border-radius: 3px;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    padding: 5px 10px;
+  }
+
+  button:hover {
+    background: #c4c4c4;
   }
 }
 
